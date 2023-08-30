@@ -8,7 +8,7 @@
     <meta name="keywords" content="Fastkart">
     <meta name="author" content="Fastkart">
     <link rel="icon" href="assets/images/favicon/1.png" type="image/x-icon">
-    <title>Product Right Thumbnail</title>
+    <title>Product | NGT-ECom</title>
 
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com/">

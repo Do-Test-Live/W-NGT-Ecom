@@ -1,4 +1,4 @@
-ErrorDocument 404 http://W-NGT-Ecom/404
+ErrorDocument 404 http://localhost/W-NGT-Ecom/404
 
 RewriteEngine on
 
