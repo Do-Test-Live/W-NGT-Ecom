@@ -28,9 +28,6 @@
 <!-- Auto Height Js -->
 <script src="assets/js/auto-height.js"></script>
 
-<!-- Timer Js -->
-<script src="assets/js/timer1.js"></script>
-
 <!-- Fly Cart Js -->
 <script src="assets/js/fly-cart.js"></script>
 

@@ -14653,7 +14653,7 @@ header .navbar.navbar-expand-xl .navbar-nav .nav-link .label-menu::before {
 }
 
 header .navbar.navbar-expand-xl .navbar-nav .nav-link::before {
-    content: "";
+    content: " ";
     position: absolute;
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
@@ -18019,7 +18019,7 @@ header .offcanvas-backdrop {
     opacity: 0;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    max-width: 230px
+    max-width: 130px
 }
 
 @media (max-width: 480px) {
@@ -18030,7 +18030,7 @@ header .offcanvas-backdrop {
 
 .product-box-3 .product-header .product-image .product-option li {
     position: relative;
-    width: 33.33%
+    width: 50%
 }
 
 .product-box-3 .product-header .product-image .product-option li a {
