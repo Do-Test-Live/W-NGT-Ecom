@@ -16778,7 +16778,7 @@ header .offcanvas-backdrop {
     opacity: 0;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    max-width: 320px
+    max-width: 100px
 }
 
 @media (max-width: 480px) {
@@ -16789,7 +16789,7 @@ header .offcanvas-backdrop {
 
 .product-box .product-image .product-option li {
     position: relative;
-    width: 33.33%
+    width: 50%
 }
 
 .product-box .product-image .product-option li a {

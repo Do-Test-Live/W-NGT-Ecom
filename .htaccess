@@ -1,0 +1,47 @@
+ErrorDocument 404 http://W-NGT-Ecom/404
+
+RewriteEngine on
+
+RewriteRule ^home index.php [NE,L]
+
+RewriteRule ^search search.php [NE,L]
+
+RewriteRule ^shop shop.php [NE,L]
+
+RewriteRule ^product product.php [NE,L]
+
+RewriteRule ^faq faq.php [NE,L]
+
+RewriteRule ^about about.php [NE,L]
+
+RewriteRule ^contact contact.php [NE,L]
+
+RewriteRule ^login login.php [NE,L]
+
+RewriteRule ^signup signup.php [NE,L]
+
+RewriteRule ^forgot-password forgot-password.php [NE,L]
+
+RewriteRule ^otp otp.php [NE,L]
+
+RewriteRule ^profile profile.php [NE,L]
+
+RewriteRule ^wishlist wishlist.php [NE,L]
+
+RewriteRule ^cart cart.php [NE,L]
+
+RewriteRule ^checkout checkout.php [NE,L]
+
+RewriteRule ^order-success order-success.php [NE,L]
+
+RewriteRule ^order-cancel order-cancel.php [NE,L]
+
+RewriteRule ^order-tracking order-tracking.php [NE,L]
+
+RewriteRule ^insert insert.php [NE,L]
+
+RewriteRule ^update update.php [NE,L]
+
+RewriteRule ^coming-soon coming-soon.php [NE,L]
+
+RewriteRule ^404 404.php [NE,L]
