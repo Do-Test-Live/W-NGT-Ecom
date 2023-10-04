@@ -6,7 +6,7 @@
                 <div class="col-xxl-3 d-xxl-block d-none">
                     <div class="top-left-header">
                         <i class="fa-solid fa-location-dot text-white"></i>
-                        <span class="text-white">1418 Riverwood Drive, CA 96052, US</span>
+                        <span class="text-white">Hong Kong</span>
                     </div>
                 </div>
 
@@ -15,7 +15,7 @@
                         <div class="notification-slider">
                             <div>
                                 <div class="timer-notification">
-                                    <h6><strong class="me-1">Welcome to Fastkart!</strong>Wrap new offers/gift
+                                    <h6><strong class="me-1">Welcome To NGT-ECom!</strong>Wrap new offers/gift
                                         every signle day on Weekends.<strong class="ms-1">New Coupon Code: Fast024
                                         </strong>
 
@@ -55,7 +55,7 @@
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="javascript:void(0)" id="france">
-                                            <img src="assets/images/country/germany.png"
+                                            <img src="assets/images/country/hk.png"
                                                  class="img-fluid blur-up lazyload" alt="">
                                             <span>Hong Kong</span>
                                         </a>
@@ -131,7 +131,7 @@
                                         </div>
                                         <div class="delivery-detail">
                                             <h6>24/7 Delivery</h6>
-                                            <h5>+91 888 104 2340</h5>
+                                            <h5>+852 620 23824</h5>
                                         </div>
                                     </a>
                                 </li>

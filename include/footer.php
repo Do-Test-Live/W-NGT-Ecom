@@ -84,7 +84,7 @@
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="footer-logo">
                         <div class="theme-logo">
-                            <a href="index.html">
+                            <a href="index.php">
                                 <img src="assets/images/logo/1.png" class="blur-up lazyload" alt="">
                             </a>
                         </div>
@@ -96,11 +96,11 @@
                             <ul class="address">
                                 <li>
                                     <i data-feather="home"></i>
-                                    <a href="javascript:void(0)">1418 Riverwood Drive, CA 96052, US</a>
+                                    <a href="javascript:void(0)">Hong Kong</a>
                                 </li>
                                 <li>
                                     <i data-feather="mail"></i>
-                                    <a href="javascript:void(0)">support@fastkart.com</a>
+                                    <a href="javascript:void(0)">ngttechio@gmail.com</a>
                                 </li>
                             </ul>
                         </div>
@@ -115,22 +115,22 @@
                     <div class="footer-contain">
                         <ul>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Vegetables & Fruit</a>
+                                <a href="shop-left-sidebar.php" class="text-content">Vegetables & Fruit</a>
                             </li>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Beverages</a>
+                                <a href="shop-left-sidebar.php" class="text-content">Beverages</a>
                             </li>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Meats & Seafood</a>
+                                <a href="shop-left-sidebar.php" class="text-content">Meats & Seafood</a>
                             </li>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Frozen Foods</a>
+                                <a href="shop-left-sidebar.php" class="text-content">Frozen Foods</a>
                             </li>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Biscuits & Snacks</a>
+                                <a href="shop-left-sidebar.php" class="text-content">Biscuits & Snacks</a>
                             </li>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Grocery & Staples</a>
+                                <a href="shop-left-sidebar.php" class="text-content">Grocery & Staples</a>
                             </li>
                         </ul>
                     </div>
@@ -144,19 +144,19 @@
                     <div class="footer-contain">
                         <ul>
                             <li>
-                                <a href="index.html" class="text-content">Home</a>
+                                <a href="index.php" class="text-content">Home</a>
                             </li>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">Shop</a>
+                                <a href="shop-left-sidebar.php" class="text-content">Shop</a>
                             </li>
                             <li>
-                                <a href="about-us.html" class="text-content">About Us</a>
+                                <a href="about-us.php" class="text-content">About Us</a>
                             </li>
                             <li>
-                                <a href="blog-list.html" class="text-content">Blog</a>
+                                <a href="blog-list.php" class="text-content">Blog</a>
                             </li>
                             <li>
-                                <a href="contact-us.html" class="text-content">Contact Us</a>
+                                <a href="contact-us.php" class="text-content">Contact Us</a>
                             </li>
                         </ul>
                     </div>
@@ -170,22 +170,22 @@
                     <div class="footer-contain">
                         <ul>
                             <li>
-                                <a href="order-success.html" class="text-content">Your Order</a>
+                                <a href="order-success.php" class="text-content">Your Order</a>
                             </li>
                             <li>
-                                <a href="user-dashboard.html" class="text-content">Your Account</a>
+                                <a href="user-dashboard.php" class="text-content">Your Account</a>
                             </li>
                             <li>
-                                <a href="order-tracking.html" class="text-content">Track Order</a>
+                                <a href="order-tracking.php" class="text-content">Track Order</a>
                             </li>
                             <li>
-                                <a href="wishlist.html" class="text-content">Your Wishlist</a>
+                                <a href="wishlist.php" class="text-content">Your Wishlist</a>
                             </li>
                             <li>
-                                <a href="search.html" class="text-content">Search</a>
+                                <a href="search.php" class="text-content">Search</a>
                             </li>
                             <li>
-                                <a href="faq.html" class="text-content">FAQ</a>
+                                <a href="faq.php" class="text-content">FAQ</a>
                             </li>
                         </ul>
                     </div>
@@ -203,7 +203,7 @@
                                     <i data-feather="phone"></i>
                                     <div class="contact-number">
                                         <h6 class="text-content">Hotline 24/7 :</h6>
-                                        <h5>+91 888 104 2340</h5>
+                                        <h5>+852 620 23824</h5>
                                     </div>
                                 </div>
                             </li>
@@ -213,7 +213,7 @@
                                     <i data-feather="mail"></i>
                                     <div class="contact-number">
                                         <h6 class="text-content">Email Address :</h6>
-                                        <h5>fastkart@hotmail.com</h5>
+                                        <h5>ngttechio@gmail.com</h5>
                                     </div>
                                 </div>
                             </li>
@@ -225,7 +225,7 @@
 
         <div class="sub-footer section-small-space">
             <div class="reserve">
-                <h6 class="text-content">©2022 Fastkart All rights reserved</h6>
+                <h6 class="text-content">©2023 NGT Ecom All rights reserved</h6>
             </div>
 
             <div class="payment">

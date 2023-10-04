@@ -4,9 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fastkart">
-    <meta name="keywords" content="Fastkart">
-    <meta name="author" content="Fastkart">
+    <meta name="description" content="NGT-ECom">
+    <meta name="keywords" content="NGT-ECom">
+    <meta name="author" content="NGT-ECom">
     <link rel="icon" href="assets/images/favicon/1.png" type="image/x-icon">
     <title>Forgot Password | NGT-ECom</title>
 
@@ -55,7 +55,7 @@
                     <div class="d-flex align-items-center justify-content-center h-100">
                         <div class="log-in-box">
                             <div class="log-in-title">
-                                <h3>Welcome To Fastkart</h3>
+                                <h3>Welcome To NGT-ECom</h3>
                                 <h4>Forgot your password</h4>
                             </div>
 

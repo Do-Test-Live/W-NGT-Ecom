@@ -4,9 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fastkart">
-    <meta name="keywords" content="Fastkart">
-    <meta name="author" content="Fastkart">
+    <meta name="description" content="NGT-ECom">
+    <meta name="keywords" content="NGT-ECom">
+    <meta name="author" content="NGT-ECom">
     <link rel="icon" href="assets/images/favicon/1.png" type="image/x-icon">
     <title>Home | NGT-ECom</title>
 
@@ -1709,7 +1709,7 @@
                             </h2>
                             <h2 class="home-name text-uppercase">sale</h2>
                             <h3 class="text-pacifico fw-normal text-content text-center">
-                                www.fastkart.com
+                                www.ngt-ecom.com
                             </h3>
                             <ul class="social-icon">
                                 <li>
