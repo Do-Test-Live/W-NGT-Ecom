@@ -3,7 +3,7 @@ session_start();
 require_once('../include/dbController.php');
 $db_handle = new DBController();
 date_default_timezone_set("Asia/Hong_Kong");
-$siteName='';
+$siteName = '';
 
 include('include/siteSettings.php');
 ?>
@@ -13,7 +13,7 @@ include('include/siteSettings.php');
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Dashboard | <?php echo $siteName; ?></title>
+    <title>Add Category | <?php echo $siteName; ?></title>
 
     <?php include('include/css.php'); ?>
 </head>
@@ -39,8 +39,26 @@ include('include/siteSettings.php');
         <!-- row -->
         <div class="container-fluid">
             <div class="row">
-
-
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Add Category</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control input-default"
+                                               placeholder="Category Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
