@@ -1,0 +1,55 @@
+ErrorDocument 404 http://localhost/W-NGT-Ecom/admin/404
+
+RewriteEngine on
+
+RewriteRule ^login index.php [NE,L]
+
+RewriteRule ^dashboard dashboard.php [NE,L]
+
+RewriteRule ^add-category add-category.php [NE,L]
+
+RewriteRule ^category-details category-details.php [NE,L]
+
+RewriteRule ^fetch-category fetch-category.php [NE,L]
+
+RewriteRule ^add-subcategory add-subcategory.php [NE,L]
+
+RewriteRule ^subcategory-details subcategory-details.php [NE,L]
+
+RewriteRule ^fetch-subcategory fetch-subcategory.php [NE,L]
+
+RewriteRule ^add-product add-product.php [NE,L]
+
+RewriteRule ^product-details product-details.php [NE,L]
+
+RewriteRule ^add-stock add-stock.php [NE,L]
+
+RewriteRule ^stock-details stock-details.php [NE,L]
+
+RewriteRule ^add-promo-code add-promo-code.php [NE,L]
+
+RewriteRule ^promo-code-details promo-code-details.php [NE,L]
+
+RewriteRule ^pending-order pending-order.php [NE,L]
+
+RewriteRule ^confirm-order confirm-order.php [NE,L]
+
+RewriteRule ^invoice invoice.php [NE,L]
+
+RewriteRule ^newsletter newsletter.php [NE,L]
+
+RewriteRule ^contact contact.php [NE,L]
+
+RewriteRule ^customer customer.php [NE,L]
+
+RewriteRule ^add-content add-content.php [NE,L]
+
+RewriteRule ^content-details content-details.php [NE,L]
+
+RewriteRule ^insert insert.php [NE,L]
+
+RewriteRule ^update update.php [NE,L]
+
+RewriteRule ^delete delete.php [NE,L]
+
+RewriteRule ^404 404.php [NE,L]
