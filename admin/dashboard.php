@@ -1,10 +1,19 @@
+<?php
+session_start();
+require_once('../include/dbController.php');
+$db_handle = new DBController();
+date_default_timezone_set("Asia/Hong_Kong");
+$siteName='';
+
+include('include/siteSettings.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Your Organization Name</title>
+    <title>Dashboard | <?php echo $siteName; ?></title>
 
     <?php include('include/css.php'); ?>
 </head>
@@ -29,37 +38,6 @@
     <div class="content-body">
         <!-- row -->
         <div class="container-fluid">
-            <!-- Add Order -->
-            <div class="modal fade" id="addOrderModalside">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Add Menus</h5>
-                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <label class="text-black font-w500">Food Name</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label class="text-black font-w500">Order Date</label>
-                                    <input type="date" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label class="text-black font-w500">Food Price</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-xl-3 col-xxl-6 col-sm-6">
                     <div class="card grd-card">

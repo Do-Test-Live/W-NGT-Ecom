@@ -4,12 +4,14 @@
 <div class="deznav">
     <div class="deznav-scroll">
         <ul class="metismenu" id="menu">
-            <li><a class="ai-icon" href="dashboard" aria-expanded="false">
+            <li>
+                <a class="ai-icon" href="dashboard" aria-expanded="false">
                     <i class="flaticon-381-networking"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                     <i class="flaticon-381-television"></i>
                     <span class="nav-text">Category</span>
                 </a>
@@ -18,7 +20,8 @@
                     <li><a href="category-details">Category Details</a></li>
                 </ul>
             </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                     <i class="flaticon-381-controls-3"></i>
                     <span class="nav-text">Sub-Category</span>
                 </a>
@@ -27,7 +30,8 @@
                     <li><a href="subcategory-details">Sub-Category Details</a></li>
                 </ul>
             </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                     <i class="flaticon-381-internet"></i>
                     <span class="nav-text">Product</span>
                 </a>
@@ -36,7 +40,8 @@
                     <li><a href="product-details">Product Details</a></li>
                 </ul>
             </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                     <i class="flaticon-381-heart"></i>
                     <span class="nav-text">Stock</span>
                 </a>
@@ -45,7 +50,8 @@
                     <li><a href="stock-details">Stock Details</a></li>
                 </ul>
             </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                     <i class="flaticon-381-notepad"></i>
                     <span class="nav-text">Promo Code</span>
                 </a>
@@ -54,7 +60,8 @@
                     <li><a href="promo-code-details">Promo Code Details</a></li>
                 </ul>
             </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                     <i class="flaticon-381-network"></i>
                     <span class="nav-text">Order</span>
                 </a>
@@ -63,22 +70,26 @@
                     <li><a href="confirm-order">Confirm Order</a></li>
                 </ul>
             </li>
-            <li><a href="newsletter" class="ai-icon" aria-expanded="false">
+            <li>
+                <a href="newsletter" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-381-settings-2"></i>
                     <span class="nav-text">Newsletter</span>
                 </a>
             </li>
-            <li><a href="contact" class="ai-icon" aria-expanded="false">
+            <li>
+                <a href="contact" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-381-view"></i>
                     <span class="nav-text">Contact</span>
                 </a>
             </li>
-            <li><a href="customer" class="ai-icon" aria-expanded="false">
+            <li>
+                <a href="customer" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-381-user"></i>
                     <span class="nav-text">Customer</span>
                 </a>
             </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                     <i class="flaticon-381-layer-1"></i>
                     <span class="nav-text">Content</span>
                 </a>
