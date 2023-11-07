@@ -46,6 +46,12 @@ RewriteRule ^add-content add-content.php [NE,L]
 
 RewriteRule ^content-details content-details.php [NE,L]
 
+RewriteRule ^profile profile.php [NE,L]
+
+RewriteRule ^settings settings.php [NE,L]
+
+RewriteRule ^logout logout.php [NE,L]
+
 RewriteRule ^insert insert.php [NE,L]
 
 RewriteRule ^update update.php [NE,L]

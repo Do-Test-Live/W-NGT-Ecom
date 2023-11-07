@@ -13,15 +13,12 @@ include('include/siteSettings.php');
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Add Promo Code | <?php echo $siteName; ?></title>
-    <!-- Daterange picker -->
-    <link href="vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
-    <!-- Pick date -->
-    <link rel="stylesheet" href="vendor/pickadate/themes/default.css">
-    <link rel="stylesheet" href="vendor/pickadate/themes/default.date.css">
+    <title>Settings | <?php echo $siteName; ?></title>
+    <!-- Summernote -->
+    <link href="vendor/summernote/summernote.css" rel="stylesheet">
 
     <?php include('include/css.php'); ?>
+
 </head>
 <body>
 
@@ -48,30 +45,37 @@ include('include/siteSettings.php');
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Add Promo Code</h4>
+                            <h4 class="card-title">Settings</h4>
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
                                 <form>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Promo Code Name">
+                                               placeholder="Page Name">
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Value">
-                                    </div>
-                                    <div class="form-group">
-                                        <p class="mb-1">Start Date</p>
-                                        <input name="datepicker" class="datepicker-default form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <p class="mb-1">Expire Date</p>
-                                        <input name="datepicker" class="datepicker-default form-control">
+                                               placeholder="Section Name">
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Purchase Amount">
+                                               placeholder="Title">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input">
+                                            <label class="custom-file-label">Choose Content Image</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <p>
+                                            Description
+                                        </p>
+                                        <div class="summernote"></div>
                                     </div>
                                     <div class="form-group">
                                         <button type="button" class="btn btn-primary">Submit</button>
@@ -97,22 +101,9 @@ include('include/siteSettings.php');
 
 <?php include('include/js.php'); ?>
 
-<!-- pickdate -->
-<script src="vendor/pickadate/picker.js"></script>
-<script src="vendor/pickadate/picker.time.js"></script>
-<script src="vendor/pickadate/picker.date.js"></script>
-
-
-
-<!-- Daterangepicker -->
-<script src="js/plugins-init/bs-daterange-picker-init.js"></script>
-<!-- Clockpicker init -->
-<script src="js/plugins-init/clock-picker-init.js"></script>
-<!-- asColorPicker init -->
-<script src="js/plugins-init/jquery-asColorPicker.init.js"></script>
-<!-- Material color picker init -->
-<script src="js/plugins-init/material-date-picker-init.js"></script>
-<!-- Pickdate -->
-<script src="js/plugins-init/pickadate-init.js"></script>
+<!-- Summernote -->
+<script src="vendor/summernote/js/summernote.min.js"></script>
+<!-- Summernote init -->
+<script src="js/plugins-init/summernote-init.js"></script>
 </body>
 </html>

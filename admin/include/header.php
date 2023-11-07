@@ -7,7 +7,7 @@
                 <div class="collapse navbar-collapse justify-content-between">
                     <div class="header-left">
                         <div class="dashboard_bar">
-Dashboard
+                            Dashboard
                             <span>Welcome to !</span>
                         </div>
                     </div>
@@ -105,7 +105,7 @@ KG
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a href="app-profile.html" class="dropdown-item ai-icon">
+                                <a href="profile" class="dropdown-item ai-icon">
                                     <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary"
                                          width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -114,7 +114,7 @@ KG
                                     </svg>
                                     <span class="ml-2">Profile </span>
                                 </a>
-                                <a href="email-inbox.html" class="dropdown-item ai-icon">
+                                <a href="settings" class="dropdown-item ai-icon">
                                     <svg id="icon-inbox" xmlns="http://www.w3.org/2000/svg" class="text-success"
                                          width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -123,7 +123,7 @@ KG
                                     </svg>
                                     <span class="ml-2">Settings </span>
                                 </a>
-                                <a href="page-login.html" class="dropdown-item ai-icon">
+                                <a href="logout" class="dropdown-item ai-icon">
                                     <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
                                          width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

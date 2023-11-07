@@ -27132,10 +27132,10 @@ code {
         border: 0 !important;
         padding: 0;
         background-color: #fffefe !important;
-        color: #fff !important; }
+        color: #9f5368 !important; }
       .picker .picker__frame .picker__box .picker__table .picker__day:hover {
         background-color: #fffefe !important;
-        color: #fff !important; }
+        color: #9f5368 !important; }
     .picker .picker__frame .picker__box .picker__footer .picker__button--today {
       background-color: #fffefe !important;
       color: #fff !important; }
@@ -27151,7 +27151,7 @@ code {
       .picker .picker__frame .picker__box .picker__footer .picker__button--close:hover,
       .picker .picker__frame .picker__box .picker__footer .picker__button--today:hover {
         background-color: #fffefe !important;
-        color: #fff !important; }
+        color: #9f5368 !important; }
   @media only screen and (max-width: 575px) {
     .picker .picker__frame {
       min-width: 100% !important;

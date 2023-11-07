@@ -13,12 +13,9 @@ include('include/siteSettings.php');
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Add Content | <?php echo $siteName; ?></title>
-    <!-- Summernote -->
-    <link href="vendor/summernote/summernote.css" rel="stylesheet">
+    <title>Profile | <?php echo $siteName; ?></title>
 
     <?php include('include/css.php'); ?>
-
 </head>
 <body>
 
@@ -45,22 +42,38 @@ include('include/siteSettings.php');
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Add Content</h4>
+                            <h4 class="card-title">Profile</h4>
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
                                 <form>
                                     <div class="form-group">
-                                        <input type="text" class="form-control input-default"
-                                               placeholder="Page Name">
+                                        <label>Category Name</label>
+                                        <select multiple class="form-control default-select" id="sel2">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sub-Category Name</label>
+                                        <select multiple class="form-control default-select" id="sel3">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Section Name">
+                                               placeholder="Product Name">
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Title">
+                                               placeholder="Product Price">
                                     </div>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
@@ -68,14 +81,17 @@ include('include/siteSettings.php');
                                         </div>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input">
-                                            <label class="custom-file-label">Choose Content Image</label>
+                                            <label class="custom-file-label">Choose Product Image</label>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <p>
-                                            Description
-                                        </p>
-                                        <div class="summernote"></div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" multiple>
+                                            <label class="custom-file-label">Choose Product Extra Image</label>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <button type="button" class="btn btn-primary">Submit</button>
@@ -100,10 +116,5 @@ include('include/siteSettings.php');
 ***********************************-->
 
 <?php include('include/js.php'); ?>
-
-<!-- Summernote -->
-<script src="vendor/summernote/js/summernote.min.js"></script>
-<!-- Summernote init -->
-<script src="js/plugins-init/summernote-init.js"></script>
 </body>
 </html>
