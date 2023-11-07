@@ -48,7 +48,7 @@ RewriteRule ^content-details content-details.php [NE,L]
 
 RewriteRule ^profile profile.php [NE,L]
 
-RewriteRule ^settings settings.php [NE,L]
+RewriteRule ^website-settings settings.php [NE,L]
 
 RewriteRule ^logout logout.php [NE,L]
 

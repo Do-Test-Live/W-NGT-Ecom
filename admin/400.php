@@ -1,9 +1,5 @@
-
 <!DOCTYPE html>
 <html lang="en" class="h-100">
-
-
-<!-- Mirrored from sego.dexignzone.com/xhtml/page-error-400.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Nov 2021 07:23:26 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,7 +36,4 @@
 <script src="vendor/global/global.min.js"></script>
 <script src="js/custom.min.js"></script>
 <script src="js/deznav-init.js"></script>
-
-
-<!-- Mirrored from sego.dexignzone.com/xhtml/page-error-400.php by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Nov 2021 07:23:26 GMT -->
 </html>
