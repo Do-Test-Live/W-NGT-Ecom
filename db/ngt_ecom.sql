@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2023 at 11:47 AM
+-- Generation Time: Nov 07, 2023 at 07:39 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -70,6 +70,23 @@ CREATE TABLE `category` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `message` text NOT NULL,
+  `status` int(11) NOT NULL,
+  `inserted_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `content`
 --
 
@@ -77,6 +94,7 @@ CREATE TABLE `content` (
   `id` int(11) NOT NULL,
   `page_name` varchar(100) NOT NULL,
   `section_name` varchar(100) NOT NULL,
+  `title` varchar(200) NOT NULL,
   `image` text NOT NULL,
   `description` text NOT NULL,
   `inserted_at` datetime NOT NULL,
@@ -99,6 +117,32 @@ CREATE TABLE `invoice` (
   `price` double(10,2) NOT NULL,
   `total` double(10,2) NOT NULL,
   `inserted_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `newsletter`
+--
+
+CREATE TABLE `newsletter` (
+  `id` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `inserted_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment_gateway`
+--
+
+CREATE TABLE `payment_gateway` (
+  `id` int(11) NOT NULL,
+  `keyname` varchar(20) NOT NULL,
+  `key_value` text NOT NULL,
+  `inserted_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -140,6 +184,20 @@ CREATE TABLE `promo_code` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `inserted_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `stock`
 --
 
@@ -164,6 +222,30 @@ CREATE TABLE `subcategory` (
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `id` int(11) NOT NULL,
+  `billing_id` int(11) NOT NULL,
+  `customer_name` varchar(50) NOT NULL,
+  `customer_email` varchar(50) NOT NULL,
+  `item_name` varchar(255) NOT NULL,
+  `item_number` varchar(50) NOT NULL,
+  `item_price` float(10,2) NOT NULL,
+  `item_price_currency` varchar(10) NOT NULL,
+  `paid_amount` float(10,2) NOT NULL,
+  `paid_amount_currency` varchar(10) NOT NULL,
+  `txn_id` varchar(50) NOT NULL,
+  `payment_status` varchar(25) NOT NULL,
+  `stripe_checkout_session_id` varchar(100) DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -221,6 +303,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `content`
 --
 ALTER TABLE `content`
@@ -230,6 +318,18 @@ ALTER TABLE `content`
 -- Indexes for table `invoice`
 --
 ALTER TABLE `invoice`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `newsletter`
+--
+ALTER TABLE `newsletter`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `payment_gateway`
+--
+ALTER TABLE `payment_gateway`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -245,6 +345,12 @@ ALTER TABLE `promo_code`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `stock`
 --
 ALTER TABLE `stock`
@@ -254,6 +360,12 @@ ALTER TABLE `stock`
 -- Indexes for table `subcategory`
 --
 ALTER TABLE `subcategory`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -291,6 +403,12 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `content`
 --
 ALTER TABLE `content`
@@ -300,6 +418,18 @@ ALTER TABLE `content`
 -- AUTO_INCREMENT for table `invoice`
 --
 ALTER TABLE `invoice`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `newsletter`
+--
+ALTER TABLE `newsletter`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `payment_gateway`
+--
+ALTER TABLE `payment_gateway`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -315,6 +445,12 @@ ALTER TABLE `promo_code`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
@@ -324,6 +460,12 @@ ALTER TABLE `stock`
 -- AUTO_INCREMENT for table `subcategory`
 --
 ALTER TABLE `subcategory`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
