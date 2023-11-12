@@ -46,13 +46,13 @@ include('include/siteSettings.php');
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
-                                <form>
+                                <form method="post" action="insert">
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Category Name">
+                                               placeholder="Category Name" name="cname" required>
                                     </div>
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-primary">Submit</button>
+                                        <button type="submit" name="insertCategory" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
