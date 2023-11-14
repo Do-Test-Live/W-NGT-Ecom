@@ -185,3 +185,24 @@ VALUES ('$product_id','$buying_price','$quantity','$inserted_at')");
                 </script>";
     }
 }
+
+if($_POST['insertSubcategory']){
+    $category_id=$_POST['category_id'];
+    $s_name=$_POST['s_name'];
+    $inserted_at=date('Y-m-d h:i:s');
+
+    $insert = $db_handle->insertQuery("INSERT INTO `subcategory`(`category_id`, `s_name`, `inserted_at`) 
+VALUES ('$category_id','$s_name','$inserted_at')");
+
+    if($insert){
+        echo "<script>
+                document.cookie = 'alert = 1;';
+                window.location.href='add-subcategory';
+                </script>";
+    }else{
+        echo "<script>
+                document.cookie = 'alert = 2;';
+                window.location.href='add-subcategory';
+                </script>";
+    }
+}

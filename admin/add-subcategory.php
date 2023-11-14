@@ -46,10 +46,10 @@ include('include/siteSettings.php');
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
-                                <form>
+                                <form method="post" action="insert">
                                     <div class="form-group">
                                         <label>Category Name</label>
-                                        <select multiple class="form-control default-select" id="sel2">
+                                        <select multiple class="form-control default-select" name="category_id" id="sel2" required>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -59,10 +59,10 @@ include('include/siteSettings.php');
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Sub-Category Name">
+                                               placeholder="Sub-Category Name" name="s_name" required>
                                     </div>
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-primary">Submit</button>
+                                        <button type="button" name="insertSubcategory" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
