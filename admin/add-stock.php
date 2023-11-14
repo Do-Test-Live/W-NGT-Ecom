@@ -46,10 +46,10 @@ include('include/siteSettings.php');
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
-                                <form>
+                                <form method="post" action="insert">
                                     <div class="form-group">
                                         <label>Category Name</label>
-                                        <select multiple class="form-control default-select" id="sel2">
+                                        <select class="form-control default-select" id="sel2" required>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -59,7 +59,7 @@ include('include/siteSettings.php');
                                     </div>
                                     <div class="form-group">
                                         <label>Sub-Category Name</label>
-                                        <select multiple class="form-control default-select" id="sel3">
+                                        <select class="form-control default-select" id="sel3" required>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -69,7 +69,7 @@ include('include/siteSettings.php');
                                     </div>
                                     <div class="form-group">
                                         <label>Product Name</label>
-                                        <select multiple class="form-control default-select" id="sel3">
+                                        <select class="form-control default-select" name="product_id" id="sel3" required>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -79,10 +79,14 @@ include('include/siteSettings.php');
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Product Stock Quantity">
+                                               placeholder="Product Buy Price" name="buying_price">
                                     </div>
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-primary">Submit</button>
+                                        <input type="text" class="form-control input-default"
+                                               placeholder="Product Stock Quantity" name="quantity">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" name="insertStock" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>

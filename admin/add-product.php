@@ -46,10 +46,10 @@ include('include/siteSettings.php');
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
-                                <form>
+                                <form method="post" action="insert" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label>Category Name</label>
-                                        <select multiple class="form-control default-select" id="sel2">
+                                        <select multiple name="category_id" class="form-control default-select" id="sel2" required>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -59,7 +59,7 @@ include('include/siteSettings.php');
                                     </div>
                                     <div class="form-group">
                                         <label>Sub-Category Name</label>
-                                        <select multiple class="form-control default-select" id="sel3">
+                                        <select name="subcategory_id" multiple class="form-control default-select" id="sel3" required>
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -68,19 +68,23 @@ include('include/siteSettings.php');
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control input-default"
-                                               placeholder="Product Name">
+                                        <input type="text" name="p_name" class="form-control input-default"
+                                               placeholder="Product Name" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control input-default"
-                                               placeholder="Product Price">
+                                        <input type="text" name="p_price" class="form-control input-default"
+                                               placeholder="Product Price" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="discount" class="form-control input-default"
+                                               placeholder="Discount" required>
                                     </div>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Upload</span>
                                         </div>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input">
+                                            <input type="file" name="main_image" class="custom-file-input" required>
                                             <label class="custom-file-label">Choose Product Image</label>
                                         </div>
                                     </div>
@@ -89,12 +93,16 @@ include('include/siteSettings.php');
                                             <span class="input-group-text">Upload</span>
                                         </div>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" multiple>
-                                            <label class="custom-file-label">Choose Product Extra Image</label>
+                                            <input type="file" name="extra_image[]" class="custom-file-input" multiple>
+                                            <label class="custom-file-label">Choose Product Extra Images</label>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-primary">Submit</button>
+                                        <textarea name="description" class="form-control input-default"
+                                                  placeholder="Product Description" rows="5" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" name="insertProduct" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>

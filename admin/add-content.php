@@ -49,25 +49,25 @@ include('include/siteSettings.php');
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
-                                <form>
+                                <form method="post" action="insert" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Page Name">
+                                               placeholder="Page Name" name="page_name" required>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Section Name">
+                                               placeholder="Section Name" name="section_name" required>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Title">
+                                               placeholder="Title" name="title" required>
                                     </div>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Upload</span>
                                         </div>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input">
+                                            <input type="file" class="custom-file-input" name="image" required>
                                             <label class="custom-file-label">Choose Content Image</label>
                                         </div>
                                     </div>
@@ -75,10 +75,10 @@ include('include/siteSettings.php');
                                         <p>
                                             Description
                                         </p>
-                                        <div class="summernote"></div>
+                                        <textarea name="description" class="summernote" required></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-primary">Submit</button>
+                                        <button type="button" name="insertContent" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>

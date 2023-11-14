@@ -52,29 +52,29 @@ include('include/siteSettings.php');
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
-                                <form>
+                                <form method="post" action="insert">
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Promo Code Name">
+                                               placeholder="Promo Code Name" name="name" required>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Value">
+                                               placeholder="Value" name="value" required>
                                     </div>
                                     <div class="form-group">
                                         <p class="mb-1">Start Date</p>
-                                        <input name="datepicker" class="datepicker-default form-control">
+                                        <input name="start_date" class="datepicker-default form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <p class="mb-1">Expire Date</p>
-                                        <input name="datepicker" class="datepicker-default form-control">
+                                        <input name="expirey_date" class="datepicker-default form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Purchase Amount">
+                                               placeholder="Minimum Purchase Amount" name="minimum_purchase_amount" required>
                                     </div>
                                     <div class="form-group">
-                                        <button type="button" class="btn btn-primary">Submit</button>
+                                        <button type="button" name="insertPromoCode" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
