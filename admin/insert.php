@@ -4,7 +4,7 @@ require_once('../include/dbController.php');
 $db_handle = new DBController();
 date_default_timezone_set("Asia/Hong_Kong");
 
-if($_POST['insertCategory']){
+if(isset($_POST['insertCategory'])){
     $cname=$_POST['cname'];
     $inserted_at=date('Y-m-d h:i:s');
 
@@ -23,7 +23,7 @@ if($_POST['insertCategory']){
     }
 }
 
-if($_POST['insertContent']){
+if(isset($_POST['insertContent'])){
     $page_name=$_POST['page_name'];
     $section_name=$_POST['section_name'];
     $title=$_POST['title'];
@@ -67,7 +67,7 @@ if($_POST['insertContent']){
     }
 }
 
-if($_POST['insertProduct']){
+if(isset($_POST['insertProduct'])){
     $category_id=$_POST['category_id'];
     $subcategory_id=$_POST['subcategory_id'];
     $p_name=$_POST['p_name'];
@@ -140,7 +140,7 @@ if($_POST['insertProduct']){
     }
 }
 
-if($_POST['insertPromoCode']){
+if(isset($_POST['insertPromoCode'])){
     $name=$_POST['name'];
     $value=$_POST['value'];
     $start_date=$_POST['start_date'];
@@ -164,7 +164,7 @@ VALUES ('$name','$value','$start_date','$expirey_date','$minimum_purchase_amount
     }
 }
 
-if($_POST['insertStock']){
+if(isset($_POST['insertStock'])){
     $product_id=$_POST['product_id'];
     $buying_price=$_POST['buying_price'];
     $quantity=$_POST['quantity'];
@@ -186,7 +186,7 @@ VALUES ('$product_id','$buying_price','$quantity','$inserted_at')");
     }
 }
 
-if($_POST['insertSubcategory']){
+if(isset($_POST['insertSubcategory'])){
     $category_id=$_POST['category_id'];
     $s_name=$_POST['s_name'];
     $inserted_at=date('Y-m-d h:i:s');

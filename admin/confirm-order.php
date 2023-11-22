@@ -44,7 +44,7 @@ include('include/siteSettings.php');
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Datatable</h4>
+                            <h4 class="card-title">Confirm Order Details</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

@@ -18,3 +18,8 @@
 
 <!-- Dashboard 1 -->
 <script src="js/dashboard/dashboard-1.js"></script>
+
+<script src="vendor/toastr/js/toastr.min.js" type="text/javascript"></script>
+<script src="js/plugins-init/toastr-init.js" type="text/javascript"></script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

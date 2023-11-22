@@ -50,11 +50,16 @@ include('include/siteSettings.php');
                                     <div class="form-group">
                                         <label>Category Name</label>
                                         <select multiple class="form-control default-select" name="category_id" id="sel2" required>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                            <?php
+                                            $category_data = $db_handle->runQuery("SELECT * FROM category order by id desc");
+                                            $row_count = $db_handle->numRows("SELECT * FROM category order by id desc");
+
+                                            for ($i = 0; $i < $row_count; $i++) {
+                                                ?>
+                                                <option value="<?php echo $category_data[$i]["id"]; ?>">
+                                                    <?php echo $category_data[$i]["c_name"]; ?>
+                                                </option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-group">

@@ -44,49 +44,46 @@ include('include/siteSettings.php');
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Datatable</h4>
+                            <h4 class="card-title">Category Details</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="example2" class="display">
                                     <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>SL</th>
+                                        <th>Category Name</th>
+                                        <th>Total Subcategory</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
+                                    <?php
+                                    $query = "SELECT * FROM category order by id desc";
+
+                                    $data = $db_handle->runQuery($query);
+                                    $row_count = $db_handle->numRows($query);
+
+                                    for ($i = 0; $i < $row_count; $i++) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $i + 1; ?></td>
+                                            <td><?php echo $data[$i]["c_name"]; ?></td>
+                                            <td>
+                                                <?php
+                                                $totalSubCategory = $db_handle->numRows("SELECT * FROM subcategory where category_id like '%{$data[$i]["id"]}%'");
+                                                echo $totalSubCategory;
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="category_id=<?php echo $data[$i]["id"]; ?>" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                                    <a href="category_id=<?php echo $data[$i]["id"]; ?>" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
-                                    </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </div>
