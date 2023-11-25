@@ -41,57 +41,103 @@ include('include/siteSettings.php');
         <!-- row -->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Datatable</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="example2" class="display">
-                                    <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
-                                    </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
-                                    </tr>
-                                    </tfoot>
-                                </table>
+                <?php if (isset($_GET['category_id'])) {
+                    $data = $db_handle->runQuery("SELECT * FROM category where id={$_GET['category_id']}"); ?>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Edit Category</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <form method="post" action="update">
+                                        <input type="hidden" value="<?php echo $data[0]["id"]; ?>" name="id" required>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control input-default"
+                                                   placeholder="Category Name" name="cname"
+                                                   value="<?php echo $data[0]["c_name"]; ?>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <select multiple class="form-control default-select" name="status" id="sel2"
+                                                    required>
+                                                <option value="1" <?php echo ($data[0]["status"] == 1) ? "selected" : ""; ?>>
+                                                    Show
+                                                </option>
+                                                <option value="0" <?php echo ($data[0]["status"] == 0) ? "selected" : ""; ?>>
+                                                    Hide
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" name="updateCategory" class="btn btn-primary">Submit
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php } else { ?>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Subcategory Details</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example2" class="display">
+                                        <thead>
+                                        <tr>
+                                            <th>SL</th>
+                                            <th>Subcategory Name</th>
+                                            <th>Category Name</th>
+                                            <th>Total Product</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        $query = "SELECT * FROM subcategory as s, category as c where c.id=s.category_id order by s.id desc";
+
+                                        $data = $db_handle->runQuery($query);
+                                        $row_count = $db_handle->numRows($query);
+
+                                        for ($i = 0; $i < $row_count; $i++) {
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $i + 1; ?></td>
+                                                <td><?php echo $data[$i]["s_name"]; ?></td>
+                                                <td>
+                                                    <?php
+                                                        echo $data[$i]["c_name"];
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+                                                    $totalSubCategory = $db_handle->numRows("SELECT * FROM product where subcategory_id={$data[$i]["id"]}");
+                                                    echo $totalSubCategory;
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex justify-content-center">
+                                                        <a href="subcategory-details?subcategory_id=<?php echo $data[$i]["id"]; ?>"
+                                                           class="btn btn-primary shadow btn-xs sharp mr-1"><i
+                                                                    class="fa fa-pencil"></i></a>
+                                                        <button onclick="subcategoryDelete(<?php echo $data[$i]["id"]; ?>);"
+                                                                class="btn btn-danger shadow btn-xs sharp"><i
+                                                                    class="fa fa-trash"></i></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
         <!--**********************************
@@ -110,5 +156,56 @@ include('include/siteSettings.php');
     <!-- Datatable -->
     <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="js/plugins-init/datatables.init.js"></script>
+
+    <script>
+        function subcategoryDelete(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'get',
+                        url: 'delete',
+                        data: {
+                            subcategory_id: id
+                        },
+                        success: function (data) {
+                            if (data.toString() === 'P') {
+                                Swal.fire(
+                                    'Not Deleted!',
+                                    'Your have product in this subcategory.',
+                                    'error'
+                                ).then((result) => {
+                                    window.location = 'subcategory-details';
+                                });
+                            } else {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your subcategory has been deleted.',
+                                    'success'
+                                ).then((result) => {
+                                    window.location = 'subcategory-details';
+                                });
+                            }
+                        }
+                    });
+                } else {
+                    Swal.fire(
+                        'Cancelled!',
+                        'Your subcategory is safe :)',
+                        'error'
+                    ).then((result) => {
+                        window.location = 'subcategory-details';
+                    });
+                }
+            })
+        }
+    </script>
 </body>
 </html>

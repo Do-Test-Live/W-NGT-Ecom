@@ -20,3 +20,14 @@ if (isset($_GET['category_id'])) {
         echo 'P';
     }
 }
+
+if (isset($_GET['subcategory_id'])) {
+    $row = $db_handle->numRows("select * FROM `product` WHERE subcategory_id='{$_GET['subcategory_id']}'");
+
+    if ($row == 0) {
+        $db_handle->insertQuery("delete from subcategory where id=" . $_GET['subcategory_id'] . "");
+        echo 'success';
+    } else {
+        echo 'P';
+    }
+}

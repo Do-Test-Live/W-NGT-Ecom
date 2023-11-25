@@ -376,5 +376,8 @@ include('include/siteSettings.php');
 ***********************************-->
 
 <?php include('include/js.php'); ?>
+
+<!-- Dashboard 1 -->
+<script src="js/dashboard/dashboard-1.js"></script>
 </body>
 </html>

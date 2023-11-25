@@ -49,22 +49,24 @@ include('include/siteSettings.php');
                                 <form method="post" action="insert" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label>Category Name</label>
-                                        <select multiple name="category_id" class="form-control default-select" id="sel2" required>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                        <select name="category_id" class="form-control default-select" id="sel2"
+                                                onchange="subcategoryFetch(this.value);" required>
+                                            <?php
+                                            $category_data = $db_handle->runQuery("SELECT * FROM category order by id desc");
+                                            $row_count = $db_handle->numRows("SELECT * FROM category order by id desc");
+
+                                            for ($i = 0; $i < $row_count; $i++) {
+                                                ?>
+                                                <option value="<?php echo $category_data[$i]["id"]; ?>">
+                                                    <?php echo $category_data[$i]["c_name"]; ?>
+                                                </option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Sub-Category Name</label>
-                                        <select name="subcategory_id" multiple class="form-control default-select" id="sel3" required>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                        <select class="form-control" name="subcategory_id" id="subcategory_id" required>
+                                            <option>Choose category first</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -93,16 +95,21 @@ include('include/siteSettings.php');
                                             <span class="input-group-text">Upload</span>
                                         </div>
                                         <div class="custom-file">
-                                            <input type="file" name="extra_image[]" class="custom-file-input" multiple>
+                                            <input type="file" name="extra_image[]" class="custom-file-input"
+                                                   onchange="displayImageNames(event);" multiple>
                                             <label class="custom-file-label">Choose Product Extra Images</label>
                                         </div>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div id="fileNamesDisplay"></div>
                                     </div>
                                     <div class="form-group">
                                         <textarea name="description" class="form-control input-default"
                                                   placeholder="Product Description" rows="5" required></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <button type="button" name="insertProduct" class="btn btn-primary">Submit</button>
+                                        <button type="submit" name="insertProduct" class="btn btn-primary">Submit
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -124,5 +131,38 @@ include('include/siteSettings.php');
 ***********************************-->
 
 <?php include('include/js.php'); ?>
+
+<script>
+    function subcategoryFetch(value) {
+        $.ajax({
+            type: 'get',
+            url: 'fetch-subcategory',
+            data: {
+                category_id: value
+            },
+            success: function (data) {
+                $('#subcategory_id').html(data);
+                console.log(data);
+            }
+        });
+    }
+
+    function displayImageNames(event) {
+        const input = event.target;
+        if ('files' in input && input.files.length > 0) {
+            const fileList = input.files;
+            let fileNames = '';
+            for (let i = 0; i < fileList.length; i++) {
+                fileNames += fileList[i].name + ', ';
+            }
+            fileNames = fileNames.slice(0, -2); // Remove the trailing comma and space
+            const fileNamesDisplay = document.getElementById('fileNamesDisplay');
+            if (fileNamesDisplay) {
+                fileNamesDisplay.textContent = 'Selected files: ' + fileNames; // Display names in the separate div
+            }
+        }
+    }
+
+</script>
 </body>
 </html>

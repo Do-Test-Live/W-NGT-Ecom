@@ -49,7 +49,7 @@ include('include/siteSettings.php');
                                 <form method="post" action="insert">
                                     <div class="form-group">
                                         <label>Category Name</label>
-                                        <select multiple class="form-control default-select" name="category_id" id="sel2" required>
+                                        <select class="form-control default-select" name="category_id" id="sel2" required>
                                             <?php
                                             $category_data = $db_handle->runQuery("SELECT * FROM category order by id desc");
                                             $row_count = $db_handle->numRows("SELECT * FROM category order by id desc");
@@ -67,7 +67,7 @@ include('include/siteSettings.php');
                                                placeholder="Sub-Category Name" name="s_name" required>
                                     </div>
                                     <div class="form-group">
-                                        <button type="button" name="insertSubcategory" class="btn btn-primary">Submit</button>
+                                        <button type="submit" name="insertSubcategory" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
