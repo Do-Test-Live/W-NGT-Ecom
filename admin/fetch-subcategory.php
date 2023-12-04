@@ -15,7 +15,9 @@ if (isset($_GET['category_id'])) {
 
     $data = $db_handle->runQuery("SELECT * FROM subcategory where category_id='$category_id'");
     $row_count = $db_handle->numRows("SELECT * FROM subcategory where category_id='$category_id'");
-
+    ?>
+    <option>Choose Now</option>
+    <?php
     for ($i = 0; $i < $row_count; $i++) {
         ?><option value="<?php echo $data[$i]["id"]; ?>"><?php echo $data[$i]["s_name"]; ?></option><?php }
 }

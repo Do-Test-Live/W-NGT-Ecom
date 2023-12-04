@@ -22,6 +22,8 @@ RewriteRule ^add-product add-product.php [NE,L]
 
 RewriteRule ^product-details product-details.php [NE,L]
 
+RewriteRule ^fetch-product fetch-product.php [NE,L]
+
 RewriteRule ^add-stock add-stock.php [NE,L]
 
 RewriteRule ^stock-details stock-details.php [NE,L]

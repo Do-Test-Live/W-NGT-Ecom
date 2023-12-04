@@ -49,41 +49,39 @@ include('include/siteSettings.php');
                                 <form method="post" action="insert">
                                     <div class="form-group">
                                         <label>Category Name</label>
-                                        <select class="form-control default-select" id="sel2" required>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                        <select name="category_id" class="form-control default-select" id="sel2"
+                                                onchange="subcategoryFetch(this.value);" required>
+                                            <?php
+                                            $category_data = $db_handle->runQuery("SELECT * FROM category order by id desc");
+                                            $row_count = $db_handle->numRows("SELECT * FROM category order by id desc");
+
+                                            for ($i = 0; $i < $row_count; $i++) {
+                                                ?>
+                                                <option value="<?php echo $category_data[$i]["id"]; ?>">
+                                                    <?php echo $category_data[$i]["c_name"]; ?>
+                                                </option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Sub-Category Name</label>
-                                        <select class="form-control default-select" id="sel3" required>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                        <select class="form-control" name="subcategory_id" id="subcategory_id" onchange="productFetch(this.value);" required>
+                                            <option>Choose category first</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Product Name</label>
-                                        <select class="form-control default-select" name="product_id" id="sel3" required>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                        <select class="form-control" name="product_id" id="product_id" required>
+                                            <option>Choose subcategory first</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Product Buy Price" name="buying_price">
+                                               placeholder="Product Buy Price" name="buying_price" required>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Product Stock Quantity" name="quantity">
+                                               placeholder="Product Stock Quantity" name="quantity" required>
                                     </div>
                                     <div class="form-group">
                                         <button type="button" name="insertStock" class="btn btn-primary">Submit</button>
@@ -108,5 +106,35 @@ include('include/siteSettings.php');
 ***********************************-->
 
 <?php include('include/js.php'); ?>
+<script>
+    function subcategoryFetch(value) {
+        $.ajax({
+            type: 'get',
+            url: 'fetch-subcategory',
+            data: {
+                category_id: value
+            },
+            success: function (data) {
+                $('#subcategory_id').html(data);
+                console.log(data);
+            }
+        });
+    }
+
+    function productFetch(value) {
+        $.ajax({
+            type: 'get',
+            url: 'fetch-product',
+            data: {
+                subcategory_id: value
+            },
+            success: function (data) {
+                $('#product_id').html(data);
+                console.log(data);
+            }
+        });
+    }
+
+</script>
 </body>
 </html>
