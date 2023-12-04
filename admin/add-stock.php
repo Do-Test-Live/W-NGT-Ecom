@@ -84,7 +84,7 @@ include('include/siteSettings.php');
                                                placeholder="Product Stock Quantity" name="quantity" required>
                                     </div>
                                     <div class="form-group">
-                                        <button type="button" name="insertStock" class="btn btn-primary">Submit</button>
+                                        <button type="submit" name="insertStock" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
