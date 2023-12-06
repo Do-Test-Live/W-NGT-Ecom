@@ -41,57 +41,88 @@ include('include/siteSettings.php');
         <!-- row -->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Datatable</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="example2" class="display">
-                                    <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
-                                    </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
-                                    </tr>
-                                    </tfoot>
-                                </table>
+                <?php if (isset($_GET['category_id'])) {
+                    $data = $db_handle->runQuery("SELECT * FROM category where id={$_GET['category_id']}"); ?>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Edit Category</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <form method="post" action="update">
+                                        <input type="hidden" value="<?php echo $data[0]["id"]; ?>" name="id" required>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control input-default"
+                                                   placeholder="Category Name" name="cname" value="<?php echo $data[0]["c_name"]; ?>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <select multiple class="form-control default-select" name="status" id="sel2" required>
+                                                <option value="1" <?php echo ($data[0]["status"] == 1) ? "selected" : ""; ?>>
+                                                    Show
+                                                </option>
+                                                <option value="0" <?php echo ($data[0]["status"] == 0) ? "selected" : ""; ?>>
+                                                    Hide
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" name="updateCategory" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php } else { ?>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Promo Code Details</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example2" class="display">
+                                        <thead>
+                                        <tr>
+                                            <th>SL</th>
+                                            <th>Category Name</th>
+                                            <th>Total Subcategory</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        $query = "SELECT * FROM promo_code order by id desc";
+
+                                        $data = $db_handle->runQuery($query);
+                                        $row_count = $db_handle->numRows($query);
+
+                                        for ($i = 0; $i < $row_count; $i++) {
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $i + 1; ?></td>
+                                                <td><?php echo $data[$i]["name"]; ?></td>
+                                                <td><?php echo $data[$i]["value"]; ?></td>
+                                                <td><?php echo $data[$i]["start_date"]; ?></td>
+                                                <td><?php echo $data[$i]["expirey_date"]; ?></td>
+                                                <td><?php echo $data[$i]["minimum_purchase_amount"]; ?></td>
+                                                <td>
+                                                    <div class="d-flex justify-content-center">
+                                                        <a href="promo-code-details?promo_code_id=<?php echo $data[$i]["id"]; ?>" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                                        <button onclick="categoryDelete(<?php echo $data[$i]["id"]; ?>);" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
         <!--**********************************

@@ -44,49 +44,47 @@ include('include/siteSettings.php');
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Datatable</h4>
+                            <h4 class="card-title">Content Details</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="example2" class="display">
                                     <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>SL</th>
+                                        <th>Page</th>
+                                        <th>Section</th>
+                                        <th>Title</th>
+                                        <th>Image</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
+                                    <?php
+                                    $query = "SELECT * FROM content order by id desc";
+
+                                    $data = $db_handle->runQuery($query);
+                                    $row_count = $db_handle->numRows($query);
+
+                                    for ($i = 0; $i < $row_count; $i++) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $i + 1; ?></td>
+                                            <td><?php echo $data[$i]["page_name"]; ?></td>
+                                            <td><?php echo $data[$i]["section_name"]; ?></td>
+                                            <td><?php echo $data[$i]["title"]; ?></td>
+                                            <td><a href="../<?php echo $data[$i]["image"]; ?>" target="_blank">image</a></td>
+                                            <td><?php echo $data[$i]["description"]; ?></td>
+                                            <td>
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="content-details?content_id=<?php echo $data[$i]["id"]; ?>" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                                    <button onclick="categoryDelete(<?php echo $data[$i]["id"]; ?>);" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
-                                    </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </div>

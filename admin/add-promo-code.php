@@ -63,18 +63,18 @@ include('include/siteSettings.php');
                                     </div>
                                     <div class="form-group">
                                         <p class="mb-1">Start Date</p>
-                                        <input name="start_date" class="datepicker-default form-control" required>
+                                        <input name="start_date" class="form-control" type="datetime-local" required>
                                     </div>
                                     <div class="form-group">
                                         <p class="mb-1">Expire Date</p>
-                                        <input name="expirey_date" class="datepicker-default form-control" required>
+                                        <input name="expirey_date" class="form-control" type="datetime-local" required>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
                                                placeholder="Minimum Purchase Amount" name="minimum_purchase_amount" required>
                                     </div>
                                     <div class="form-group">
-                                        <button type="button" name="insertPromoCode" class="btn btn-primary">Submit</button>
+                                        <button type="submit" name="insertPromoCode" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>

@@ -51,42 +51,39 @@ include('include/siteSettings.php');
                                 <table id="example2" class="display">
                                     <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>SL</th>
+                                        <th>Customer Name</th>
+                                        <th>Email</th>
+                                        <th>Address</th>
+                                        <th>PHone Number</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
+                                    <?php
+                                    $query = "SELECT * FROM billing_details where order_status=1 order by id desc";
+
+                                    $data = $db_handle->runQuery($query);
+                                    $row_count = $db_handle->numRows($query);
+
+                                    for ($i = 0; $i < $row_count; $i++) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $i + 1; ?></td>
+                                            <td><?php echo $data[$i]["name"]; ?></td>
+                                            <td><?php echo $data[$i]["email"]; ?></td>
+                                            <td><?php echo $data[$i]["address"]; ?></td>
+                                            <td><?php echo $data[$i]["number"]; ?></td>
+                                            <td>
+                                                <div class="d-flex justify-content-center">
+                                                    <button class="btn btn-info shadow btn-xs sharp mr-1"><i class="fa fa-eye"></i></button>
+                                                    <a href="promo-code-details?promo_code_id=<?php echo $data[$i]["id"]; ?>" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                                    <button onclick="categoryDelete(<?php echo $data[$i]["id"]; ?>);" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
-                                    </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </div>
