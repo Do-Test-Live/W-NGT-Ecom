@@ -41,12 +41,12 @@ include('include/siteSettings.php');
         <!-- row -->
         <div class="container-fluid">
             <div class="row">
-                <?php if (isset($_GET['category_id'])) {
-                    $data = $db_handle->runQuery("SELECT * FROM category where id={$_GET['category_id']}"); ?>
+                <?php if (isset($_GET['promo_code_id'])) {
+                    $data = $db_handle->runQuery("SELECT * FROM promo_code where id={$_GET['promo_code_id']}"); ?>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Edit Category</h4>
+                                <h4 class="card-title">Edit Promo Code</h4>
                             </div>
                             <div class="card-body">
                                 <div class="basic-form">
@@ -54,18 +54,23 @@ include('include/siteSettings.php');
                                         <input type="hidden" value="<?php echo $data[0]["id"]; ?>" name="id" required>
                                         <div class="form-group">
                                             <input type="text" class="form-control input-default"
-                                                   placeholder="Category Name" name="cname" value="<?php echo $data[0]["c_name"]; ?>" required>
+                                                   placeholder="Promo Code Name" name="name" value="<?php echo $data[0]["name"]; ?>" required>
                                         </div>
                                         <div class="form-group">
-                                            <label>Status</label>
-                                            <select multiple class="form-control default-select" name="status" id="sel2" required>
-                                                <option value="1" <?php echo ($data[0]["status"] == 1) ? "selected" : ""; ?>>
-                                                    Show
-                                                </option>
-                                                <option value="0" <?php echo ($data[0]["status"] == 0) ? "selected" : ""; ?>>
-                                                    Hide
-                                                </option>
-                                            </select>
+                                            <input type="text" class="form-control input-default"
+                                                   placeholder="Value" name="value" value="<?php echo $data[0]["value"]; ?>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="mb-1">Start Date</p>
+                                            <input name="start_date" class="form-control" type="datetime-local" value="<?php echo $data[0]["start_date"]; ?>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="mb-1">Expire Date</p>
+                                            <input name="expirey_date" class="form-control" type="datetime-local" value="<?php echo $data[0]["expirey_date"]; ?>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control input-default"
+                                                   placeholder="Minimum Purchase Amount" name="minimum_purchase_amount" value="<?php echo $data[0]["minimum_purchase_amount"]; ?>" required>
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" name="updateCategory" class="btn btn-primary">Submit</button>
@@ -87,8 +92,11 @@ include('include/siteSettings.php');
                                         <thead>
                                         <tr>
                                             <th>SL</th>
-                                            <th>Category Name</th>
-                                            <th>Total Subcategory</th>
+                                            <th>Name</th>
+                                            <th>Value</th>
+                                            <th>Start Date</th>
+                                            <th>Expire Date</th>
+                                            <th>Minimum Purchase Amount</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
@@ -111,7 +119,7 @@ include('include/siteSettings.php');
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href="promo-code-details?promo_code_id=<?php echo $data[$i]["id"]; ?>" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                                        <button onclick="categoryDelete(<?php echo $data[$i]["id"]; ?>);" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
+                                                        <button onclick="promoDelete(<?php echo $data[$i]["id"]; ?>);" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -141,5 +149,56 @@ include('include/siteSettings.php');
     <!-- Datatable -->
     <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="js/plugins-init/datatables.init.js"></script>
+
+    <script>
+        function promoDelete(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'get',
+                        url: 'delete',
+                        data: {
+                            promo_id: id
+                        },
+                        success: function (data) {
+                            if (data.toString() === 'P') {
+                                Swal.fire(
+                                    'Not Deleted!',
+                                    'Someone used this code for purchase.',
+                                    'error'
+                                ).then((result) => {
+                                    window.location = 'promo-code-details';
+                                });
+                            } else {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your promo code has been deleted.',
+                                    'success'
+                                ).then((result) => {
+                                    window.location = 'promo-code-details';
+                                });
+                            }
+                        }
+                    });
+                } else {
+                    Swal.fire(
+                        'Cancelled!',
+                        'Your promo code is safe :)',
+                        'error'
+                    ).then((result) => {
+                        window.location = 'promo-code-details';
+                    });
+                }
+            })
+        }
+    </script>
 </body>
 </html>

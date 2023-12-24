@@ -45,7 +45,7 @@ include('include/siteSettings.php');
                             <div class="media align-items-center">
                                 <div class="media-body mr-2">
                                     <h2 class="text-white font-w600">459</h2>
-                                    <span class="text-white">Total Menus</span>
+                                    <span class="text-white">Total Category</span>
                                 </div>
                                 <div class="d-inline-block position-relative donut-chart-sale">
                                     <span class="donut1"
@@ -76,7 +76,7 @@ include('include/siteSettings.php');
                             <div class="media align-items-center">
                                 <div class="media-body mr-2">
                                     <h2 class="text-white font-w600">$ 87,561</h2>
-                                    <span class="text-white">Total Revenue</span>
+                                    <span class="text-white">Total Confirm Order</span>
                                 </div>
                                 <div class="d-inline-block position-relative donut-chart-sale">
                                     <span class="donut1"

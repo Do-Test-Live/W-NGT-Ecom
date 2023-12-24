@@ -31,3 +31,25 @@ if (isset($_GET['subcategory_id'])) {
         echo 'P';
     }
 }
+
+if (isset($_GET['promo_id'])) {
+    $row = $db_handle->numRows("select * FROM `billing_details` WHERE promo_code_id='{$_GET['promo_id']}'");
+
+    if ($row == 0) {
+        $db_handle->insertQuery("delete from promo_code where id=" . $_GET['promo_id'] . "");
+        echo 'success';
+    } else {
+        echo 'P';
+    }
+}
+
+if (isset($_GET['product_id'])) {
+    $row = $db_handle->numRows("select * FROM `stock` WHERE product_id='{$_GET['product_id']}'");
+
+    if ($row == 0) {
+        $db_handle->insertQuery("delete from product where id=" . $_GET['product_id'] . "");
+        echo 'success';
+    } else {
+        echo 'P';
+    }
+}

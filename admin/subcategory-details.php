@@ -41,21 +41,36 @@ include('include/siteSettings.php');
         <!-- row -->
         <div class="container-fluid">
             <div class="row">
-                <?php if (isset($_GET['category_id'])) {
-                    $data = $db_handle->runQuery("SELECT * FROM category where id={$_GET['category_id']}"); ?>
+                <?php if (isset($_GET['subcategory_id'])) {
+                    $data = $db_handle->runQuery("SELECT * FROM subcategory where id={$_GET['subcategory_id']}"); ?>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Edit Category</h4>
+                                <h4 class="card-title">Edit Subcategory</h4>
                             </div>
                             <div class="card-body">
                                 <div class="basic-form">
                                     <form method="post" action="update">
                                         <input type="hidden" value="<?php echo $data[0]["id"]; ?>" name="id" required>
                                         <div class="form-group">
+                                            <label>Category Name</label>
+                                            <select class="form-control default-select" name="category_id" id="sel2" required>
+                                                <?php
+                                                $category_data = $db_handle->runQuery("SELECT * FROM category order by id desc");
+                                                $row_count = $db_handle->numRows("SELECT * FROM category order by id desc");
+
+                                                for ($i = 0; $i < $row_count; $i++) {
+                                                    ?>
+                                                    <option value="<?php echo $category_data[$i]["id"]; ?>" <?php if($category_data[$i]["id"]==$data[0]["category_id"]) echo 'selected';?>>
+                                                        <?php echo $category_data[$i]["c_name"]; ?>
+                                                    </option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
                                             <input type="text" class="form-control input-default"
-                                                   placeholder="Category Name" name="cname"
-                                                   value="<?php echo $data[0]["c_name"]; ?>" required>
+                                                   placeholder="Sub-Category Name" name="s_name"
+                                                   value="<?php echo $data[0]["s_name"]; ?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Status</label>
@@ -70,7 +85,7 @@ include('include/siteSettings.php');
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" name="updateCategory" class="btn btn-primary">Submit
+                                            <button type="submit" name="updateSubCategory" class="btn btn-primary">Submit
                                             </button>
                                         </div>
                                     </form>
@@ -98,7 +113,7 @@ include('include/siteSettings.php');
                                         </thead>
                                         <tbody>
                                         <?php
-                                        $query = "SELECT * FROM subcategory as s, category as c where c.id=s.category_id order by s.id desc";
+                                        $query = "SELECT * FROM category as c, subcategory as s where c.id=s.category_id order by s.id desc";
 
                                         $data = $db_handle->runQuery($query);
                                         $row_count = $db_handle->numRows($query);

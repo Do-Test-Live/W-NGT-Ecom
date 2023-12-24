@@ -277,7 +277,7 @@ include('include/siteSettings.php');
                                                                 <a href="product-details?product_id=<?php echo $data[$i]["id"]; ?>"
                                                                    class="btn btn-primary shadow btn-xs sharp mr-1"><i
                                                                             class="fa fa-pencil"></i></a>
-                                                                <button onclick="categoryDelete(<?php echo $data[$i]["id"]; ?>);"
+                                                                <button onclick="productDelete(<?php echo $data[$i]["id"]; ?>);"
                                                                         class="btn btn-danger shadow btn-xs sharp"><i
                                                                             class="fa fa-trash"></i></button>
                                                             </div>
@@ -343,6 +343,54 @@ include('include/siteSettings.php');
             }
         }
 
+        function productDelete(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'get',
+                        url: 'delete',
+                        data: {
+                            product_id: id
+                        },
+                        success: function (data) {
+                            if (data.toString() === 'P') {
+                                Swal.fire(
+                                    'Not Deleted!',
+                                    'Your have already stock in this product.',
+                                    'error'
+                                ).then((result) => {
+                                    window.location = 'product-details';
+                                });
+                            } else {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your product has been deleted.',
+                                    'success'
+                                ).then((result) => {
+                                    window.location = 'product-details';
+                                });
+                            }
+                        }
+                    });
+                } else {
+                    Swal.fire(
+                        'Cancelled!',
+                        'Your product is safe :)',
+                        'error'
+                    ).then((result) => {
+                        window.location = 'product-details';
+                    });
+                }
+            })
+        }
     </script>
 </body>
 </html>
