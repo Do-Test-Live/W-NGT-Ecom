@@ -78,7 +78,7 @@ include('include/siteSettings.php');
                                         <textarea name="description" class="summernote" required></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <button type="button" name="insertContent" class="btn btn-primary">Submit</button>
+                                        <button type="submit" name="insertContent" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>

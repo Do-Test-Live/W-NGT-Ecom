@@ -134,3 +134,45 @@ if (isset($_POST['updateStock'])) {
                 </script>";
 
 }
+
+if (isset($_POST['updateContent'])) {
+    $id = $db_handle->checkValue($_POST['id']);
+    $page_name = $db_handle->checkValue($_POST['page_name']);
+    $section_name = $db_handle->checkValue($_POST['section_name']);
+    $title = $db_handle->checkValue($_POST['title']);
+    $description = $db_handle->checkValue($_POST['description']);
+
+    $updated_at=date('Y-m-d h:i:s');
+
+    $query='';
+    $image='';
+
+    if (!empty($_FILES['image']['name'])){
+        $RandomAccountNumber = mt_rand(1, 99999);
+        $file_name = $RandomAccountNumber."_" . $_FILES['image']['name'];
+        $file_size = $_FILES['image']['size'];
+        $file_tmp = $_FILES['image']['tmp_name'];
+
+        $file_type = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+        if (
+            $file_type != "jpg" && $file_type != "png" && $file_type != "jpeg"
+            && $file_type != "gif"
+        ) {
+            $attach_files = '';
+        } else {
+            move_uploaded_file($file_tmp, "../assets/images/content/" .$file_name);
+            $image = "assets/images/content/" . $file_name;
+
+            $query.=",`image`=".$image;
+        }
+    }
+
+
+    $update = $db_handle->insertQuery("UPDATE `content` SET `page_name`='$page_name',`section_name`='$section_name'".$query.",`title`='$title',`description`='$description',`updated_at`='$updated_at' WHERE `id`='$id'");
+
+    echo "<script>
+                document.cookie = 'alert = 3;';
+                window.location.href='content-details';
+                </script>";
+
+}

@@ -53,3 +53,8 @@ if (isset($_GET['product_id'])) {
         echo 'P';
     }
 }
+
+if (isset($_GET['content_id'])) {
+    $db_handle->insertQuery("delete from content where id=" . $_GET['content_id'] . "");
+    echo 'success';
+}
