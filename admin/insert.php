@@ -142,14 +142,16 @@ if(isset($_POST['insertProduct'])){
 
 if(isset($_POST['insertPromoCode'])){
     $name=$_POST['name'];
-    $value=$_POST['value'];
+    $code=$_POST['code'];
+    $amount=$_POST['amount'];
+    $coupon_type=$_POST['coupon_type'];
+    $minimum_purchase_amount=$_POST['minimum_purchase_amount'];
     $start_date=$_POST['start_date'];
     $expirey_date=$_POST['expirey_date'];
-    $minimum_purchase_amount=$_POST['minimum_purchase_amount'];
+    $description=$_POST['description'];
     $inserted_at=date('Y-m-d h:i:s');
 
-    $insert = $db_handle->insertQuery("INSERT INTO `promo_code`(`name`, `value`, `start_date`, `expirey_date`, `minimum_purchase_amount`, `inserted_at`) 
-VALUES ('$name','$value','$start_date','$expirey_date','$minimum_purchase_amount','$inserted_at')");
+    $insert = $db_handle->insertQuery("INSERT INTO `promo_code`(`coupon_name`, `code`, `coupon_type`,`amount`, `start_date`, `expirey_date`, `minimum_order`, `description`, `inserted_at`) VALUES ('$name','$code','$coupon_type','$amount','$start_date','$expirey_date','$minimum_purchase_amount','$description','$inserted_at')");
 
     if($insert){
         echo "<script>

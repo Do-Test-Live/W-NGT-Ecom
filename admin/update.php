@@ -176,3 +176,27 @@ if (isset($_POST['updateContent'])) {
                 </script>";
 
 }
+
+if (isset($_POST['updatePromoCode'])) {
+    $id = $db_handle->checkValue($_POST['id']);
+    $name=$_POST['name'];
+    $code=$_POST['code'];
+    $amount=$_POST['amount'];
+    $coupon_type=$_POST['coupon_type'];
+    $minimum_purchase_amount=$_POST['minimum_purchase_amount'];
+    $start_date=$_POST['start_date'];
+    $expirey_date=$_POST['expirey_date'];
+    $description=$_POST['description'];
+    $status=$_POST['status'];
+
+    $updated_at=date('Y-m-d h:i:s');
+
+
+    $update = $db_handle->insertQuery("UPDATE `promo_code` SET `coupon_name`='$name',`description`='$description',`code`='$code',`coupon_type`='$coupon_type',`minimum_order`='$minimum_purchase_amount',`amount`='$amount',`start_date`='$start_date',`expirey_date`='$expirey_date',`status`='$status',`updated_at`='$updated_at' WHERE `id`='$id'");
+
+    echo "<script>
+                document.cookie = 'alert = 3;';
+                window.location.href='promo-code-details';
+                </script>";
+
+}

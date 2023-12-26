@@ -54,11 +54,22 @@ include('include/siteSettings.php');
                                         <input type="hidden" value="<?php echo $data[0]["id"]; ?>" name="id" required>
                                         <div class="form-group">
                                             <input type="text" class="form-control input-default"
-                                                   placeholder="Promo Code Name" name="name" value="<?php echo $data[0]["name"]; ?>" required>
+                                                   placeholder="Promo Code Name" name="name" value="<?php echo $data[0]["coupon_name"]; ?>" required>
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control input-default"
-                                                   placeholder="Value" name="value" value="<?php echo $data[0]["value"]; ?>" required>
+                                                   placeholder="Code" name="code" value="<?php echo $data[0]["code"]; ?>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="mb-1">Discount Type</p>
+                                            <select class="form-control" name="coupon_type" required>
+                                                <option value="Direct" <?php if($data[0]["coupon_type"]=='Direct') echo 'selected'; ?>>Direct</option>
+                                                <option value="Percentage" <?php if($data[0]["coupon_type"]=='Percentage') echo 'selected'; ?>>Percentage</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control input-default"
+                                                   placeholder="Amount" name="amount" value="<?php echo $data[0]["amount"]; ?>" required>
                                         </div>
                                         <div class="form-group">
                                             <p class="mb-1">Start Date</p>
@@ -70,10 +81,25 @@ include('include/siteSettings.php');
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control input-default"
-                                                   placeholder="Minimum Purchase Amount" name="minimum_purchase_amount" value="<?php echo $data[0]["minimum_purchase_amount"]; ?>" required>
+                                                   placeholder="Minimum Purchase Amount" name="minimum_purchase_amount" value="<?php echo $data[0]["minimum_order"]; ?>" required>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" name="updateCategory" class="btn btn-primary">Submit</button>
+                                            <p class="mb-1">Description</p>
+                                            <textarea name="description" rows="4" class="form-control" required><?php echo $data[0]["description"]; ?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <select multiple class="form-control default-select" name="status" id="sel2" required>
+                                                <option value="1" <?php echo ($data[0]["status"] == 1) ? "selected" : ""; ?>>
+                                                    Show
+                                                </option>
+                                                <option value="0" <?php echo ($data[0]["status"] == 0) ? "selected" : ""; ?>>
+                                                    Hide
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" name="updatePromoCode" class="btn btn-primary">Submit</button>
                                         </div>
                                     </form>
                                 </div>
@@ -92,11 +118,14 @@ include('include/siteSettings.php');
                                         <thead>
                                         <tr>
                                             <th>SL</th>
-                                            <th>Name</th>
-                                            <th>Value</th>
+                                            <th>Coupon Name</th>
+                                            <th>Code</th>
+                                            <th>Coupon Type</th>
+                                            <th>Amount</th>
                                             <th>Start Date</th>
                                             <th>Expire Date</th>
                                             <th>Minimum Purchase Amount</th>
+                                            <th>Description</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
@@ -111,11 +140,14 @@ include('include/siteSettings.php');
                                             ?>
                                             <tr>
                                                 <td><?php echo $i + 1; ?></td>
-                                                <td><?php echo $data[$i]["name"]; ?></td>
-                                                <td><?php echo $data[$i]["value"]; ?></td>
+                                                <td><?php echo $data[$i]["coupon_name"]; ?></td>
+                                                <td><?php echo $data[$i]["code"]; ?></td>
+                                                <td><?php echo $data[$i]["coupon_type"]; ?></td>
+                                                <td><?php echo $data[$i]["amount"]; ?></td>
                                                 <td><?php echo $data[$i]["start_date"]; ?></td>
                                                 <td><?php echo $data[$i]["expirey_date"]; ?></td>
-                                                <td><?php echo $data[$i]["minimum_purchase_amount"]; ?></td>
+                                                <td><?php echo $data[$i]["minimum_order"]; ?></td>
+                                                <td><?php echo $data[$i]["description"]; ?></td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href="promo-code-details?promo_code_id=<?php echo $data[$i]["id"]; ?>" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>

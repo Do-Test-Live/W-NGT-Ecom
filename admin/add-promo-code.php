@@ -59,7 +59,22 @@ include('include/siteSettings.php');
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control input-default"
-                                               placeholder="Value" name="value" required>
+                                               placeholder="Code" name="code" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <p class="mb-1">Discount Type</p>
+                                        <select class="form-control" name="coupon_type" required>
+                                            <option value="Direct">Direct</option>
+                                            <option value="Percentage">Percentage</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control input-default"
+                                               placeholder="Discount Value" name="amount" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control input-default"
+                                               placeholder="Minimum Purchase Amount" name="minimum_purchase_amount" required>
                                     </div>
                                     <div class="form-group">
                                         <p class="mb-1">Start Date</p>
@@ -70,8 +85,8 @@ include('include/siteSettings.php');
                                         <input name="expirey_date" class="form-control" type="datetime-local" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control input-default"
-                                               placeholder="Minimum Purchase Amount" name="minimum_purchase_amount" required>
+                                        <p class="mb-1">Description</p>
+                                        <textarea name="description" rows="4" class="form-control" required></textarea>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" name="insertPromoCode" class="btn btn-primary">Submit</button>

@@ -58,3 +58,8 @@ if (isset($_GET['content_id'])) {
     $db_handle->insertQuery("delete from content where id=" . $_GET['content_id'] . "");
     echo 'success';
 }
+
+if (isset($_GET['stock_id'])) {
+    $db_handle->insertQuery("delete from stock where id=" . $_GET['stock_id'] . "");
+    echo 'success';
+}
