@@ -78,6 +78,10 @@ include('include/siteSettings.php');
                                                placeholder="Product Price" required>
                                     </div>
                                     <div class="form-group">
+                                        <input type="text" name="quantity_type" class="form-control input-default"
+                                               placeholder="Quantity Type" required>
+                                    </div>
+                                    <div class="form-group">
                                         <input type="text" name="discount" class="form-control input-default"
                                                placeholder="Discount" required>
                                     </div>

@@ -68,11 +68,12 @@ if(isset($_POST['insertContent'])){
 }
 
 if(isset($_POST['insertProduct'])){
-    $category_id=$_POST['category_id'];
-    $subcategory_id=$_POST['subcategory_id'];
-    $p_name=$_POST['p_name'];
-    $p_price=$_POST['p_price'];
-    $discount=$_POST['discount'];
+    $category_id=$db_handle->checkValue($_POST['category_id']);
+    $subcategory_id=$db_handle->checkValue($_POST['subcategory_id']);
+    $p_name=$db_handle->checkValue($_POST['p_name']);
+    $p_price=$db_handle->checkValue($_POST['p_price']);
+    $discount=$db_handle->checkValue($_POST['discount']);
+    $quantity_type=$db_handle->checkValue($_POST['quantity_type']);
 
 
     $main_image='';
@@ -86,7 +87,7 @@ if(isset($_POST['insertProduct'])){
         $file_type = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
         if (
             $file_type != "jpg" && $file_type != "png" && $file_type != "jpeg"
-            && $file_type != "gif"
+            && $file_type != "gif" && $file_type != "webp"
         ) {
             $main_image = '';
         } else {
@@ -95,7 +96,7 @@ if(isset($_POST['insertProduct'])){
         }
     }
 
-    $description=$_POST['description'];
+    $description=$db_handle->checkValue($_POST['description']);
 
     $extra_images = array();
 
@@ -110,7 +111,7 @@ if(isset($_POST['insertProduct'])){
 
             $file_type = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
 
-            if ($file_type != "jpg" && $file_type != "png" && $file_type != "jpeg" && $file_type != "gif") {
+            if ($file_type != "jpg" && $file_type != "png" && $file_type != "jpeg" && $file_type != "gif"&& $file_type != "webp") {
                 // Handle invalid file type
             } else {
                 move_uploaded_file($file_tmp, "../assets/images/product/" . $file_name);
@@ -122,7 +123,7 @@ if(isset($_POST['insertProduct'])){
 
     $inserted_at=date('Y-m-d h:i:s');
 
-    $insert = $db_handle->insertQuery("INSERT INTO `product`(`category_id`, `subcategory_id`, `p_name`, `p_price`, `discount`,
+    $insert = $db_handle->insertQuery("INSERT INTO `product`(`category_id`, `subcategory_id`, `p_name`, `p_price`,  `discount`,
                       `main_image`, `description`, `extra_image`, `inserted_at`) VALUES ('$category_id','$subcategory_id','$p_name',
                                                                                          '$p_price','$discount','$main_image','$description',
                                                                                          '$extra_images_json','$inserted_at')");

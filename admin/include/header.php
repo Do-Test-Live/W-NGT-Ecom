@@ -7,7 +7,27 @@
                 <div class="collapse navbar-collapse justify-content-between">
                     <div class="header-left">
                         <div class="dashboard_bar">
-                            Dashboard
+                            <?php
+                            // Get the current URL
+                            $currentURL = $_SERVER['REQUEST_URI'];
+
+                            // Remove query parameters (if any)
+                            $urlParts = explode('?', $currentURL);
+                            $path = $urlParts[0]; // This contains the path without query parameters
+
+                            // Extract the last part of the path (page name)
+                            $parts = explode('/', rtrim($path, '/')); // Split the path by '/'
+                            $pageName = end($parts); // Get the last part
+
+                            // Replace hyphens with spaces
+                            $pageName = str_replace('-', ' ', $pageName);
+
+                            // Capitalize the first letter of each word
+                            $pageName = ucwords(strtolower($pageName));
+
+                            // Output the modified page name
+                            echo $pageName;
+                            ?>
                             <span>Welcome to !</span>
                         </div>
                     </div>
