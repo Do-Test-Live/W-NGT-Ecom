@@ -16744,7 +16744,7 @@ header .offcanvas-backdrop {
 
 .product-box .product-image {
     text-align: center;
-    padding: 20px;
+    padding-bottom: 20px;
     position: relative
 }
 
@@ -16820,7 +16820,7 @@ header .offcanvas-backdrop {
 
 .product-box .product-image img {
     width: 100%;
-    height: 140px;
+   /* height: 140px;*/
     -o-object-fit: contain;
     object-fit: contain;
     -webkit-transition: all 0.3s ease-in-out;
