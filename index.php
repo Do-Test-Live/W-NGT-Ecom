@@ -116,12 +116,12 @@ date_default_timezone_set("Asia/Hong_Kong");
                         <div>
                             <div class="product-box product-box-bg wow fadeInUp">
                                 <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
+                                    <a onclick="showProduct(<?php echo $product_id; ?>);">
                                         <img src="<?php echo $data[$i]['main_image']; ?>"
                                              class="img-fluid blur-up lazyload" alt="">
                                     </a>
                                     <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View" onclick="showProduct(<?php echo $product_id; ?>);">
                                             <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
                                                 <i data-feather="eye"></i>
                                             </a>
@@ -136,7 +136,7 @@ date_default_timezone_set("Asia/Hong_Kong");
                                     </ul>
                                 </div>
                                 <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
+                                    <a onclick="showProduct(<?php echo $product_id; ?>);">
                                         <h6 class="name">
                                             <?php echo $data[$i]['p_name']; ?>
                                         </h6>
@@ -183,12 +183,12 @@ date_default_timezone_set("Asia/Hong_Kong");
                                 ?>
                                 <div class="product-box product-box-bg wow fadeInUp" data-wow-delay="0.1s">
                                     <div class="product-image">
-                                        <a href="product-left-thumbnail.html">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);">
                                             <img src="<?php echo $data[$i + 1]['main_image']; ?>"
                                                  class="img-fluid blur-up lazyload" alt="">
                                         </a>
                                         <ul class="product-option">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View" onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <a href="javascript:void(0)" data-bs-toggle="modal"
                                                    data-bs-target="#view">
                                                     <i data-feather="eye"></i>
@@ -204,7 +204,7 @@ date_default_timezone_set("Asia/Hong_Kong");
                                         </ul>
                                     </div>
                                     <div class="product-detail">
-                                        <a href="product-left-thumbnail.html">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);">
                                             <h6 class="name">
                                                 <?php echo $data[$i + 1]['p_name']; ?>
                                             </h6>
@@ -276,13 +276,13 @@ date_default_timezone_set("Asia/Hong_Kong");
                         ?>
                         <div>
                             <div class="product-box-2 wow fadeIn">
-                                <a href="product-left-thumbnail.html" class="product-image">
+                                <a onclick="showProduct(<?php echo $product_id; ?>);" class="product-image">
                                     <img src="<?php echo $data[$i]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                          alt="">
                                 </a>
 
                                 <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
+                                    <a onclick="showProduct(<?php echo $product_id; ?>);">
                                         <h6><?php echo $data[$i]['p_name']; ?></h6>
                                     </a>
                                     <h5>$<?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?>
@@ -302,14 +302,14 @@ date_default_timezone_set("Asia/Hong_Kong");
                                 $product_id = $data[$i + 1]['id'];
                                 ?>
                                 <div class="product-box-2 wow fadeIn" data-wow-delay="0.1s">
-                                    <a href="product-left-thumbnail.html" class="product-image">
+                                    <a onclick="showProduct(<?php echo $product_id; ?>);" class="product-image">
                                         <img src="<?php echo $data[$i + 1]['main_image']; ?>"
                                              class="img-fluid blur-up lazyload"
                                              alt="">
                                     </a>
 
                                     <div class="product-detail">
-                                        <a href="product-left-thumbnail.html">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);">
                                             <h6><?php echo $data[$i + 1]['p_name']; ?></h6>
                                         </a>
                                         <h5>$<?php echo $data[$i + 1]['p_price'] - $data[$i + 1]['discount']; ?>
@@ -332,14 +332,14 @@ date_default_timezone_set("Asia/Hong_Kong");
                                 $product_id = $data[$i + 2]['id'];
                                 ?>
                                 <div class="product-box-2 wow fadeIn" data-wow-delay="0.2s">
-                                    <a href="product-left-thumbnail.html" class="product-image">
+                                    <a onclick="showProduct(<?php echo $product_id; ?>);" class="product-image">
                                         <img src="<?php echo $data[$i + 2]['main_image']; ?>"
                                              class="img-fluid blur-up lazyload"
                                              alt="">
                                     </a>
 
                                     <div class="product-detail">
-                                        <a href="product-left-thumbnail.html">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);">
                                             <h6><?php echo $data[$i + 2]['p_name']; ?></h6>
                                         </a>
                                         <h5>$<?php echo $data[$i + 2]['p_price'] - $data[$i + 2]['discount']; ?>
@@ -384,12 +384,12 @@ date_default_timezone_set("Asia/Hong_Kong");
                         <div>
                             <div class="product-box product-box-bg wow fadeInUp">
                                 <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
+                                    <a onclick="showProduct(<?php echo $product_id; ?>);">
                                         <img src="<?php echo $data[$i]['main_image']; ?>"
                                              class="img-fluid blur-up lazyload" alt="">
                                     </a>
                                     <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View" onclick="showProduct(<?php echo $product_id; ?>);">
                                             <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
                                                 <i data-feather="eye"></i>
                                             </a>
@@ -404,7 +404,7 @@ date_default_timezone_set("Asia/Hong_Kong");
                                     </ul>
                                 </div>
                                 <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
+                                    <a onclick="showProduct(<?php echo $product_id; ?>);">
                                         <h6 class="name">
                                             <?php echo $data[$i]['p_name']; ?>
                                         </h6>
@@ -451,12 +451,12 @@ date_default_timezone_set("Asia/Hong_Kong");
                                 ?>
                                 <div class="product-box product-box-bg wow fadeInUp" data-wow-delay="0.1s">
                                     <div class="product-image">
-                                        <a href="product-left-thumbnail.html">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);">
                                             <img src="<?php echo $data[$i + 1]['main_image']; ?>"
                                                  class="img-fluid blur-up lazyload" alt="">
                                         </a>
                                         <ul class="product-option">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View" onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <a href="javascript:void(0)" data-bs-toggle="modal"
                                                    data-bs-target="#view">
                                                     <i data-feather="eye"></i>
@@ -472,7 +472,7 @@ date_default_timezone_set("Asia/Hong_Kong");
                                         </ul>
                                     </div>
                                     <div class="product-detail">
-                                        <a href="product-left-thumbnail.html">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);">
                                             <h6 class="name">
                                                 <?php echo $data[$i + 1]['p_name']; ?>
                                             </h6>
@@ -675,13 +675,13 @@ date_default_timezone_set("Asia/Hong_Kong");
                                 $product_id = $data[$i]['id'];
                                 ?>
                                 <div class="top-selling-contain wow fadeInUp">
-                                    <a href="product-left-thumbnail.html" class="top-selling-image">
+                                    <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
                                         <img src="<?php echo $data[$i]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                              alt="">
                                     </a>
 
                                     <div class="top-selling-detail">
-                                        <a href="product-left-thumbnail.html">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);">
                                             <h5><?php echo $data[$i]['p_name']; ?></h5>
                                         </a>
                                         <h6>$ <?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></h6>
@@ -692,13 +692,13 @@ date_default_timezone_set("Asia/Hong_Kong");
                                     $product_id = $data[$i + 1]['id'];
                                     ?>
                                     <div class="top-selling-contain wow fadeInUp" data-wow-delay="0.2s">
-                                        <a href="product-left-thumbnail.html" class="top-selling-image">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
                                             <img src="<?php echo $data[$i+1]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                                  alt="">
                                         </a>
 
                                         <div class="top-selling-detail">
-                                            <a href="product-left-thumbnail.html">
+                                            <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+1]['p_name']; ?></h5>
                                             </a>
                                             <h6>$ <?php echo $data[$i+1]['p_price'] - $data[$i+1]['discount']; ?></h6>
@@ -712,13 +712,13 @@ date_default_timezone_set("Asia/Hong_Kong");
                                     $product_id = $data[$i + 2]['id'];
                                     ?>
                                     <div class="top-selling-contain wow fadeInUp" data-wow-delay="0.4s">
-                                        <a href="product-left-thumbnail.html" class="top-selling-image">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
                                             <img src="<?php echo $data[$i+2]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                                  alt="">
                                         </a>
 
                                         <div class="top-selling-detail">
-                                            <a href="product-left-thumbnail.html">
+                                            <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+2]['p_name']; ?></h5>
                                             </a>
                                             <h6>$ <?php echo $data[$i+2]['p_price'] - $data[$i+1]['discount']; ?></h6>
@@ -753,13 +753,13 @@ date_default_timezone_set("Asia/Hong_Kong");
                                 $product_id = $data[$i]['id'];
                                 ?>
                                 <div class="top-selling-contain wow fadeInUp">
-                                    <a href="product-left-thumbnail.html" class="top-selling-image">
+                                    <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
                                         <img src="<?php echo $data[$i]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                              alt="">
                                     </a>
 
                                     <div class="top-selling-detail">
-                                        <a href="product-left-thumbnail.html">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);">
                                             <h5><?php echo $data[$i]['p_name']; ?></h5>
                                         </a>
                                         <h6>$ <?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></h6>
@@ -770,13 +770,13 @@ date_default_timezone_set("Asia/Hong_Kong");
                                     $product_id = $data[$i + 1]['id'];
                                     ?>
                                     <div class="top-selling-contain wow fadeInUp" data-wow-delay="0.2s">
-                                        <a href="product-left-thumbnail.html" class="top-selling-image">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
                                             <img src="<?php echo $data[$i+1]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                                  alt="">
                                         </a>
 
                                         <div class="top-selling-detail">
-                                            <a href="product-left-thumbnail.html">
+                                            <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+1]['p_name']; ?></h5>
                                             </a>
                                             <h6>$ <?php echo $data[$i+1]['p_price'] - $data[$i+1]['discount']; ?></h6>
@@ -790,13 +790,13 @@ date_default_timezone_set("Asia/Hong_Kong");
                                     $product_id = $data[$i + 2]['id'];
                                     ?>
                                     <div class="top-selling-contain wow fadeInUp" data-wow-delay="0.4s">
-                                        <a href="product-left-thumbnail.html" class="top-selling-image">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
                                             <img src="<?php echo $data[$i+2]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                                  alt="">
                                         </a>
 
                                         <div class="top-selling-detail">
-                                            <a href="product-left-thumbnail.html">
+                                            <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+2]['p_name']; ?></h5>
                                             </a>
                                             <h6>$ <?php echo $data[$i+2]['p_price'] - $data[$i+1]['discount']; ?></h6>
@@ -831,13 +831,13 @@ date_default_timezone_set("Asia/Hong_Kong");
                                 $product_id = $data[$i]['id'];
                                 ?>
                                 <div class="top-selling-contain wow fadeInUp">
-                                    <a href="product-left-thumbnail.html" class="top-selling-image">
+                                    <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
                                         <img src="<?php echo $data[$i]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                              alt="">
                                     </a>
 
                                     <div class="top-selling-detail">
-                                        <a href="product-left-thumbnail.html">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);">
                                             <h5><?php echo $data[$i]['p_name']; ?></h5>
                                         </a>
                                         <h6>$ <?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></h6>
@@ -848,13 +848,13 @@ date_default_timezone_set("Asia/Hong_Kong");
                                     $product_id = $data[$i + 1]['id'];
                                     ?>
                                     <div class="top-selling-contain wow fadeInUp" data-wow-delay="0.2s">
-                                        <a href="product-left-thumbnail.html" class="top-selling-image">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
                                             <img src="<?php echo $data[$i+1]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                                  alt="">
                                         </a>
 
                                         <div class="top-selling-detail">
-                                            <a href="product-left-thumbnail.html">
+                                            <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+1]['p_name']; ?></h5>
                                             </a>
                                             <h6>$ <?php echo $data[$i+1]['p_price'] - $data[$i+1]['discount']; ?></h6>
@@ -868,13 +868,13 @@ date_default_timezone_set("Asia/Hong_Kong");
                                     $product_id = $data[$i + 2]['id'];
                                     ?>
                                     <div class="top-selling-contain wow fadeInUp" data-wow-delay="0.4s">
-                                        <a href="product-left-thumbnail.html" class="top-selling-image">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
                                             <img src="<?php echo $data[$i+2]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                                  alt="">
                                         </a>
 
                                         <div class="top-selling-detail">
-                                            <a href="product-left-thumbnail.html">
+                                            <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+2]['p_name']; ?></h5>
                                             </a>
                                             <h6>$ <?php echo $data[$i+2]['p_price'] - $data[$i+1]['discount']; ?></h6>
@@ -909,13 +909,13 @@ date_default_timezone_set("Asia/Hong_Kong");
                                 $product_id = $data[$i]['id'];
                                 ?>
                                 <div class="top-selling-contain wow fadeInUp">
-                                    <a href="product-left-thumbnail.html" class="top-selling-image">
+                                    <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
                                         <img src="<?php echo $data[$i]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                              alt="">
                                     </a>
 
                                     <div class="top-selling-detail">
-                                        <a href="product-left-thumbnail.html">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);">
                                             <h5><?php echo $data[$i]['p_name']; ?></h5>
                                         </a>
                                         <h6>$ <?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></h6>
@@ -926,13 +926,13 @@ date_default_timezone_set("Asia/Hong_Kong");
                                     $product_id = $data[$i + 1]['id'];
                                     ?>
                                     <div class="top-selling-contain wow fadeInUp" data-wow-delay="0.2s">
-                                        <a href="product-left-thumbnail.html" class="top-selling-image">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
                                             <img src="<?php echo $data[$i+1]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                                  alt="">
                                         </a>
 
                                         <div class="top-selling-detail">
-                                            <a href="product-left-thumbnail.html">
+                                            <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+1]['p_name']; ?></h5>
                                             </a>
                                             <h6>$ <?php echo $data[$i+1]['p_price'] - $data[$i+1]['discount']; ?></h6>
@@ -946,13 +946,13 @@ date_default_timezone_set("Asia/Hong_Kong");
                                     $product_id = $data[$i + 2]['id'];
                                     ?>
                                     <div class="top-selling-contain wow fadeInUp" data-wow-delay="0.4s">
-                                        <a href="product-left-thumbnail.html" class="top-selling-image">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
                                             <img src="<?php echo $data[$i+2]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                                  alt="">
                                         </a>
 
                                         <div class="top-selling-detail">
-                                            <a href="product-left-thumbnail.html">
+                                            <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+2]['p_name']; ?></h5>
                                             </a>
                                             <h6>$ <?php echo $data[$i+2]['p_price'] - $data[$i+1]['discount']; ?></h6>
@@ -975,6 +975,22 @@ date_default_timezone_set("Asia/Hong_Kong");
 
 <?php include('include/footer.php'); ?>
 
+<script>
+    async function showProduct(id) {
+        $.ajax({
+            type: "POST",
+            url: "fetch-product-modal",
+            data: {id: id},
+            success:async function(msg){
+                $("#showProduct").html(msg)
+            },
+            error: function(){
+                alert("failure");
+            }
+        });
+    }
+</script>
+
 <!-- Quick View Modal Box Start -->
 <div class="modal fade theme-modal view-modal" id="view" tabindex="-1" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
@@ -986,7 +1002,7 @@ date_default_timezone_set("Asia/Hong_Kong");
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row g-sm-4 g-2">
+                <div class="row g-sm-4 g-2" id="showProduct">
                     <div class="col-lg-6">
                         <div class="slider-image">
                             <img src="assets/images/product/category/1.jpg" class="img-fluid blur-up lazyload"
@@ -1049,5 +1065,6 @@ date_default_timezone_set("Asia/Hong_Kong");
 <!-- Quick View Modal Box End -->
 
 <?php include('include/js.php'); ?>
+
 </body>
 </html>

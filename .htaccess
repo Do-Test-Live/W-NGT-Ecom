@@ -10,6 +10,8 @@ RewriteRule ^shop shop.php [NE,L]
 
 RewriteRule ^product product.php [NE,L]
 
+RewriteRule ^fetch-product-modal fetch-product-modal.php [NE,L]
+
 RewriteRule ^faq faq.php [NE,L]
 
 RewriteRule ^about about.php [NE,L]
