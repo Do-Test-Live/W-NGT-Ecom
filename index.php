@@ -129,7 +129,7 @@ date_default_timezone_set("Asia/Hong_Kong");
 
 
                                         <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
+                                            <a href="#" class="notifi-wishlist">
                                                 <i data-feather="heart"></i>
                                             </a>
                                         </li>

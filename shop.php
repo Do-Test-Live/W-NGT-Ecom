@@ -1,3 +1,9 @@
+<?php
+session_start();
+require_once('include/dbController.php');
+$db_handle = new DBController();
+date_default_timezone_set("Asia/Hong_Kong");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,86 +55,26 @@
                 <div class="left-box wow fadeInUp">
                     <div class="shop-left-sidebar">
                         <ul class="nav nav-pills mb-3 custom-nav-tab" id="pills-tab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="pills-vegetables" data-bs-toggle="pill"
-                                        data-bs-target="#pills-vegetable" type="button" role="tab"
-                                        aria-selected="true">Vegetables & Fruit <img
-                                            src="https://themes.pixelstrap.com/fastkart/assets/svg/1/vegetable.svg"
-                                            class="blur-up lazyload" alt=""></button>
-                            </li>
+                            <?php
 
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-beverages" data-bs-toggle="pill"
-                                        data-bs-target="#pills-beverages" type="button" role="tab"
-                                        aria-controls="pills-beverages" aria-selected="false">Beverages <img
-                                            src="https://themes.pixelstrap.com/fastkart/assets/svg/1/cup.svg"
-                                            class="blur-up lazyload" alt=""></button>
-                            </li>
+                            $query = "SELECT * FROM category order by id";
 
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-meat" data-bs-toggle="pill"
-                                        data-bs-target="#pills-meat" type="button" role="tab" aria-controls="pills-meat"
-                                        aria-selected="false">Meats & Seafood <img
-                                            src="https://themes.pixelstrap.com/fastkart/assets/svg/1/meats.svg"
-                                            alt="" class="blur-up lazyload"></button>
-                            </li>
+                            $category = $db_handle->runQuery($query);
+                            $row_count = $db_handle->numRows($query);
 
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-dairy" data-bs-toggle="pill"
-                                        data-bs-target="#pills-dairy" type="button" role="tab"
-                                        aria-controls="pills-dairy" aria-selected="true">Breakfast & Dairy <img
-                                            src="https://themes.pixelstrap.com/fastkart/assets/svg/1/breakfast.svg"
-                                            class="blur-up lazyload"
-                                            alt=""></button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-frozen" data-bs-toggle="pill"
-                                        data-bs-target="#pills-frozen" type="button" role="tab"
-                                        aria-controls="pills-frozen" aria-selected="false">Frozen Foods <img
-                                            src="https://themes.pixelstrap.com/fastkart/assets/svg/1/frozen.svg"
-                                            class="blur-up lazyload" alt=""></button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-snack" data-bs-toggle="pill"
-                                        data-bs-target="#pills-snack" type="button" role="tab"
-                                        aria-controls="pills-snack" aria-selected="false">Biscuits & Snacks <img
-                                            src="https://themes.pixelstrap.com/fastkart/assets/svg/1/biscuit.svg"
-                                            class="blur-up lazyload" alt=""></button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-grocery" data-bs-toggle="pill"
-                                        data-bs-target="#pills-grocery" type="button" role="tab"
-                                        aria-controls="pills-grocery" aria-selected="true">Grocery & Staples <img
-                                            src="https://themes.pixelstrap.com/fastkart/assets/svg/1/grocery.svg"
-                                            class="blur-up lazyload" alt=""></button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-wines" data-bs-toggle="pill"
-                                        data-bs-target="#pills-wines" type="button" role="tab"
-                                        aria-controls="pills-wines" aria-selected="false">Wines & Alcohol Drinks <img
-                                            src="https://themes.pixelstrap.com/fastkart/assets/svg/1/drink.svg"
-                                            class="blur-up lazyload" alt=""></button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-milk" data-bs-toggle="pill"
-                                        data-bs-target="#pills-milk" type="button" role="tab" aria-controls="pills-milk"
-                                        aria-selected="false">Milk & Dairies <img
-                                            src="https://themes.pixelstrap.com/fastkart/assets/svg/1/milk.svg" alt=""
-                                            class="blur-up lazyload"></button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-pet" data-bs-toggle="pill"
-                                        data-bs-target="#pills-pet" type="button" role="tab" aria-controls="pills-pet"
-                                        aria-selected="false">Pet Foods <img class="blur-up lazyload"
-                                                                             src="https://themes.pixelstrap.com/fastkart/assets/svg/1/pet.svg"
-                                                                             alt=""></button>
-                            </li>
+                            for ($i = 0; $i < $row_count; $i++) {
+                            $category_id = $category[$i]['id'];
+                            ?>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="pills-<?php echo $category[$i]['c_name']; ?>" data-bs-toggle="pill"
+                                            data-bs-target="#pills-<?php echo $category[$i]['c_name']; ?>" type="button" role="tab"
+                                            aria-selected="true"><?php echo $category[$i]['c_name']; ?> <img
+                                                src="<?php echo $category[$i]['c_shop_image']; ?>"
+                                                class="blur-up lazyload" alt=""></button>
+                                </li>
+                                <?php
+                            }
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -146,21 +92,21 @@
                             <ul>
                                 <li class="three-grid">
                                     <a href="javascript:void(0)">
-                                        <img src="https://themes.pixelstrap.com/fastkart/assets/svg/grid-3.svg"
+                                        <img src="assets/images/svg/grid-3.svg"
                                              class="blur-up lazyload" alt="">
                                     </a>
                                 </li>
                                 <li class="grid-btn d-xxl-inline-block d-none active">
                                     <a href="javascript:void(0)">
-                                        <img src="https://themes.pixelstrap.com/fastkart/assets/svg/grid-4.svg"
+                                        <img src="assets/images/svg/grid-4.svg"
                                              class="blur-up lazyload d-lg-inline-block d-none" alt="">
-                                        <img src="https://themes.pixelstrap.com/fastkart/assets/svg/grid.svg"
+                                        <img src="assets/images/svg/grid.svg"
                                              class="blur-up lazyload img-fluid d-lg-none d-inline-block" alt="">
                                     </a>
                                 </li>
                                 <li class="list-btn">
                                     <a href="javascript:void(0)">
-                                        <img src="https://themes.pixelstrap.com/fastkart/assets/svg/list.svg"
+                                        <img src="assets/images/svg/list.svg"
                                              class="blur-up lazyload" alt="">
                                     </a>
                                 </li>
@@ -171,688 +117,70 @@
 
                 <div
                         class="row g-sm-4 g-3 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section">
-                    <div>
-                        <div class="product-box-3 h-100 wow fadeInUp">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/2.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
 
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                               data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
+                    <?php
+                    $query = "SELECT * FROM product as p, category as c where p.category_id=c.id order by rand() limit 16";
 
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
+                    $data = $db_handle->runQuery($query);
+                    $row_count = $db_handle->numRows($query);
+
+                    for ($i = 0; $i < $row_count; $i = $i + 1) {
+                    $product_id = $data[$i]['id'];
+                    ?>
+                        <div>
+                            <div class="product-box-3 h-100 wow fadeInUp">
+                                <div class="product-header">
+                                    <div class="product-image">
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);">
+                                            <img src="<?php echo $data[$i]['main_image']; ?>"
+                                                 class="img-fluid blur-up lazyload" alt="">
+                                        </a>
+                                        <ul class="product-option">
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                                <a onclick="showProduct(<?php echo $product_id; ?>);" data-bs-toggle="modal"
+                                                   data-bs-target="#view">
+                                                    <i data-feather="eye"></i>
+                                                </a>
+                                            </li>
+
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
+                                                <a href="#" class="notifi-wishlist">
+                                                    <i data-feather="heart"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="span-name">Vegetable</span>
-                                    <a href="product-left-thumbnail.html">
-                                        <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Cheesy feet cheesy grin brie.
-                                        Mascarpone cheese and wine hard cheese the big cheese everyone loves smelly
-                                        cheese macaroni cheese croque monsieur.</p>
-                                    <h6 class="unit">250 ml</h6>
-                                    <h5 class="price"><span class="theme-color">$08.02</span>
-                                        <del>$15.15</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
+                                <div class="product-footer">
+                                    <div class="product-detail">
+                                        <span class="span-name"><?php echo $data[$i]['c_name']; ?></span>
+                                        <a onclick="showProduct(<?php echo $product_id; ?>);">
+                                            <h5 class="name"><?php echo $data[$i]['p_name']; ?></h5>
+                                        </a>
+                                        <p class="text-content mt-1 mb-2 product-content">
+                                            <?php echo $data[$i]['description']; ?>
+                                        </p>
+                                        <h6 class="unit">250 ml</h6>
+                                        <h5 class="price"><span class="theme-color">$<?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></span>
+                                            <del>
+                                                <?php
+                                                if ($data[$i]['p_price'] != ($data[$i]['p_price'] - $data[$i]['discount'])) {
+                                                    echo $data[$i]['p_price'];
+                                                }
+                                                ?>
+                                            </del>
+                                        </h5>
+                                        <div class="add-to-cart-box bg-white">
+                                            <button class="btn btn-add-cart">Add to Cart
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div>
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.05s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/3.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                               data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="span-name">Vegetable</span>
-                                    <a href="product-left-thumbnail.html">
-                                        <h5 class="name">Peanut Butter Bite Premium Butter Cookies 600 g</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Feta taleggio croque monsieur
-                                        swiss manchego cheesecake dolcelatte jarlsberg. Hard cheese danish fontina
-                                        boursin melted cheese fondue.</p>
-                                    <h6 class="unit">350 G</h6>
-                                    <h5 class="price"><span class="theme-color">$04.33</span>
-                                        <del>$10.36</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/4.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                               data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="span-name">Snacks</span>
-                                    <a href="product-left-thumbnail.html">
-                                        <h5 class="name">SnackAmor Combo Pack of Jowar Stick and Jowar Chips</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Lancashire hard cheese
-                                        parmesan. Danish fontina mozzarella cream cheese smelly cheese cheese and
-                                        wine cheesecake dolcelatte stilton. Cream cheese parmesan who moved my
-                                        cheese when the cheese comes out everybody's happy cream cheese red
-                                        leicester ricotta edam.</p>
-                                    <h6 class="unit">570 G</h6>
-                                    <h5 class="price"><span class="theme-color">$12.52</span>
-                                        <del>$13.62</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.15s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/5.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                               data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="span-name">Snacks</span>
-                                    <a href="product-left-thumbnail.html">
-                                        <h5 class="name">Yumitos Chilli Sprinkled Potato Chips 100 g</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Cheddar cheddar pecorino hard
-                                        cheese hard cheese cheese and biscuits bocconcini babybel. Cow goat paneer
-                                        cream cheese fromage cottage cheese cauliflower cheese jarlsberg.</p>
-                                    <h6 class="unit">100 G</h6>
-                                    <h5 class="price"><span class="theme-color">$10.25</span>
-                                        <del>$12.36</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/6.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                               data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="span-name">Vegetable</span>
-                                    <a href="product-left-thumbnail.html">
-                                        <h5 class="name">Fantasy Crunchy Choco Chip Cookies</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Bavarian bergkase smelly
-                                        cheese swiss cut the cheese lancashire who moved my cheese manchego melted
-                                        cheese. Red leicester paneer cow when the cheese comes out everybody's happy
-                                        croque monsieur goat melted cheese port-salut.</p>
-
-                                    <h6 class="unit">550 G</h6>
-
-                                    <h5 class="price"><span class="theme-color">$14.25</span>
-                                        <del>$16.57</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.25s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/7.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                               data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="span-name">Vegetable</span>
-                                    <a href="product-left-thumbnail.html">
-                                        <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Melted cheese babybel chalk
-                                        and cheese. Port-salut port-salut cream cheese when the cheese comes out
-                                        everybody's happy cream cheese hard cheese cream cheese red leicester.</p>
-
-                                    <h6 class="unit">1 Kg</h6>
-
-                                    <h5 class="price"><span class="theme-color">$12.68</span>
-                                        <del>$14.69</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/2.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                               data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="span-name">Vegetable</span>
-                                    <a href="product-left-thumbnail.html">
-                                        <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Squirty cheese cottage cheese
-                                        cheese strings. Red leicester paneer danish fontina queso lancashire when
-                                        the cheese comes out everybody's happy cottage cheese paneer.</p>
-                                    <h6 class="unit">250 ml</h6>
-                                    <h5 class="price"><span class="theme-color">$08.02</span>
-                                        <del>$15.15</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.35s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/3.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                               data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="span-name">Vegetable</span>
-                                    <a href="product-left-thumbnail.html">
-                                        <h5 class="name">Peanut Butter Bite Premium Butter Cookies 600 g</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Swiss ricotta cauliflower
-                                        cheese squirty cheese cheesy grin camembert de normandie airedale edam.
-                                        Squirty cheese babybel cheesecake the big cheese cauliflower cheese hard
-                                        cheese cheese and biscuits cheese and wine.</p>
-                                    <h6 class="unit">350 G</h6>
-                                    <h5 class="price"><span class="theme-color">$04.33</span>
-                                        <del>$10.36</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/4.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                               data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="span-name">Snacks</span>
-                                    <a href="product-left-thumbnail.html">
-                                        <h5 class="name">SnackAmor Combo Pack of Jowar Stick and Jowar Chips</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Boursin the big cheese
-                                        cheeseburger. Jarlsberg smelly cheese chalk and cheese gouda blue castello
-                                        monterey jack swiss boursin. Halloumi cheesy feet mozzarella red leicester
-                                        paneer boursin who moved my cheese croque monsieur.</p>
-                                    <h6 class="unit">570 G</h6>
-                                    <h5 class="price"><span class="theme-color">$12.52</span>
-                                        <del>$13.62</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.45s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/5.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                               data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="span-name">Snacks</span>
-                                    <a href="product-left-thumbnail.html">
-                                        <h5 class="name">Yumitos Chilli Sprinkled Potato Chips 100 g</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Halloumi mozzarella monterey
-                                        jack smelly cheese emmental bocconcini when the cheese comes out everybody's
-                                        happy pecorino. Cut the cheese stilton danish fontina cheesy grin rubber
-                                        cheese smelly cheese roquefort paneer.</p>
-                                    <h6 class="unit">100 G</h6>
-                                    <h5 class="price"><span class="theme-color">$10.25</span>
-                                        <del>$12.36</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/6.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                               data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="span-name">Vegetable</span>
-                                    <a href="product-left-thumbnail.html">
-                                        <h5 class="name">Fantasy Crunchy Choco Chip Cookies</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Manchego cow cheddar.
-                                        Port-salut roquefort hard cheese babybel when the cheese comes out
-                                        everybody's happy brie dolcelatte croque monsieur.</p>
-
-                                    <h6 class="unit">550 G</h6>
-
-                                    <h5 class="price"><span class="theme-color">$14.25</span>
-                                        <del>$16.57</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.55s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/7.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                               data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="span-name">Vegetable</span>
-                                    <a href="product-left-thumbnail.html">
-                                        <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Roquefort say cheese the big
-                                        cheese ricotta chalk and cheese when the cheese comes out everybody's happy
-                                        brie lancashire.</p>
-
-                                    <h6 class="unit">1 Kg</h6>
-
-                                    <h5 class="price"><span class="theme-color">$12.68</span>
-                                        <del>$14.69</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.6s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/2.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                               data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="span-name">Vegetable</span>
-                                    <a href="product-left-thumbnail.html">
-                                        <h5 class="name">Fresh Bread and Pastry Flour 200 g</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Lancashire when the cheese
-                                        comes out everybody's happy blue castello halloumi boursin stinking bishop
-                                        pecorino fromage frais.</p>
-                                    <h6 class="unit">250 ml</h6>
-                                    <h5 class="price"><span class="theme-color">$08.02</span>
-                                        <del>$15.15</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.65s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/3.png"
-                                             class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal"
-                                               data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
-
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="span-name">Vegetable</span>
-                                    <a href="product-left-thumbnail.html">
-                                        <h5 class="name">Peanut Butter Bite Premium Butter Cookies 600 g</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Say cheese cheese and biscuits
-                                        feta. Queso bocconcini danish fontina camembert de normandie brie airedale
-                                        ricotta feta. Pecorino edam gouda caerphilly croque monsieur red leicester
-                                        cheese triangles caerphilly.</p>
-                                    <h6 class="unit">350 G</h6>
-                                    <h5 class="price"><span class="theme-color">$04.33</span>
-                                        <del>$10.36</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <?php
+                    }
+                    ?>
                 </div>
 
                 <nav class="custome-pagination">
@@ -886,6 +214,22 @@
 
 <?php include('include/footer.php'); ?>
 
+<script>
+    async function showProduct(id) {
+        $.ajax({
+            type: "POST",
+            url: "fetch-product-modal",
+            data: {id: id},
+            success:async function(msg){
+                $("#showProduct").html(msg)
+            },
+            error: function(){
+                alert("failure");
+            }
+        });
+    }
+</script>
+
 <!-- Quick View Modal Box Start -->
 <div class="modal fade theme-modal view-modal" id="view" tabindex="-1" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
@@ -897,7 +241,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row g-sm-4 g-2">
+                <div class="row g-sm-4 g-2" id="showProduct">
                     <div class="col-lg-6">
                         <div class="slider-image">
                             <img src="assets/images/product/category/1.jpg" class="img-fluid blur-up lazyload"
@@ -909,27 +253,6 @@
                         <div class="right-sidebar-modal">
                             <h4 class="title-name">Peanut Butter Bite Premium Butter Cookies 600 g</h4>
                             <h4 class="price">$36.99</h4>
-                            <div class="product-rating">
-                                <ul class="rating">
-                                    <li>
-                                        <i data-feather="star" class="fill"></i>
-                                    </li>
-                                    <li>
-                                        <i data-feather="star" class="fill"></i>
-                                    </li>
-                                    <li>
-                                        <i data-feather="star" class="fill"></i>
-                                    </li>
-                                    <li>
-                                        <i data-feather="star" class="fill"></i>
-                                    </li>
-                                    <li>
-                                        <i data-feather="star"></i>
-                                    </li>
-                                </ul>
-                                <span class="ms-2">8 Reviews</span>
-                                <span class="ms-2 text-danger">6 sold in last 16 hours</span>
-                            </div>
 
                             <div class="product-detail">
                                 <h4>Product Details :</h4>
@@ -961,19 +284,6 @@
                                     </div>
                                 </li>
                             </ul>
-
-                            <div class="select-size">
-                                <h4>Cake Size :</h4>
-                                <select class="form-select select-form-size">
-                                    <option selected>Select Size</option>
-                                    <option value="1.2">1/2 KG</option>
-                                    <option value="0">1 KG</option>
-                                    <option value="1.5">1/5 KG</option>
-                                    <option value="red">Red Roses</option>
-                                    <option value="pink">With Pink Roses</option>
-                                </select>
-                            </div>
-
                             <div class="modal-button">
                                 <button onclick="location.href = 'cart.html';"
                                         class="btn btn-md add-cart-button icon">Add
@@ -991,7 +301,7 @@
         </div>
     </div>
 </div>
-<!-- Quick View Modal Box End -->>
+<!-- Quick View Modal Box End -->
 
 <!-- Add to cart Modal Start -->
 <div class="add-cart-box">

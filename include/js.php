@@ -40,3 +40,19 @@
 
 <!-- script js -->
 <script src="assets/js/script.js"></script>
+
+<script>
+    function quantityCal(operator) {
+        let quantity = document.getElementById('quantity');
+        let quan = parseInt(quantity.value);
+
+        if (operator === 'plus') {
+            quan += 1;
+        } else {
+            if (quan > 1) {
+                quan -= 1;
+            }
+        }
+        quantity.value = quan
+    }
+</script>
