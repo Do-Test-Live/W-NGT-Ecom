@@ -85,7 +85,7 @@
                     <div class="footer-logo">
                         <div class="theme-logo">
                             <a href="index.php">
-                                <img src="assets/images/logo/1.png" class="blur-up lazyload" alt="">
+                                <img src="<?php echo $extension; ?>assets/images/logo/1.png" class="blur-up lazyload" alt="">
                             </a>
                         </div>
 
@@ -229,7 +229,7 @@
             </div>
 
             <div class="payment">
-                <img src="assets/images/payment/1.png" class="blur-up lazyload" alt="">
+                <img src="<?php echo $extension; ?>assets/images/payment/1.png" class="blur-up lazyload" alt="">
             </div>
 
             <div class="social-link">

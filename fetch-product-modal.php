@@ -1,7 +1,9 @@
 <?php
 session_start();
-require_once("include/dbcontroller.php");
+require_once('include/dbController.php');
 $db_handle = new DBController();
+date_default_timezone_set("Asia/Hong_Kong");
+$extension = '';
 if (isset($_POST["id"])) {
     $data = $db_handle->runQuery("SELECT * FROM category as c, subcategory as s, product as p where p.category_id=c.id and p.subcategory_id=s.id and p.id='{$_POST["id"]}'");
     ?>

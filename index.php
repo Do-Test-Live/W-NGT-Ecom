@@ -3,6 +3,7 @@ session_start();
 require_once('include/dbController.php');
 $db_handle = new DBController();
 date_default_timezone_set("Asia/Hong_Kong");
+$extension = '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
