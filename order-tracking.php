@@ -14,7 +14,7 @@ $extension = '';
     <meta name="description" content="NGT-ECom">
     <meta name="keywords" content="NGT-ECom">
     <meta name="author" content="NGT-ECom">
-    <link rel="icon" href="assets/images/favicon/1.png" type="image/x-icon">
+    <link rel="icon" href="<?php echo $extension; ?>assets/images/favicon/1.png" type="image/x-icon">
     <title>Order Tracking | NGT-ECom</title>
 
     <?php include('include/css.php'); ?>
@@ -54,7 +54,7 @@ $extension = '';
         <div class="row g-sm-4 g-3">
             <div class="col-xxl-3 col-xl-4 col-lg-6">
                 <div class="order-image">
-                    <img src="assets/images/vegetable/product/6.png" class="img-fluid blur-up lazyload" alt="">
+                    <img src="<?php echo $extension; ?>assets/images/vegetable/product/6.png" class="img-fluid blur-up lazyload" alt="">
                 </div>
             </div>
 
@@ -81,7 +81,7 @@ $extension = '';
 
                             <div class="order-details-name">
                                 <h5 class="text-content">Service</h5>
-                                <img src="https://themes.pixelstrap.com/fastkart/assets/images/inner-page/brand-name.svg"
+                                <img src="https://themes.pixelstrap.com/fastkart/<?php echo $extension; ?>assets/images/inner-page/brand-name.svg"
                                      class="img-fluid blur-up lazyload" alt="">
                             </div>
                         </div>

@@ -14,7 +14,7 @@ $extension = '';
     <meta name="description" content="NGT-ECom">
     <meta name="keywords" content="NGT-ECom">
     <meta name="author" content="NGT-ECom">
-    <link rel="icon" href="assets/images/favicon/1.png" type="image/x-icon">
+    <link rel="icon" href="<?php echo $extension; ?>assets/images/favicon/1.png" type="image/x-icon">
     <title>Sign Up | NGT-ECom</title>
 
     <<?php include('include/css.php'); ?>
@@ -54,7 +54,7 @@ $extension = '';
         <div class="row">
             <div class="col-xxl-6 col-xl-5 col-lg-6 d-lg-block d-none ms-auto">
                 <div class="image-contain">
-                    <img src="assets/images/inner-page/sign-up.png" class="img-fluid" alt="">
+                    <img src="<?php echo $extension; ?>assets/images/inner-page/sign-up.png" class="img-fluid" alt="">
                 </div>
             </div>
 

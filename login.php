@@ -14,7 +14,7 @@ $extension = '';
     <meta name="description" content="NGT-ECom">
     <meta name="keywords" content="NGT-ECom">
     <meta name="author" content="NGT-ECom">
-    <link rel="icon" href="assets/images/favicon/1.png" type="image/x-icon">
+    <link rel="icon" href="<?php echo $extension; ?>assets/images/favicon/1.png" type="image/x-icon">
     <title>Log In | NGT-ECom</title>
 
     <?php include('include/css.php'); ?>

@@ -14,7 +14,7 @@ $extension = '';
     <meta name="description" content="NGT-ECom">
     <meta name="keywords" content="NGT-ECom">
     <meta name="author" content="NGT-ECom">
-    <link rel="icon" href="assets/images/favicon/1.png" type="image/x-icon">
+    <link rel="icon" href="<?php echo $extension; ?>assets/images/favicon/1.png" type="image/x-icon">
     <title>Cart | NGT-ECom</title>
 
     <?php include('include/css.php'); ?>
@@ -61,7 +61,7 @@ $extension = '';
                                 <td class="product-detail">
                                     <div class="product border-0">
                                         <a href="product-left-thumbnail.html" class="product-image">
-                                            <img src="assets/images/vegetable/product/1.png"
+                                            <img src="<?php echo $extension; ?>assets/images/vegetable/product/1.png"
                                                  class="img-fluid blur-up lazyload" alt="">
                                         </a>
                                         <div class="product-detail">
@@ -159,7 +159,7 @@ $extension = '';
                                 <td class="product-detail">
                                     <div class="product border-0">
                                         <a href="product-left-thumbnail.html" class="product-image">
-                                            <img src="assets/images/vegetable/product/2.png"
+                                            <img src="<?php echo $extension; ?>assets/images/vegetable/product/2.png"
                                                  class="img-fluid blur-up lazyload" alt="">
                                         </a>
                                         <div class="product-detail">
@@ -260,7 +260,7 @@ $extension = '';
                                 <td class="product-detail">
                                     <div class="product border-0">
                                         <a href="product-left-thumbnail.html" class="product-image">
-                                            <img src="assets/images/vegetable/product/3.png"
+                                            <img src="<?php echo $extension; ?>assets/images/vegetable/product/3.png"
                                                  class="img-fluid blur-up lazyload" alt="">
                                         </a>
                                         <div class="product-detail">

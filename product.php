@@ -14,7 +14,7 @@ $extension = '';
     <meta name="description" content="NGT-ECom">
     <meta name="keywords" content="NGT-ECom">
     <meta name="author" content="NGT-ECom">
-    <link rel="icon" href="assets/images/favicon/1.png" type="image/x-icon">
+    <link rel="icon" href="<?php echo $extension; ?>assets/images/favicon/1.png" type="image/x-icon">
     <title>Product | NGT-ECom</title>
 
     <?php include('include/css.php'); ?>
@@ -62,48 +62,48 @@ $extension = '';
                                     <div class="product-main-1 no-arrow">
                                         <div>
                                             <div class="slider-image">
-                                                <img src="assets/images/product/category/1.jpg" id="img-1"
-                                                     data-zoom-image="../assets/images/product/category/1.jpg"
+                                                <img src="<?php echo $extension; ?>assets/images/product/category/1.jpg" id="img-1"
+                                                     data-zoom-image="../<?php echo $extension; ?>assets/images/product/category/1.jpg"
                                                      class="img-fluid image_zoom_cls-0 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="assets/images/product/category/2.jpg"
-                                                     data-zoom-image="../assets/images/product/category/2.jpg"
+                                                <img src="<?php echo $extension; ?>assets/images/product/category/2.jpg"
+                                                     data-zoom-image="../<?php echo $extension; ?>assets/images/product/category/2.jpg"
                                                      class="img-fluid image_zoom_cls-1 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="assets/images/product/category/3.jpg"
-                                                     data-zoom-image="../assets/images/product/category/3.jpg"
+                                                <img src="<?php echo $extension; ?>assets/images/product/category/3.jpg"
+                                                     data-zoom-image="../<?php echo $extension; ?>assets/images/product/category/3.jpg"
                                                      class="img-fluid image_zoom_cls-2 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="assets/images/product/category/4.jpg"
-                                                     data-zoom-image="../assets/images/product/category/4.jpg"
+                                                <img src="<?php echo $extension; ?>assets/images/product/category/4.jpg"
+                                                     data-zoom-image="../<?php echo $extension; ?>assets/images/product/category/4.jpg"
                                                      class="img-fluid image_zoom_cls-3 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="assets/images/product/category/5.jpg"
-                                                     data-zoom-image="../assets/images/product/category/5.jpg"
+                                                <img src="<?php echo $extension; ?>assets/images/product/category/5.jpg"
+                                                     data-zoom-image="../<?php echo $extension; ?>assets/images/product/category/5.jpg"
                                                      class="img-fluid image_zoom_cls-4 blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="slider-image">
-                                                <img src="assets/images/product/category/6.jpg"
-                                                     data-zoom-image="../assets/images/product/category/6.jpg"
+                                                <img src="<?php echo $extension; ?>assets/images/product/category/6.jpg"
+                                                     data-zoom-image="../<?php echo $extension; ?>assets/images/product/category/6.jpg"
                                                      class="img-fluid image_zoom_cls-5 blur-up lazyload" alt="">
                                             </div>
                                         </div>
@@ -114,42 +114,42 @@ $extension = '';
                                     <div class="bottom-slider-image left-slider no-arrow slick-top">
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="assets/images/product/category/1.jpg"
+                                                <img src="<?php echo $extension; ?>assets/images/product/category/1.jpg"
                                                      class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="assets/images/product/category/2.jpg"
+                                                <img src="<?php echo $extension; ?>assets/images/product/category/2.jpg"
                                                      class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="assets/images/product/category/3.jpg"
+                                                <img src="<?php echo $extension; ?>assets/images/product/category/3.jpg"
                                                      class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="assets/images/product/category/4.jpg"
+                                                <img src="<?php echo $extension; ?>assets/images/product/category/4.jpg"
                                                      class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="assets/images/product/category/5.jpg"
+                                                <img src="<?php echo $extension; ?>assets/images/product/category/5.jpg"
                                                      class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
 
                                         <div>
                                             <div class="sidebar-image">
-                                                <img src="assets/images/product/category/6.jpg"
+                                                <img src="<?php echo $extension; ?>assets/images/product/category/6.jpg"
                                                      class="img-fluid blur-up lazyload" alt="">
                                             </div>
                                         </div>
@@ -423,7 +423,7 @@ $extension = '';
                                         </div>
 
                                         <div class="banner-contain nav-desh">
-                                            <img src="assets/images/vegetable/banner/14.jpg"
+                                            <img src="<?php echo $extension; ?>assets/images/vegetable/banner/14.jpg"
                                                  class="bg-img blur-up lazyload" alt="">
                                             <div class="banner-details p-center banner-b-space w-100 text-center">
                                                 <div>
@@ -691,7 +691,7 @@ $extension = '';
                                                             <div class="people-box">
                                                                 <div>
                                                                     <div class="people-image">
-                                                                        <img src="assets/images/review/1.jpg"
+                                                                        <img src="<?php echo $extension; ?>assets/images/review/1.jpg"
                                                                              class="img-fluid blur-up lazyload"
                                                                              alt="">
                                                                     </div>

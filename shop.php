@@ -14,7 +14,7 @@ $extension = '';
     <meta name="description" content="NGT-ECom">
     <meta name="keywords" content="NGT-ECom">
     <meta name="author" content="NGT-ECom">
-    <link rel="icon" href="assets/images/favicon/1.png" type="image/x-icon">
+    <link rel="icon" href="<?php echo $extension; ?>assets/images/favicon/1.png" type="image/x-icon">
     <title>Shop | NGT-ECom</title>
 
     <?php include('include/css.php'); ?>
@@ -93,21 +93,21 @@ $extension = '';
                             <ul>
                                 <li class="three-grid">
                                     <a href="javascript:void(0)">
-                                        <img src="assets/images/svg/grid-3.svg"
+                                        <img src="<?php echo $extension; ?>assets/images/svg/grid-3.svg"
                                              class="blur-up lazyload" alt="">
                                     </a>
                                 </li>
                                 <li class="grid-btn d-xxl-inline-block d-none active">
                                     <a href="javascript:void(0)">
-                                        <img src="assets/images/svg/grid-4.svg"
+                                        <img src="<?php echo $extension; ?>assets/images/svg/grid-4.svg"
                                              class="blur-up lazyload d-lg-inline-block d-none" alt="">
-                                        <img src="assets/images/svg/grid.svg"
+                                        <img src="<?php echo $extension; ?>assets/images/svg/grid.svg"
                                              class="blur-up lazyload img-fluid d-lg-none d-inline-block" alt="">
                                     </a>
                                 </li>
                                 <li class="list-btn">
                                     <a href="javascript:void(0)">
-                                        <img src="assets/images/svg/list.svg"
+                                        <img src="<?php echo $extension; ?>assets/images/svg/list.svg"
                                              class="blur-up lazyload" alt="">
                                     </a>
                                 </li>
@@ -245,7 +245,7 @@ $extension = '';
                 <div class="row g-sm-4 g-2" id="showProduct">
                     <div class="col-lg-6">
                         <div class="slider-image">
-                            <img src="assets/images/product/category/1.jpg" class="img-fluid blur-up lazyload"
+                            <img src="<?php echo $extension; ?>assets/images/product/category/1.jpg" class="img-fluid blur-up lazyload"
                                  alt="">
                         </div>
                     </div>
@@ -307,7 +307,7 @@ $extension = '';
 <!-- Add to cart Modal Start -->
 <div class="add-cart-box">
     <div class="add-iamge">
-        <img src="assets/images/cake/pro/1.jpg" class="img-fluid blur-up lazyload" alt="">
+        <img src="<?php echo $extension; ?>assets/images/cake/pro/1.jpg" class="img-fluid blur-up lazyload" alt="">
     </div>
 
     <div class="add-contain">

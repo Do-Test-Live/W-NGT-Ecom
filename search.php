@@ -14,7 +14,7 @@ $extension = '';
     <meta name="description" content="NGT-ECom">
     <meta name="keywords" content="NGT-ECom">
     <meta name="author" content="NGT-ECom">
-    <link rel="icon" href="assets/images/favicon/1.png" type="image/x-icon">
+    <link rel="icon" href="<?php echo $extension; ?>assets/images/favicon/1.png" type="image/x-icon">
     <title>Search | NGT-ECom</title>
 
     <?php include('include/css.php'); ?>
@@ -57,7 +57,7 @@ $extension = '';
                     <h2>Search for products</h2>
                     <span class="title-leaf">
                             <svg class="icon-width">
-                                <use xlink:href="assets/images/leaf.svg#leaf"></use>
+                                <use xlink:href="<?php echo $extension; ?>assets/images/leaf.svg#leaf"></use>
                             </svg>
                         </span>
                 </div>
@@ -88,7 +88,7 @@ $extension = '';
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-2.html">
-                                        <img src="assets/images/cake/product/11.png"
+                                        <img src="<?php echo $extension; ?>assets/images/cake/product/11.png"
                                              class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -176,7 +176,7 @@ $extension = '';
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/2.png"
+                                        <img src="<?php echo $extension; ?>assets/images/cake/product/2.png"
                                              class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -263,7 +263,7 @@ $extension = '';
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/3.png"
+                                        <img src="<?php echo $extension; ?>assets/images/cake/product/3.png"
                                              class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -351,7 +351,7 @@ $extension = '';
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/4.png"
+                                        <img src="<?php echo $extension; ?>assets/images/cake/product/4.png"
                                              class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -439,7 +439,7 @@ $extension = '';
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/5.png"
+                                        <img src="<?php echo $extension; ?>assets/images/cake/product/5.png"
                                              class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -527,7 +527,7 @@ $extension = '';
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/6.png"
+                                        <img src="<?php echo $extension; ?>assets/images/cake/product/6.png"
                                              class="img-fluid blur-up lazyload" alt="">
                                     </a>
 
@@ -617,7 +617,7 @@ $extension = '';
                             <div class="product-header">
                                 <div class="product-image">
                                     <a href="product-left-thumbnail.html">
-                                        <img src="assets/images/cake/product/7.png" class="img-fluid" alt="">
+                                        <img src="<?php echo $extension; ?>assets/images/cake/product/7.png" class="img-fluid" alt="">
                                     </a>
 
                                     <ul class="product-option">
@@ -723,7 +723,7 @@ $extension = '';
                 <div class="row g-sm-4 g-2">
                     <div class="col-lg-6">
                         <div class="slider-image">
-                            <img src="assets/images/product/category/1.jpg" class="img-fluid blur-up lazyload"
+                            <img src="<?php echo $extension; ?>assets/images/product/category/1.jpg" class="img-fluid blur-up lazyload"
                                  alt="">
                         </div>
                     </div>
@@ -819,7 +819,7 @@ $extension = '';
 <!-- Add to cart Modal Start -->
 <div class="add-cart-box">
     <div class="add-iamge">
-        <img src="assets/images/cake/pro/1.jpg" class="img-fluid" alt="">
+        <img src="<?php echo $extension; ?>assets/images/cake/pro/1.jpg" class="img-fluid" alt="">
     </div>
 
     <div class="add-contain">
