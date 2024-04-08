@@ -5,11 +5,18 @@ $db_handle = new DBController();
 date_default_timezone_set("Asia/Hong_Kong");
 $extension = '';
 if (isset($_POST["id"])) {
+
+    if ($_POST['extension'] == 1) {
+        $extension = '../';
+    } else if ($_POST['extension'] == 2) {
+        $extension = '../../';
+    }
+
     $data = $db_handle->runQuery("SELECT * FROM category as c, subcategory as s, product as p where p.category_id=c.id and p.subcategory_id=s.id and p.id='{$_POST["id"]}'");
     ?>
     <div class="col-lg-6">
         <div class="slider-image">
-            <img src="<?php echo $data[0]['main_image']; ?>" class="img-fluid blur-up lazyload"
+            <img src="<?php echo $extension; ?><?php echo $data[0]['main_image']; ?>" class="img-fluid blur-up lazyload"
                  alt="">
         </div>
     </div>

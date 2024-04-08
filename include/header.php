@@ -337,7 +337,7 @@ if (isset($_SESSION["cart_item"])) {
                                     $category_id = $category[$i]['id'];
                                     ?>
                                     <li class="onhover-category-list">
-                                        <a href="javascript:void(0)" class="category-name text-start">
+                                        <a href="<?php echo $extension; ?>shop/<?php echo str_replace(' ', '-', $category[$i]['c_name']); ?>" class="category-name text-start">
                                             <?php echo $category[$i]['c_icon']; ?>
                                             <h6><?php echo $category[$i]['c_name']; ?></h6>
                                             <i class="fa-solid fa-angle-right"></i>
@@ -360,7 +360,7 @@ if (isset($_SESSION["cart_item"])) {
                                                         $subCategory_id = $subCategory[$j]['id'];
                                                         ?>
                                                         <li>
-                                                            <a href="javascript:void(0)"><?php echo $subCategory[$j]['s_name']; ?></a>
+                                                            <a href="<?php echo $extension; ?>shop/<?php echo str_replace(' ', '-', $category[$i]['c_name']); ?>/<?php echo str_replace(' ', '-', $subCategory[$j]['s_name']); ?>"><?php echo $subCategory[$j]['s_name']; ?></a>
                                                         </li>
                                                         <?php
                                                     }
@@ -378,7 +378,7 @@ if (isset($_SESSION["cart_item"])) {
                                                         $subCategory_id = $subCategory[$j]['id'];
                                                         ?>
                                                         <li>
-                                                            <a href="javascript:void(0)"><?php echo $subCategory[$j]['s_name']; ?></a>
+                                                            <a href="<?php echo $extension; ?>shop/<?php echo str_replace(' ', '-', $category[$i]['c_name']); ?>/<?php echo str_replace(' ', '-', $subCategory[$j]['s_name']); ?>"><?php echo $subCategory[$j]['s_name']; ?></a>
                                                         </li>
                                                         <?php
                                                     }
@@ -405,19 +405,19 @@ if (isset($_SESSION["cart_item"])) {
                                 <div class="offcanvas-body">
                                     <ul class="navbar-nav">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="home">Home</a>
+                                            <a class="nav-link" href="<?php echo $extension; ?>home">Home</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="shop">Shop</a>
+                                            <a class="nav-link" href="<?php echo $extension; ?>shop">Shop</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="faq">FAQ</a>
+                                            <a class="nav-link" href="<?php echo $extension; ?>faq">FAQ</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="about">About</a>
+                                            <a class="nav-link" href="<?php echo $extension; ?>about">About</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="contact">Contact</a>
+                                            <a class="nav-link" href="<?php echo $extension; ?>contact">Contact</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -438,7 +438,7 @@ if (isset($_SESSION["cart_item"])) {
      style="background: #0da487;padding-top:17px;padding-bottom: 17px">
     <ul>
         <li class="">
-            <a href="home">
+            <a href="<?php echo $extension; ?>home">
                 <i class="fa-solid fa-house text-white" style="font-size: 18px"></i>
             </a>
         </li>
@@ -450,12 +450,12 @@ if (isset($_SESSION["cart_item"])) {
         </li>
 
         <li>
-            <a href="search" class="search-box">
+            <a href="<?php echo $extension; ?>search" class="search-box">
                 <i class="fa-solid fa-magnifying-glass text-white" style="font-size: 18px"></i>
             </a>
         </li>
         <li>
-            <a href="cart">
+            <a href="<?php echo $extension; ?>cart">
                 <i class="fa-solid fa-cart-shopping text-white" style="font-size: 18px"></i>
             </a>
         </li>

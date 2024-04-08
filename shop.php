@@ -4,6 +4,30 @@ require_once('include/dbController.php');
 $db_handle = new DBController();
 date_default_timezone_set("Asia/Hong_Kong");
 $extension = '';
+
+$url = $_SERVER['REQUEST_URI'];
+$title = substr($url, strrpos($url, '/') + 1);
+
+
+$query = "SELECT * FROM category order by id";
+
+$category = $db_handle->runQuery($query);
+$row_count = $db_handle->numRows($query);
+
+for ($i = 0; $i < $row_count; $i++) {
+    if ($title == str_replace(' ', '-', $category[$i]['c_name'])) {
+        $extension = '../';
+        break;
+    } else {
+        $extension = '../../';
+    }
+}
+
+if ($title == 'shop') {
+    $extension = '';
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +58,7 @@ $extension = '';
                     <nav>
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <a href="index.html">
+                                <a href="<?php echo $extension; ?>home">
                                     <i class="fa-solid fa-house"></i>
                                 </a>
                             </li>
@@ -64,13 +88,18 @@ $extension = '';
                             $row_count = $db_handle->numRows($query);
 
                             for ($i = 0; $i < $row_count; $i++) {
-                            $category_id = $category[$i]['id'];
-                            ?>
+                                $category_id = $category[$i]['id'];
+                                ?>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-<?php echo $category[$i]['c_name']; ?>" data-bs-toggle="pill"
-                                            data-bs-target="#pills-<?php echo $category[$i]['c_name']; ?>" type="button" role="tab"
-                                            aria-selected="true"><?php echo $category[$i]['c_name']; ?> <img
-                                                src="<?php echo $category[$i]['c_shop_image']; ?>"
+                                    <button class="nav-link <?php if (str_replace(' ', '-', $category[$i]['c_name']) == $title) echo 'active'; ?>"
+                                            id="pills-<?php echo $category[$i]['c_name']; ?>"
+                                            data-bs-toggle="pill"
+                                            data-bs-target="#pills-<?php echo $category[$i]['c_name']; ?>" type="button"
+                                            role="tab"
+                                            aria-selected="true"
+                                            onclick="window.location.href='<?php echo $extension; ?>shop/<?php echo str_replace(' ', '-', $category[$i]['c_name']); ?>'"><?php echo $category[$i]['c_name']; ?>
+                                        <img
+                                                src="<?php echo $extension; ?><?php echo $category[$i]['c_shop_image']; ?>"
                                                 class="blur-up lazyload" alt=""></button>
                                 </li>
                                 <?php
@@ -120,25 +149,43 @@ $extension = '';
                         class="row g-sm-4 g-3 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section">
 
                     <?php
-                    $query = "SELECT * FROM product as p, category as c where p.category_id=c.id order by rand() limit 16";
+                    $addQuery = '';
+
+                    $query = "SELECT * FROM category order by id";
+
+                    $category = $db_handle->runQuery($query);
+                    $row_count = $db_handle->numRows($query);
+
+                    for ($i = 0; $i < $row_count; $i++) {
+                        if ($title == str_replace(' ', '-', $category[$i]['c_name'])) {
+                            $addQuery = " and c.c_name='" . str_replace('-', ' ', $title) . "'";
+                            break;
+                        } else {
+                            $addQuery = " and s.s_name='" . str_replace('-', ' ', $title) . "'";
+                        }
+                    }
+
+
+                    $query = "SELECT * FROM category as c, subcategory as s, product as p where s.id=p.subcategory_id and p.category_id=c.id " . $addQuery . "order by rand() limit 16";
 
                     $data = $db_handle->runQuery($query);
                     $row_count = $db_handle->numRows($query);
 
                     for ($i = 0; $i < $row_count; $i = $i + 1) {
-                    $product_id = $data[$i]['id'];
-                    ?>
+                        $product_id = $data[$i]['id'];
+                        ?>
                         <div>
                             <div class="product-box-3 h-100 wow fadeInUp">
                                 <div class="product-header">
                                     <div class="product-image">
                                         <a onclick="showProduct(<?php echo $product_id; ?>);">
-                                            <img src="<?php echo $data[$i]['main_image']; ?>"
+                                            <img src="<?php echo $extension; ?><?php echo $data[$i]['main_image']; ?>"
                                                  class="img-fluid blur-up lazyload" alt="">
                                         </a>
                                         <ul class="product-option">
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                <a onclick="showProduct(<?php echo $product_id; ?>);" data-bs-toggle="modal"
+                                                <a onclick="showProduct(<?php echo $product_id; ?>);"
+                                                   data-bs-toggle="modal"
                                                    data-bs-target="#view">
                                                     <i data-feather="eye"></i>
                                                 </a>
@@ -162,7 +209,8 @@ $extension = '';
                                             <?php echo $data[$i]['description']; ?>
                                         </p>
                                         <h6 class="unit">250 ml</h6>
-                                        <h5 class="price"><span class="theme-color">$<?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></span>
+                                        <h5 class="price"><span
+                                                    class="theme-color">$<?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></span>
                                             <del>
                                                 <?php
                                                 if ($data[$i]['p_price'] != ($data[$i]['p_price'] - $data[$i]['discount'])) {
@@ -219,12 +267,14 @@ $extension = '';
     async function showProduct(id) {
         $.ajax({
             type: "POST",
-            url: "fetch-product-modal",
-            data: {id: id},
-            success:async function(msg){
+            url: "<?php echo $extension; ?>fetch-product-modal",
+            data: {
+                id: id,
+                extension:<?php if ($extension == '../') echo 1; else if ($extension == '../../') echo 2; else echo 0; ?>},
+            success: async function (msg) {
                 $("#showProduct").html(msg)
             },
-            error: function(){
+            error: function () {
                 alert("failure");
             }
         });
@@ -245,7 +295,8 @@ $extension = '';
                 <div class="row g-sm-4 g-2" id="showProduct">
                     <div class="col-lg-6">
                         <div class="slider-image">
-                            <img src="<?php echo $extension; ?>assets/images/product/category/1.jpg" class="img-fluid blur-up lazyload"
+                            <img src="<?php echo $extension; ?>assets/images/product/category/1.jpg"
+                                 class="img-fluid blur-up lazyload"
                                  alt="">
                         </div>
                     </div>

@@ -37,7 +37,8 @@
                     <div class="service-contain">
                         <div class="service-box">
                             <div class="service-image">
-                                <img src="https://themes.pixelstrap.com/fastkart/assets/svg/product.svg" class="blur-up lazyload" alt="">
+                                <img src="https://themes.pixelstrap.com/fastkart/assets/svg/product.svg"
+                                     class="blur-up lazyload" alt="">
                             </div>
 
                             <div class="service-detail">
@@ -47,7 +48,8 @@
 
                         <div class="service-box">
                             <div class="service-image">
-                                <img src="https://themes.pixelstrap.com/fastkart/assets/svg/delivery.svg" class="blur-up lazyload" alt="">
+                                <img src="https://themes.pixelstrap.com/fastkart/assets/svg/delivery.svg"
+                                     class="blur-up lazyload" alt="">
                             </div>
 
                             <div class="service-detail">
@@ -57,7 +59,8 @@
 
                         <div class="service-box">
                             <div class="service-image">
-                                <img src="https://themes.pixelstrap.com/fastkart/assets/svg/discount.svg" class="blur-up lazyload" alt="">
+                                <img src="https://themes.pixelstrap.com/fastkart/assets/svg/discount.svg"
+                                     class="blur-up lazyload" alt="">
                             </div>
 
                             <div class="service-detail">
@@ -67,7 +70,8 @@
 
                         <div class="service-box">
                             <div class="service-image">
-                                <img src="https://themes.pixelstrap.com/fastkart/assets/svg/market.svg" class="blur-up lazyload" alt="">
+                                <img src="https://themes.pixelstrap.com/fastkart/assets/svg/market.svg"
+                                     class="blur-up lazyload" alt="">
                             </div>
 
                             <div class="service-detail">
@@ -85,7 +89,8 @@
                     <div class="footer-logo">
                         <div class="theme-logo">
                             <a href="index.php">
-                                <img src="<?php echo $extension; ?>assets/images/logo/1.png" class="blur-up lazyload" alt="">
+                                <img src="<?php echo $extension; ?>assets/images/logo/1.png" class="blur-up lazyload"
+                                     alt="">
                             </a>
                         </div>
 
@@ -114,24 +119,23 @@
 
                     <div class="footer-contain">
                         <ul>
-                            <li>
-                                <a href="shop-left-sidebar.php" class="text-content">Vegetables & Fruit</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.php" class="text-content">Beverages</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.php" class="text-content">Meats & Seafood</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.php" class="text-content">Frozen Foods</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.php" class="text-content">Biscuits & Snacks</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.php" class="text-content">Grocery & Staples</a>
-                            </li>
+                            <?php
+                            $addQuery = '';
+
+                            $query = "SELECT * FROM category order by id";
+
+                            $category = $db_handle->runQuery($query);
+                            $row_count = $db_handle->numRows($query);
+
+                            for ($i = 0; $i < $row_count; $i++) {
+                                ?>
+                                <li>
+                                    <a href="<?php echo $extension; ?>shop/<?php echo str_replace(' ', '-', $category[$i]['c_name']); ?>"
+                                       class="text-content"><?php echo $category[$i]['c_name']; ?></a>
+                                </li>
+                                <?php
+                            }
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -144,19 +148,19 @@
                     <div class="footer-contain">
                         <ul>
                             <li>
-                                <a href="index.php" class="text-content">Home</a>
+                                <a href="<?php echo $extension; ?>home" class="text-content">Home</a>
                             </li>
                             <li>
-                                <a href="shop-left-sidebar.php" class="text-content">Shop</a>
+                                <a href="<?php echo $extension; ?>shop" class="text-content">Shop</a>
                             </li>
                             <li>
-                                <a href="about-us.php" class="text-content">About Us</a>
+                                <a href="<?php echo $extension; ?>faq" class="text-content">FAQ</a>
                             </li>
                             <li>
-                                <a href="blog-list.php" class="text-content">Blog</a>
+                                <a href="<?php echo $extension; ?>about" class="text-content">About</a>
                             </li>
                             <li>
-                                <a href="contact-us.php" class="text-content">Contact Us</a>
+                                <a href="<?php echo $extension; ?>contact" class="text-content">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -170,22 +174,22 @@
                     <div class="footer-contain">
                         <ul>
                             <li>
-                                <a href="order-success.php" class="text-content">Your Order</a>
+                                <a href="<?php echo $extension; ?>order-success" class="text-content">Your Order</a>
                             </li>
                             <li>
-                                <a href="user-dashboard.php" class="text-content">Your Account</a>
+                                <a href="<?php echo $extension; ?>order-cancel" class="text-content">Cancel Order</a>
                             </li>
                             <li>
-                                <a href="order-tracking.php" class="text-content">Track Order</a>
+                                <a href="<?php echo $extension; ?>order-tracking" class="text-content">Track Order</a>
                             </li>
                             <li>
-                                <a href="wishlist.php" class="text-content">Your Wishlist</a>
+                                <a href="<?php echo $extension; ?>profile" class="text-content">Your Account</a>
                             </li>
                             <li>
-                                <a href="search.php" class="text-content">Search</a>
+                                <a href="<?php echo $extension; ?>wishlist" class="text-content">Your Wishlist</a>
                             </li>
                             <li>
-                                <a href="faq.php" class="text-content">FAQ</a>
+                                <a href="<?php echo $extension; ?>search" class="text-content">Search</a>
                             </li>
                         </ul>
                     </div>

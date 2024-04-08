@@ -4,9 +4,9 @@ RewriteEngine on
 
 RewriteRule ^home index.php [NE,L]
 
-RewriteRule ^search search.php [NE,L]
+RewriteRule ^shop(.*) shop.php
 
-RewriteRule ^shop(.*) shop.php$1
+RewriteRule ^search search.php [NE,L]
 
 RewriteRule ^product product.php [NE,L]
 
