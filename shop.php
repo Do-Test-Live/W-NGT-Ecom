@@ -2,6 +2,7 @@
 session_start();
 require_once('include/dbController.php');
 $db_handle = new DBController();
+require_once('include/settings.php');
 date_default_timezone_set("Asia/Hong_Kong");
 $extension = '';
 
@@ -35,11 +36,11 @@ if ($title == 'shop') {
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NGT-ECom">
-    <meta name="keywords" content="NGT-ECom">
-    <meta name="author" content="NGT-ECom">
+    <meta name="description" content="<?php echo $site_name; ?>">
+    <meta name="keywords" content="<?php echo $site_name; ?>">
+    <meta name="author" content="<?php echo $site_name; ?>">
     <link rel="icon" href="<?php echo $extension; ?>assets/images/favicon/1.png" type="image/x-icon">
-    <title>Shop | NGT-ECom</title>
+    <title>Shop | <?php echo $site_name; ?></title>
 
     <?php include('include/css.php'); ?>
 </head>
@@ -158,10 +159,11 @@ if ($title == 'shop') {
 
                     for ($i = 0; $i < $row_count; $i++) {
                         if ($title == str_replace(' ', '-', $category[$i]['c_name'])) {
-                            $addQuery = " and c.c_name='" . str_replace('-', ' ', $title) . "'";
+                            $addQuery = " and c.c_name='" . str_replace('-', ' ', $title) . "' ";
                             break;
-                        } else {
-                            $addQuery = " and s.s_name='" . str_replace('-', ' ', $title) . "'";
+                        }
+                        if ($extension == '../../') {
+                            $addQuery = " and s.s_name='" . str_replace('-', ' ', $title) . "' ";
                         }
                     }
 
@@ -173,6 +175,7 @@ if ($title == 'shop') {
 
                     for ($i = 0; $i < $row_count; $i = $i + 1) {
                         $product_id = $data[$i]['id'];
+
                         ?>
                         <div>
                             <div class="product-box-3 h-100 wow fadeInUp">
@@ -210,7 +213,7 @@ if ($title == 'shop') {
                                         </p>
                                         <h6 class="unit">250 ml</h6>
                                         <h5 class="price"><span
-                                                    class="theme-color">$<?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></span>
+                                                    class="theme-color"><?php echo $money_symbol; ?><?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></span>
                                             <del>
                                                 <?php
                                                 if ($data[$i]['p_price'] != ($data[$i]['p_price'] - $data[$i]['discount'])) {
@@ -304,7 +307,7 @@ if ($title == 'shop') {
                     <div class="col-lg-6">
                         <div class="right-sidebar-modal">
                             <h4 class="title-name">Peanut Butter Bite Premium Butter Cookies 600 g</h4>
-                            <h4 class="price">$36.99</h4>
+                            <h4 class="price"><?php echo $money_symbol; ?>36.99</h4>
 
                             <div class="product-detail">
                                 <h4>Product Details :</h4>

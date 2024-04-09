@@ -1,4 +1,4 @@
-ErrorDocument 404 http://localhost/W-NGT-Ecom/admin/404
+ErrorDocument 404 http://localhost/W-<?php echo $site_name; ?>/admin/404
 
 RewriteEngine on
 

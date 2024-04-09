@@ -2,6 +2,7 @@
 session_start();
 require_once('include/dbController.php');
 $db_handle = new DBController();
+require_once('include/settings.php');
 date_default_timezone_set("Asia/Hong_Kong");
 $extension = '';
 ?>
@@ -174,7 +175,7 @@ $extension = '';
                                 <td style="display: block;">
                                     <h3
                                         style="font-weight: 700; font-size: 20px; margin: 0; text-transform: uppercase;">
-                                        Hi Jonny And Welcome To NGT-ECom.!</h3>
+                                        Hi Jonny And Welcome To <?php echo $site_name; ?>.!</h3>
                                 </td>
 
                                 <td>

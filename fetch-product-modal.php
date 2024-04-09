@@ -2,14 +2,17 @@
 session_start();
 require_once('include/dbController.php');
 $db_handle = new DBController();
+require_once('include/settings.php');
 date_default_timezone_set("Asia/Hong_Kong");
 $extension = '';
 if (isset($_POST["id"])) {
 
-    if ($_POST['extension'] == 1) {
-        $extension = '../';
-    } else if ($_POST['extension'] == 2) {
-        $extension = '../../';
+    if(isset($_POST['extension'])){
+        if ($_POST['extension'] == 1) {
+            $extension = '../';
+        } else if ($_POST['extension'] == 2) {
+            $extension = '../../';
+        }
     }
 
     $data = $db_handle->runQuery("SELECT * FROM category as c, subcategory as s, product as p where p.category_id=c.id and p.subcategory_id=s.id and p.id='{$_POST["id"]}'");
@@ -26,7 +29,7 @@ if (isset($_POST["id"])) {
             <form action="?action=add" method="post">
                 <input type="hidden" name="product_id" value="<?php echo $data[0]['id']; ?>" required>
                 <h4 class="title-name"><?php echo $data[0]['p_name']; ?></h4>
-                <h4 class="price">$<?php echo $data[0]['p_price'] - $data[0]['discount']; ?></h4>
+                <h4 class="price"><?php echo $money_symbol; ?><?php echo $data[0]['p_price'] - $data[0]['discount']; ?></h4>
                 <div class="product-detail">
                     <h4>Product Details :</h4>
                     <p>

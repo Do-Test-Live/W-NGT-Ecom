@@ -90,7 +90,7 @@ if (isset($_SESSION["cart_item"])) {
                         <div class="notification-slider">
                             <div>
                                 <div class="timer-notification">
-                                    <h6><strong class="me-1">Welcome To NGT-ECom!</strong>Wrap new offers/gift
+                                    <h6><strong class="me-1">Welcome To <?php echo $site_name; ?>!</strong>Wrap new offers/gift
                                         every signle day on Weekends.<strong class="ms-1">New Coupon Code: Fast024
                                         </strong>
 
@@ -116,21 +116,21 @@ if (isset($_SESSION["cart_item"])) {
                             <div class="dropdown theme-form-select">
                                 <button class="btn dropdown-toggle" type="button" id="select-language"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="assets/images/country/united-states.png"
+                                    <img src="<?php echo $extension; ?>assets/images/country/united-states.png"
                                          class="img-fluid blur-up lazyload" alt="">
                                     <span>English</span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="select-language">
                                     <li>
                                         <a class="dropdown-item" href="javascript:void(0)" id="english">
-                                            <img src="assets/images/country/united-kingdom.png"
+                                            <img src="<?php echo $extension; ?>assets/images/country/united-kingdom.png"
                                                  class="img-fluid blur-up lazyload" alt="">
                                             <span>English</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="javascript:void(0)" id="france">
-                                            <img src="assets/images/country/hk.png"
+                                            <img src="<?php echo $extension; ?>assets/images/country/hk.png"
                                                  class="img-fluid blur-up lazyload" alt="">
                                             <span>Hong Kong</span>
                                         </a>
@@ -163,7 +163,7 @@ if (isset($_SESSION["cart_item"])) {
                                 </span>
                         </button>
                         <a href="home" class="web-logo nav-logo">
-                            <img src="assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="">
+                            <img src="<?php echo $extension; ?>assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="">
                         </a>
 
                         <div class="middle-box">
@@ -235,7 +235,7 @@ if (isset($_SESSION["cart_item"])) {
                                                         <li class="product-box-contain">
                                                             <div class="drop-cart">
                                                                 <a href="product" class="drop-image">
-                                                                    <img src="<?php echo $item["image"]; ?>"
+                                                                    <img src="<?php echo $extension; ?><?php echo $item["image"]; ?>"
                                                                          class="blur-up lazyload" alt="">
                                                                 </a>
 

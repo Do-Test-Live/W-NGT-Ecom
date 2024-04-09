@@ -1,1 +1,1 @@
-# W-NGT-Ecom
+# W-<?php echo $site_name; ?>

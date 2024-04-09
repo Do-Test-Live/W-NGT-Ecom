@@ -2,6 +2,7 @@
 session_start();
 require_once('include/dbController.php');
 $db_handle = new DBController();
+require_once('include/settings.php');
 date_default_timezone_set("Asia/Hong_Kong");
 $extension = '';
 ?>
@@ -11,11 +12,11 @@ $extension = '';
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NGT-ECom">
-    <meta name="keywords" content="NGT-ECom">
-    <meta name="author" content="NGT-ECom">
+    <meta name="description" content="<?php echo $site_name; ?>">
+    <meta name="keywords" content="<?php echo $site_name; ?>">
+    <meta name="author" content="<?php echo $site_name; ?>">
     <link rel="icon" href="<?php echo $extension; ?>assets/images/favicon/1.png" type="image/x-icon">
-    <title>Order Tracking | NGT-ECom</title>
+    <title>Order Tracking | <?php echo $site_name; ?></title>
 
     <?php include('include/css.php'); ?>
 </head>

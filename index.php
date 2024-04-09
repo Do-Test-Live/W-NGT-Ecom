@@ -2,6 +2,7 @@
 session_start();
 require_once('include/dbController.php');
 $db_handle = new DBController();
+require_once('include/settings.php');
 date_default_timezone_set("Asia/Hong_Kong");
 $extension = '';
 ?>
@@ -11,11 +12,11 @@ $extension = '';
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NGT-ECom">
-    <meta name="keywords" content="NGT-ECom">
-    <meta name="author" content="NGT-ECom">
-    <link rel="icon" href="assets/images/favicon/1.png" type="image/x-icon">
-    <title>Home | NGT-ECom</title>
+    <meta name="description" content="<?php echo $meta_description; ?>">
+    <meta name="keywords" content="<?php echo $site_name; ?>">
+    <meta name="author" content="<?php echo $site_name; ?>">
+    <link rel="icon" href="<?php echo $favicon; ?>" type="image/x-icon">
+    <title>Home | <?php echo $site_name; ?></title>
 
     <?php include('include/css.php'); ?>
 </head>
@@ -144,7 +145,7 @@ $extension = '';
                                     </a>
 
                                     <h5 class="sold text-content">
-                                        <span class="theme-color price">$<?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></span>
+                                        <span class="theme-color price"><?php echo $money_symbol; ?><?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></span>
                                         <del>
                                             <?php
                                             if ($data[$i]['p_price'] != ($data[$i]['p_price'] - $data[$i]['discount'])) {
@@ -212,7 +213,7 @@ $extension = '';
                                         </a>
 
                                         <h5 class="sold text-content">
-                                            <span class="theme-color price">$<?php echo $data[$i + 1]['p_price'] - $data[$i + 1]['discount']; ?></span>
+                                            <span class="theme-color price"><?php echo $money_symbol; ?><?php echo $data[$i + 1]['p_price'] - $data[$i + 1]['discount']; ?></span>
 
                                             <del>
                                                 <?php
@@ -286,11 +287,11 @@ $extension = '';
                                     <a onclick="showProduct(<?php echo $product_id; ?>);">
                                         <h6><?php echo $data[$i]['p_name']; ?></h6>
                                     </a>
-                                    <h5>$<?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?>
+                                    <h5><?php echo $money_symbol; ?><?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?>
                                         <del>
                                             <?php
                                             if ($data[$i]['p_price'] != ($data[$i]['p_price'] - $data[$i]['discount'])) {
-                                                echo '$' . $data[$i]['p_price'];
+                                                echo $money_symbol . $data[$i]['p_price'];
                                             }
                                             ?>
                                         </del>
@@ -313,11 +314,11 @@ $extension = '';
                                         <a onclick="showProduct(<?php echo $product_id; ?>);">
                                             <h6><?php echo $data[$i + 1]['p_name']; ?></h6>
                                         </a>
-                                        <h5>$<?php echo $data[$i + 1]['p_price'] - $data[$i + 1]['discount']; ?>
+                                        <h5><?php echo $money_symbol; ?><?php echo $data[$i + 1]['p_price'] - $data[$i + 1]['discount']; ?>
                                             <del>
                                                 <?php
                                                 if ($data[$i + 1]['p_price'] != ($data[$i + 1]['p_price'] - $data[$i + 1]['discount'])) {
-                                                    echo '$' . $data[$i + 1]['p_price'];
+                                                    echo $money_symbol . $data[$i + 1]['p_price'];
                                                 }
                                                 ?>
                                             </del>
@@ -343,11 +344,11 @@ $extension = '';
                                         <a onclick="showProduct(<?php echo $product_id; ?>);">
                                             <h6><?php echo $data[$i + 2]['p_name']; ?></h6>
                                         </a>
-                                        <h5>$<?php echo $data[$i + 2]['p_price'] - $data[$i + 2]['discount']; ?>
+                                        <h5><?php echo $money_symbol; ?><?php echo $data[$i + 2]['p_price'] - $data[$i + 2]['discount']; ?>
                                             <del>
                                                 <?php
                                                 if ($data[$i + 2]['p_price'] != ($data[$i + 2]['p_price'] - $data[$i + 2]['discount'])) {
-                                                    echo '$' . $data[$i + 2]['p_price'];
+                                                    echo $money_symbol . $data[$i + 2]['p_price'];
                                                 }
                                                 ?>
                                             </del>
@@ -412,7 +413,7 @@ $extension = '';
                                     </a>
 
                                     <h5 class="sold text-content">
-                                        <span class="theme-color price">$<?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></span>
+                                        <span class="theme-color price"><?php echo $money_symbol; ?><?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></span>
                                         <del>
                                             <?php
                                             if ($data[$i]['p_price'] != ($data[$i]['p_price'] - $data[$i]['discount'])) {
@@ -480,7 +481,7 @@ $extension = '';
                                         </a>
 
                                         <h5 class="sold text-content">
-                                            <span class="theme-color price">$<?php echo $data[$i + 1]['p_price'] - $data[$i + 1]['discount']; ?></span>
+                                            <span class="theme-color price"><?php echo $money_symbol; ?><?php echo $data[$i + 1]['p_price'] - $data[$i + 1]['discount']; ?></span>
 
                                             <del>
                                                 <?php
@@ -618,7 +619,7 @@ $extension = '';
                             </h2>
                             <h2 class="home-name text-uppercase">sale</h2>
                             <h3 class="text-pacifico fw-normal text-content text-center">
-                                www.ngt-ecom.com
+                                www.<?php echo $site_name; ?>.com
                             </h3>
                             <ul class="social-icon">
                                 <li>
@@ -685,7 +686,7 @@ $extension = '';
                                         <a onclick="showProduct(<?php echo $product_id; ?>);">
                                             <h5><?php echo $data[$i]['p_name']; ?></h5>
                                         </a>
-                                        <h6>$ <?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></h6>
+                                        <h6><?php echo $money_symbol; ?> <?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></h6>
                                     </div>
                                 </div>
                                 <?php
@@ -702,7 +703,7 @@ $extension = '';
                                             <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+1]['p_name']; ?></h5>
                                             </a>
-                                            <h6>$ <?php echo $data[$i+1]['p_price'] - $data[$i+1]['discount']; ?></h6>
+                                            <h6><?php echo $money_symbol; ?> <?php echo $data[$i+1]['p_price'] - $data[$i+1]['discount']; ?></h6>
                                         </div>
                                     </div>
                                     <?php
@@ -722,7 +723,7 @@ $extension = '';
                                             <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+2]['p_name']; ?></h5>
                                             </a>
-                                            <h6>$ <?php echo $data[$i+2]['p_price'] - $data[$i+1]['discount']; ?></h6>
+                                            <h6><?php echo $money_symbol; ?> <?php echo $data[$i+2]['p_price'] - $data[$i+1]['discount']; ?></h6>
                                         </div>
                                     </div>
                                     <?php
@@ -763,7 +764,7 @@ $extension = '';
                                         <a onclick="showProduct(<?php echo $product_id; ?>);">
                                             <h5><?php echo $data[$i]['p_name']; ?></h5>
                                         </a>
-                                        <h6>$ <?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></h6>
+                                        <h6><?php echo $money_symbol; ?> <?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></h6>
                                     </div>
                                 </div>
                                 <?php
@@ -780,7 +781,7 @@ $extension = '';
                                             <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+1]['p_name']; ?></h5>
                                             </a>
-                                            <h6>$ <?php echo $data[$i+1]['p_price'] - $data[$i+1]['discount']; ?></h6>
+                                            <h6><?php echo $money_symbol; ?> <?php echo $data[$i+1]['p_price'] - $data[$i+1]['discount']; ?></h6>
                                         </div>
                                     </div>
                                     <?php
@@ -800,7 +801,7 @@ $extension = '';
                                             <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+2]['p_name']; ?></h5>
                                             </a>
-                                            <h6>$ <?php echo $data[$i+2]['p_price'] - $data[$i+1]['discount']; ?></h6>
+                                            <h6><?php echo $money_symbol; ?> <?php echo $data[$i+2]['p_price'] - $data[$i+1]['discount']; ?></h6>
                                         </div>
                                     </div>
                                     <?php
@@ -841,7 +842,7 @@ $extension = '';
                                         <a onclick="showProduct(<?php echo $product_id; ?>);">
                                             <h5><?php echo $data[$i]['p_name']; ?></h5>
                                         </a>
-                                        <h6>$ <?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></h6>
+                                        <h6><?php echo $money_symbol; ?> <?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></h6>
                                     </div>
                                 </div>
                                 <?php
@@ -858,7 +859,7 @@ $extension = '';
                                             <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+1]['p_name']; ?></h5>
                                             </a>
-                                            <h6>$ <?php echo $data[$i+1]['p_price'] - $data[$i+1]['discount']; ?></h6>
+                                            <h6><?php echo $money_symbol; ?> <?php echo $data[$i+1]['p_price'] - $data[$i+1]['discount']; ?></h6>
                                         </div>
                                     </div>
                                     <?php
@@ -878,7 +879,7 @@ $extension = '';
                                             <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+2]['p_name']; ?></h5>
                                             </a>
-                                            <h6>$ <?php echo $data[$i+2]['p_price'] - $data[$i+1]['discount']; ?></h6>
+                                            <h6><?php echo $money_symbol; ?> <?php echo $data[$i+2]['p_price'] - $data[$i+1]['discount']; ?></h6>
                                         </div>
                                     </div>
                                     <?php
@@ -936,7 +937,7 @@ $extension = '';
                                             <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+1]['p_name']; ?></h5>
                                             </a>
-                                            <h6>$ <?php echo $data[$i+1]['p_price'] - $data[$i+1]['discount']; ?></h6>
+                                            <h6><?php echo $money_symbol; ?> <?php echo $data[$i+1]['p_price'] - $data[$i+1]['discount']; ?></h6>
                                         </div>
                                     </div>
                                     <?php
@@ -956,7 +957,7 @@ $extension = '';
                                             <a onclick="showProduct(<?php echo $product_id; ?>);">
                                                 <h5><?php echo $data[$i+2]['p_name']; ?></h5>
                                             </a>
-                                            <h6>$ <?php echo $data[$i+2]['p_price'] - $data[$i+1]['discount']; ?></h6>
+                                            <h6><?php echo $money_symbol; ?> <?php echo $data[$i+2]['p_price'] - $data[$i+1]['discount']; ?></h6>
                                         </div>
                                     </div>
                                     <?php
