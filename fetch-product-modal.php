@@ -75,7 +75,7 @@ if (isset($_POST["id"])) {
                     <button class="btn btn-md add-cart-button icon" type="submit">
                         Add To Cart
                     </button>
-                    <button onclick="location.href = 'product-left.html';"
+                    <button type="button" onclick="location.href = '<?php echo $extension; ?>product/<?php echo str_replace(' ', '-',$data[0]['p_name']); ?>';"
                             class="btn theme-bg-color view-button icon text-white fw-bold btn-md">
                         View More Details
                     </button>

@@ -200,7 +200,7 @@ $extension = '';
 
 
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                                <a href="wishlist.html" class="notifi-wishlist">
+                                                <a href="wishlist" class="notifi-wishlist">
                                                     <i data-feather="heart"></i>
                                                 </a>
                                             </li>
@@ -400,7 +400,7 @@ $extension = '';
 
 
                                         <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
+                                            <a href="wishlist" class="notifi-wishlist">
                                                 <i data-feather="heart"></i>
                                             </a>
                                         </li>
@@ -468,7 +468,7 @@ $extension = '';
 
 
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                                <a href="wishlist.html" class="notifi-wishlist">
+                                                <a href="wishlist" class="notifi-wishlist">
                                                     <i data-feather="heart"></i>
                                                 </a>
                                             </li>

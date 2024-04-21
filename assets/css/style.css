@@ -5099,7 +5099,13 @@ ul {
 
 li {
     display: inline-block;
-    font-size: 14px
+    font-size: 14px;
+}
+
+li.product-box-contain {
+    display: inline-block;
+    font-size: 14px;
+    width:100%;
 }
 
 p {
