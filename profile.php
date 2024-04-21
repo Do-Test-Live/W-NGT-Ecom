@@ -4,6 +4,7 @@ require_once('include/dbController.php');
 $db_handle = new DBController();
 require_once('include/settings.php');
 date_default_timezone_set("Asia/Hong_Kong");
+require_once('include/cart-calculation.php');
 $extension = '';
 ?>
 <!DOCTYPE html>

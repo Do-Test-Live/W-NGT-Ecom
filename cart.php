@@ -4,6 +4,7 @@ require_once('include/dbController.php');
 $db_handle = new DBController();
 require_once('include/settings.php');
 date_default_timezone_set("Asia/Hong_Kong");
+require_once('include/cart-calculation.php');
 $extension = '';
 ?>
 <!DOCTYPE html>
@@ -35,7 +36,7 @@ $extension = '';
                     <nav>
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <a href="index.html">
+                                <a href="home">
                                     <i class="fa-solid fa-house"></i>
                                 </a>
                             </li>
@@ -58,305 +59,68 @@ $extension = '';
                     <div class="table-responsive-xl">
                         <table class="table">
                             <tbody>
-                            <tr class="product-box-contain">
-                                <td class="product-detail">
-                                    <div class="product border-0">
-                                        <a href="product-left-thumbnail.html" class="product-image">
-                                            <img src="<?php echo $extension; ?>assets/images/vegetable/product/1.png"
-                                                 class="img-fluid blur-up lazyload" alt="">
-                                        </a>
-                                        <div class="product-detail">
-                                            <ul>
-                                                <li class="name">
-                                                    <a href="product-left-thumbnail.html">Bell pepper</a>
-                                                </li>
-
-                                                <li class="text-content"><span class="text-title">Sold
-                                                                By:</span> Fresho
-                                                </li>
-
-                                                <li class="text-content"><span
-                                                            class="text-title">Quantity</span> - 500 g
-                                                </li>
-
-                                                <li>
-                                                    <h5 class="text-content d-inline-block">Price :</h5>
-                                                    <span>$35.10</span>
-                                                    <span class="text-content">$45.68</span>
-                                                </li>
-
-                                                <li>
-                                                    <h5 class="saving theme-color">Saving : $20.68</h5>
-                                                </li>
-
-                                                <li class="quantity-price-box">
-                                                    <div class="cart_qty">
-                                                        <div class="input-group">
-                                                            <button type="button" class="btn qty-left-minus"
-                                                                    data-type="minus" data-field="">
-                                                                <i class="fa fa-minus ms-0"
-                                                                   aria-hidden="true"></i>
-                                                            </button>
-                                                            <input class="form-control input-number qty-input"
-                                                                   type="text" name="quantity" value="0">
-                                                            <button type="button" class="btn qty-right-plus"
-                                                                    data-type="plus" data-field="">
-                                                                <i class="fa fa-plus ms-0"
-                                                                   aria-hidden="true"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li>
-                                                    <h5>Total: $35.10</h5>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td class="price">
-                                    <h4 class="table-title text-content">Price</h4>
-                                    <h5>$35.10
-                                        <del class="text-content">$45.68</del>
-                                    </h5>
-                                    <h6 class="theme-color">You Save : $20.68</h6>
-                                </td>
-
-                                <td class="quantity">
-                                    <h4 class="table-title text-content">Qty</h4>
-                                    <div class="quantity-price">
-                                        <div class="cart_qty">
-                                            <div class="input-group">
-                                                <button type="button" class="btn qty-left-minus"
-                                                        data-type="minus" data-field="">
-                                                    <i class="fa fa-minus ms-0" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="btn qty-right-plus"
-                                                        data-type="plus" data-field="">
-                                                    <i class="fa fa-plus ms-0" aria-hidden="true"></i>
-                                                </button>
+                            <?php
+                            $total_quantity_new = 0;
+                            $total_price_new = 0;
+                            if (isset($_SESSION["cart_item"])) {
+                                foreach ($_SESSION["cart_item"] as $item) {
+                                    $item_price = $item["quantity"] * $item["price"];
+                                    ?>
+                                    <tr class="product-box-contain">
+                                        <td class="product-detail">
+                                            <div class="product border-0">
+                                                <a href="#" class="product-image">
+                                                    <img src="<?php echo $extension; ?><?php echo $item["image"]; ?>"
+                                                         class="img-fluid blur-up lazyload" alt="">
+                                                </a>
+                                                <div class="product-detail">
+                                                    <h4 class="table-title text-content">Name</h4>
+                                                    <h5><a href="#"><?php echo $item["name"]; ?></a></h5>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </td>
+                                        </td>
 
-                                <td class="subtotal">
-                                    <h4 class="table-title text-content">Total</h4>
-                                    <h5>$35.10</h5>
-                                </td>
+                                        <td class="price">
+                                            <h4 class="table-title text-content">Price</h4>
+                                            <h5>
+                                                <?php echo $money_symbol . $item["price"]; ?>
+                                            </h5>
+                                        </td>
 
-                                <td class="save-remove">
-                                    <h4 class="table-title text-content">Action</h4>
-                                    <a class="save notifi-wishlist" href="javascript:void(0)">Save for later</a>
-                                    <a class="remove close_button" href="javascript:void(0)">Remove</a>
-                                </td>
-                            </tr>
-
-                            <tr class="product-box-contain">
-                                <td class="product-detail">
-                                    <div class="product border-0">
-                                        <a href="product-left-thumbnail.html" class="product-image">
-                                            <img src="<?php echo $extension; ?>assets/images/vegetable/product/2.png"
-                                                 class="img-fluid blur-up lazyload" alt="">
-                                        </a>
-                                        <div class="product-detail">
-                                            <ul>
-                                                <li class="name">
-                                                    <a href="product-left-thumbnail.html">Eggplant</a>
-                                                </li>
-
-                                                <li class="text-content"><span class="text-title">Sold
-                                                                By:</span> Nesto
-                                                </li>
-
-                                                <li class="text-content"><span
-                                                            class="text-title">Quantity</span> - 250 g
-                                                </li>
-
-                                                <li>
-                                                    <h5 class="text-content d-inline-block">Price :</h5>
-                                                    <span>$35.10</span>
-                                                    <span class="text-content">$45.68</span>
-                                                </li>
-
-                                                <li>
-                                                    <h5 class="saving theme-color">Saving : $20.68</h5>
-                                                </li>
-
-                                                <li class="quantity">
-                                                    <div class="quantity-price">
-                                                        <div class="cart_qty">
-                                                            <div class="input-group">
-                                                                <button type="button" class="btn qty-left-minus"
-                                                                        data-type="minus" data-field="">
-                                                                    <i class="fa fa-minus ms-0"
-                                                                       aria-hidden="true"></i>
-                                                                </button>
-                                                                <input
-                                                                        class="form-control input-number qty-input"
-                                                                        type="text" name="quantity" value="0">
-                                                                <button type="button" class="btn qty-right-plus"
-                                                                        data-type="plus" data-field="">
-                                                                    <i class="fa fa-plus ms-0"
-                                                                       aria-hidden="true"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li>
-                                                    <h5>Total: $52.95</h5>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td class="price">
-                                    <h4 class="table-title text-content">Price</h4>
-                                    <h5>$52.95
-                                        <del class="text-content">$68.49</del>
-                                    </h5>
-                                    <h6 class="theme-color">You Save : $15.14</h6>
-                                </td>
-
-                                <td class="quantity">
-                                    <h4 class="table-title text-content">Qty</h4>
-                                    <div class="quantity-price">
-                                        <div class="cart_qty">
-                                            <div class="input-group">
-                                                <button type="button" class="btn qty-left-minus"
-                                                        data-type="minus" data-field="">
-                                                    <i class="fa fa-minus ms-0" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="btn qty-right-plus"
-                                                        data-type="plus" data-field="">
-                                                    <i class="fa fa-plus ms-0" aria-hidden="true"></i>
-                                                </button>
+                                        <td class="quantity">
+                                            <h4 class="table-title text-content">Qty</h4>
+                                            <div class="quantity-price">
+                                                <div class="cart_qty">
+                                                    <?php echo $item["quantity"]; ?>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </td>
+                                        </td>
 
-                                <td class="subtotal">
-                                    <h4 class="table-title text-content">Total</h4>
-                                    <h5>$52.95</h5>
-                                </td>
+                                        <td class="subtotal">
+                                            <h4 class="table-title text-content">Total</h4>
+                                            <h5><?php echo $money_symbol . number_format($item_price, 2); ?></h5>
+                                        </td>
 
-                                <td class="save-remove">
-                                    <h4 class="table-title text-content">Action</h4>
-                                    <a class="save notifi-wishlist" href="javascript:void(0)">Save for later</a>
-                                    <a class="remove close_button" href="javascript:void(0)">Remove</a>
-                                </td>
-                            </tr>
+                                        <td class="save-remove">
+                                            <h4 class="table-title text-content">Action</h4>
+                                            <a class="remove close_button"
+                                               onclick="location.href = '?action=remove&product_id=<?php echo $item["product_id"]; ?>'">Remove</a>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    $total_quantity_new += $item["quantity"];
+                                    $total_price_new += ($item["price"] * $item["quantity"]);
+                                }
 
-                            <tr class="product-box-contain">
-                                <td class="product-detail">
-                                    <div class="product border-0">
-                                        <a href="product-left-thumbnail.html" class="product-image">
-                                            <img src="<?php echo $extension; ?>assets/images/vegetable/product/3.png"
-                                                 class="img-fluid blur-up lazyload" alt="">
-                                        </a>
-                                        <div class="product-detail">
-                                            <ul>
-                                                <li class="name">
-                                                    <a href="product-left-thumbnail.html">Onion</a>
-                                                </li>
-
-                                                <li class="text-content"><span class="text-title">Sold
-                                                                By:</span> Basket
-                                                </li>
-
-                                                <li class="text-content"><span
-                                                            class="text-title">Quantity</span> - 750 g
-                                                </li>
-
-                                                <li>
-                                                    <h5 class="text-content d-inline-block">Price :</h5>
-                                                    <span>$35.10</span>
-                                                    <span class="text-content">$45.68</span>
-                                                </li>
-
-                                                <li>
-                                                    <h5 class="saving theme-color">Saving : $20.68</h5>
-                                                </li>
-
-                                                <li class="quantity">
-                                                    <div class="quantity-price">
-                                                        <div class="cart_qty">
-                                                            <div class="input-group">
-                                                                <button type="button" class="btn qty-left-minus"
-                                                                        data-type="minus" data-field="">
-                                                                    <i class="fa fa-minus ms-0"
-                                                                       aria-hidden="true"></i>
-                                                                </button>
-                                                                <input
-                                                                        class="form-control input-number qty-input"
-                                                                        type="text" name="quantity" value="0">
-                                                                <button type="button" class="btn qty-right-plus"
-                                                                        data-type="plus" data-field="">
-                                                                    <i class="fa fa-plus ms-0"
-                                                                       aria-hidden="true"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li>
-                                                    <h5>Total: $67.36</h5>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td class="price">
-                                    <h4 class="table-title text-content">Price</h4>
-                                    <h5>$67.36
-                                        <del class="text-content">$96.58</del>
-                                    </h5>
-                                    <h6 class="theme-color">You Save : $29.22</h6>
-                                </td>
-
-                                <td class="quantity">
-                                    <h4 class="table-title text-content">Qty</h4>
-                                    <div class="quantity-price">
-                                        <div class="cart_qty">
-                                            <div class="input-group">
-                                                <button type="button" class="btn qty-left-minus"
-                                                        data-type="minus" data-field="">
-                                                    <i class="fa fa-minus ms-0" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="btn qty-right-plus"
-                                                        data-type="plus" data-field="">
-                                                    <i class="fa fa-plus ms-0" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td class="subtotal">
-                                    <h4 class="table-title text-content">Total</h4>
-                                    <h5>$67.36</h5>
-                                </td>
-
-                                <td class="save-remove">
-                                    <h4 class="table-title text-content">Action</h4>
-                                    <a class="save notifi-wishlist" href="javascript:void(0)">Save for later</a>
-                                    <a class="remove close_button" href="javascript:void(0)">Remove</a>
-                                </td>
-                            </tr>
+                            } else {
+                                ?>
+                                <tr>
+                                    <td colspan="5" class="text-center"><strong>You have 0 items in the
+                                            cart</strong></td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>
@@ -381,7 +145,7 @@ $extension = '';
                         <ul>
                             <li>
                                 <h4>Subtotal</h4>
-                                <h4 class="price">$125.65</h4>
+                                <h4 class="price"><?php echo $money_symbol . number_format($total_price_new, 2); ?></h4>
                             </li>
 
                             <li>
@@ -391,28 +155,44 @@ $extension = '';
 
                             <li class="align-items-start">
                                 <h4>Shipping</h4>
-                                <h4 class="price text-end">$6.90</h4>
+                                <?php if ($total_quantity_new != 0) {
+                                    ?>
+                                    <h4 class="price text-end"><?php echo $money_symbol . number_format(100, 2); ?></h4>
+                                    <?php
+                                }else{
+                                    ?>
+                                    <h4 class="price text-end"><?php echo $money_symbol . number_format(0, 2); ?></h4>
+                                    <?php
+                                } ?>
                             </li>
                         </ul>
                     </div>
 
                     <ul class="summery-total">
                         <li class="list-total border-top-0">
-                            <h4>Total (USD)</h4>
-                            <h4 class="price theme-color">$132.58</h4>
+                            <h4>Total (BDT)</h4>
+                            <?php if ($total_quantity_new != 0) {
+                                ?>
+                                <h4 class="price theme-color"><?php echo $money_symbol . number_format($total_price_new + 100, 2); ?></h4>
+                                <?php
+                            }else{
+                                ?>
+                                <h4 class="price theme-color"><?php echo $money_symbol . number_format(0, 2); ?></h4>
+                                <?php
+                            } ?>
                         </li>
                     </ul>
 
                     <div class="button-group cart-button">
                         <ul>
                             <li>
-                                <button onclick="location.href = 'checkout.html';"
+                                <button onclick="location.href = 'checkout';"
                                         class="btn btn-animation proceed-btn fw-bold">Process To Checkout
                                 </button>
                             </li>
 
                             <li>
-                                <button onclick="location.href = 'index.html';"
+                                <button onclick="location.href = 'home';"
                                         class="btn btn-light shopping-button text-dark">
                                     <i class="fa-solid fa-arrow-left-long"></i>Return To Shopping
                                 </button>

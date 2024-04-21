@@ -1,78 +1,3 @@
-<?php
-if (!empty($_GET["action"])) {
-    switch ($_GET["action"]) {
-        case "add":
-            if (!empty($_POST["quantity"])) {
-
-                $productByCode = $db_handle->runQuery("SELECT * FROM product WHERE id='" . $_POST["product_id"] . "'");
-                $itemArray = array('PP' . $productByCode[0]["id"] => array('name' => $productByCode[0]["p_name"], 'image' => $productByCode[0]["main_image"], 'product_id' => 'PP' . $productByCode[0]["id"], 'quantity' => $_POST["quantity"], 'price' => $productByCode[0]["p_price"]));
-
-                if (!empty($_SESSION["cart_item"])) {
-                    if (in_array('PP' . $productByCode[0]["id"], array_keys($_SESSION["cart_item"]))) {
-                        foreach ($_SESSION["cart_item"] as $k => $v) {
-                            if ('PP' . $productByCode[0]["id"] == $k) {
-                                if (empty($_SESSION["cart_item"][$k]["quantity"])) {
-                                    $_SESSION["cart_item"][$k]["quantity"] = 0;
-                                }
-                                $_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
-                            }
-                        }
-                    } else {
-                        $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArray);
-                    }
-                } else {
-                    $_SESSION["cart_item"] = $itemArray;
-                }
-
-                echo "<script>
-                document.cookie = 'alert = 10;';
-                </script>";
-
-            }
-            break;
-        case "remove":
-            if (!empty($_SESSION["cart_item"])) {
-                foreach ($_SESSION["cart_item"] as $k => $v) {
-                    if ($_GET["product_id"] == $k)
-                        unset($_SESSION["cart_item"][$k]);
-                    if (empty($_SESSION["cart_item"]))
-                        unset($_SESSION["cart_item"]);
-                }
-            }
-            break;
-        case "update":
-            if (!empty($_POST["quantity"]) && !empty($_POST["product_id"])) {
-                // Loop through the submitted quantities and update the cart
-                for ($i = 0; $i < count($_POST["product_id"]); $i++) {
-                    $code = $_POST["product_id"][$i];
-                    $quantity = $_POST["quantity"][$i];
-
-                    // Ensure quantity is a positive integer
-                    if (is_numeric($quantity) && $quantity > 0) {
-                        if (isset($_SESSION["cart_item"][$code])) {
-                            $_SESSION["cart_item"][$code]["quantity"] = $quantity;
-                        }
-                    }
-                }
-            }
-            break;
-        case "empty":
-            unset($_SESSION["cart_item"]);
-            break;
-    }
-}
-
-$total_quantity = 0;
-$total_price = 0;
-if (isset($_SESSION["cart_item"])) {
-    foreach ($_SESSION["cart_item"] as $item) {
-        $item_price = $item["quantity"] * $item["price"];
-        $total_quantity += $item["quantity"];
-        $total_price += ($item["price"] * $item["quantity"]);
-    }
-}
-?>
-
 <!-- Header Start -->
 <header class="pb-md-4 pb-0">
     <div class="header-top">
@@ -244,7 +169,7 @@ if (isset($_SESSION["cart_item"])) {
                                                                         <h5><?php echo $item["name"]; ?></h5>
                                                                     </a>
                                                                     <h6><span><?php echo $item["quantity"]; ?> x</span>
-                                                                        $<?php echo $item["price"]; ?></h6>
+                                                                        <?php echo $money_symbol.$item["price"]; ?></h6>
                                                                     <button onclick="location.href = '?action=remove&product_id=<?php echo $item["product_id"]; ?>'"
                                                                        class="close-button close_button">
                                                                         <i class="fa-solid fa-xmark"></i>
@@ -260,12 +185,12 @@ if (isset($_SESSION["cart_item"])) {
 
                                             <div class="price-box">
                                                 <h5>Total :</h5>
-                                                <h4 class="theme-color fw-bold"><?php echo '$' . $total_price; ?></h4>
+                                                <h4 class="theme-color fw-bold"><?php echo $money_symbol . $total_price; ?></h4>
                                             </div>
 
                                             <div class="button-group">
-                                                <a href="cart" class="btn btn-sm cart-button">View Cart</a>
-                                                <a href="checkout" class="btn btn-sm cart-button theme-bg-color
+                                                <a href="<?php echo $extension; ?>cart" class="btn btn-sm cart-button">View Cart</a>
+                                                <a href="<?php echo $extension; ?>checkout" class="btn btn-sm cart-button theme-bg-color
                                                     text-white">Checkout</a>
                                             </div>
                                         </div>
@@ -286,15 +211,15 @@ if (isset($_SESSION["cart_item"])) {
                                         <ul class="user-box-name">
                                             <li class="product-box-contain">
                                                 <i></i>
-                                                <a href="login">Log In</a>
+                                                <a href="<?php echo $extension; ?>login">Log In</a>
                                             </li>
 
                                             <li class="product-box-contain">
-                                                <a href="signup">Register</a>
+                                                <a href="<?php echo $extension; ?>signup">Register</a>
                                             </li>
 
                                             <li class="product-box-contain">
-                                                <a href="forgot-password">Forgot Password</a>
+                                                <a href="<?php echo $extension; ?>forgot-password">Forgot Password</a>
                                             </li>
                                         </ul>
                                     </div>
