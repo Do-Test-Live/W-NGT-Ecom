@@ -161,22 +161,12 @@ $extension = '';
                                     </div>
 
                                     <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group">
-                                                <button type="button" class="qty-left-minus" data-type="minus"
-                                                        data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus" data-type="plus"
-                                                        data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
+                                        <form action="?action=add" method="post">
+                                            <input type="hidden" name="product_id" value="<?php echo $data[$i]['id']; ?>" required>
+                                            <input type="hidden" name="quantity" value="1" required>
+                                            <button type="submit" class="btn btn-add-cart">Add to Cart
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -230,22 +220,12 @@ $extension = '';
                                         </div>
 
                                         <div class="add-to-cart-box bg-white">
-                                            <button class="btn btn-add-cart">Add to Cart
-                                            </button>
-                                            <div class="cart_qty qty-box">
-                                                <div class="input-group">
-                                                    <button type="button" class="qty-left-minus" data-type="minus"
-                                                            data-field="">
-                                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <input class="form-control input-number qty-input" type="text"
-                                                           name="quantity" value="0">
-                                                    <button type="button" class="qty-right-plus" data-type="plus"
-                                                            data-field="">
-                                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
+                                            <form action="?action=add" method="post">
+                                                <input type="hidden" name="product_id" value="<?php echo $data[$i]['id']; ?>" required>
+                                                <input type="hidden" name="quantity" value="1" required>
+                                                <button type="submit" class="btn btn-add-cart">Add to Cart
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -429,22 +409,12 @@ $extension = '';
                                     </div>
 
                                     <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart">Add to Cart
-                                        </button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group">
-                                                <button type="button" class="qty-left-minus" data-type="minus"
-                                                        data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                       name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus" data-type="plus"
-                                                        data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
+                                        <form action="?action=add" method="post">
+                                            <input type="hidden" name="product_id" value="<?php echo $data[$i]['id']; ?>" required>
+                                            <input type="hidden" name="quantity" value="1" required>
+                                            <button type="submit" class="btn btn-add-cart">Add to Cart
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -498,22 +468,12 @@ $extension = '';
                                         </div>
 
                                         <div class="add-to-cart-box bg-white">
-                                            <button class="btn btn-add-cart">Add to Cart
-                                            </button>
-                                            <div class="cart_qty qty-box">
-                                                <div class="input-group">
-                                                    <button type="button" class="qty-left-minus" data-type="minus"
-                                                            data-field="">
-                                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <input class="form-control input-number qty-input" type="text"
-                                                           name="quantity" value="0">
-                                                    <button type="button" class="qty-right-plus" data-type="plus"
-                                                            data-field="">
-                                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
+                                            <form action="?action=add" method="post">
+                                                <input type="hidden" name="product_id" value="<?php echo $data[$i]['id']; ?>" required>
+                                                <input type="hidden" name="quantity" value="1" required>
+                                                <button type="submit" class="btn btn-add-cart">Add to Cart
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
