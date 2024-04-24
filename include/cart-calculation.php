@@ -26,7 +26,7 @@ if (!empty($_GET["action"])) {
 
                 echo "<script>
                 const urlWithoutParams = window.location.origin + window.location.pathname;
-                window.location.href = urlWithoutParams;
+                window.location.href = urlWithoutParams;  
                 document.cookie = 'alert = 10;';
                 </script>";
 

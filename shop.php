@@ -263,7 +263,7 @@ if ($title == 'shop') {
         </div>
     </div>
 </section>
-<!-- Shop Section End -->
+<!-- Shop Section End --> 
 
 <?php include('include/footer.php'); ?>
 
