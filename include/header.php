@@ -26,7 +26,7 @@
                             <div>
                                 <div class="timer-notification">
                                     <h6>Something you love is now on sale!
-                                        <a href="shop" class="text-white">Buy Now
+                                        <a href="<?php echo $extension; ?>shop" class="text-white">Buy Now
                                             !</a>
                                     </h6>
                                 </div>
@@ -87,20 +87,22 @@
                                     <i class="fa-solid fa-bars"></i>
                                 </span>
                         </button>
-                        <a href="home" class="web-logo nav-logo">
+                        <a href="<?php echo $extension; ?>home" class="web-logo nav-logo">
                             <img src="<?php echo $extension; ?>assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="">
                         </a>
 
                         <div class="middle-box">
-                            <div class="search-box">
-                                <div class="input-group">
-                                    <input type="search" class="form-control" placeholder="I'm searching for..."
-                                           aria-label="Recipient's username" aria-describedby="button-addon2">
-                                    <button class="btn" type="button" id="button-addon2">
-                                        <i data-feather="search"></i>
-                                    </button>
+                            <form action="<?php echo $extension; ?>search" method="post">
+                                <div class="search-box">
+                                    <div class="input-group">
+                                        <input type="search" class="form-control" name="query" placeholder="I'm searching for..."
+                                               aria-label="Recipient's username" aria-describedby="button-addon2">
+                                        <button class="btn" type="submit" id="button-addon2">
+                                            <i data-feather="search"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
 
                         <div class="rightside-box">
@@ -126,18 +128,18 @@
                                     </div>
                                 </li>
                                 <li class="right-side">
-                                    <a href="contact" class="delivery-login-box">
+                                    <a href="<?php echo $extension; ?>contact" class="delivery-login-box">
                                         <div class="delivery-icon">
                                             <i data-feather="phone-call"></i>
                                         </div>
                                         <div class="delivery-detail">
                                             <h6>24/7 Delivery</h6>
-                                            <h5>+852 620 23824</h5>
+                                            <h5><?php echo $phone; ?></h5>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="right-side">
-                                    <a href="wishlist" class="btn p-0 position-relative header-wishlist">
+                                    <a href="<?php echo $extension; ?>wishlist" class="btn p-0 position-relative header-wishlist">
                                         <i data-feather="heart"></i>
                                     </a>
                                 </li>
@@ -159,13 +161,13 @@
                                                         ?>
                                                         <li class="product-box-contain">
                                                             <div class="drop-cart">
-                                                                <a href="product" class="drop-image">
+                                                                <a href="<?php echo $extension; ?>product" class="drop-image">
                                                                     <img src="<?php echo $extension; ?><?php echo $item["image"]; ?>"
                                                                          class="blur-up lazyload" alt="">
                                                                 </a>
 
                                                                 <div class="drop-contain">
-                                                                    <a href="product">
+                                                                    <a href="<?php echo $extension; ?>product">
                                                                         <h5><?php echo $item["name"]; ?></h5>
                                                                     </a>
                                                                     <h6><span><?php echo $item["quantity"]; ?> x</span>
@@ -203,7 +205,7 @@
                                         </div>
                                         <div class="delivery-detail">
                                             <h6>Hello,</h6>
-                                            <h5>My Account</h5>
+                                            <h5>Guest</h5>
                                         </div>
                                     </div>
 

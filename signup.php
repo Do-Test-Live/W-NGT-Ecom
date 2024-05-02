@@ -3,6 +3,7 @@ session_start();
 require_once('include/dbController.php');
 $db_handle = new DBController();
 require_once('include/settings.php');
+require_once('include/cart-calculation.php');
 date_default_timezone_set("Asia/Hong_Kong");
 $extension = '';
 ?>
@@ -18,7 +19,7 @@ $extension = '';
     <link rel="icon" href="<?php echo $extension; ?>assets/images/favicon/1.png" type="image/x-icon">
     <title>Sign Up | <?php echo $site_name; ?></title>
 
-    <<?php include('include/css.php'); ?>
+    <?php include('include/css.php'); ?>
 </head>
 
 <body>
@@ -35,7 +36,7 @@ $extension = '';
                     <nav>
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <a href="index.html">
+                                <a href="<?php echo $extension; ?>home">
                                     <i class="fa-solid fa-house"></i>
                                 </a>
                             </li>
@@ -67,25 +68,71 @@ $extension = '';
                     </div>
 
                     <div class="input-box">
-                        <form class="row g-4">
+                        <form class="row g-4" action="insert" method="post">
                             <div class="col-12">
                                 <div class="form-floating theme-form-floating">
-                                    <input type="text" class="form-control" id="fullname" placeholder="Full Name">
-                                    <label for="fullname">Full Name</label>
+                                    <input type="text" class="form-control" name="fullname"
+                                           id="fullname" placeholder="Full Name" required autocomplete="off">
+                                    <label for="fullname">Full Name <span class="text-danger">*</span></label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating theme-form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Email Address">
-                                    <label for="email">Email Address</label>
+                                    <select id="gender" name="gender" class="form-select" required>
+                                        <option disabled selected>Choose..</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                    <label for="gender">Gender <span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-floating theme-form-floating">
+                                    <input type="date" class="form-control" name="birthday"
+                                           id="birthday" required autocomplete="off">
+                                    <label for="birthday">Birthday <span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-floating theme-form-floating">
+                                    <input type="email" class="form-control" name="email"
+                                           id="email" placeholder="Email Address" required autocomplete="off">
+                                    <label for="email">Email Address <span class="text-danger">*</span></label>
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="form-floating theme-form-floating">
                                     <input type="password" class="form-control" id="password"
-                                           placeholder="Password">
-                                    <label for="password">Password</label>
+                                           name="password" placeholder="Password" required autocomplete="off">
+                                    <label for="password">Password <span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-floating theme-form-floating">
+                                    <input type="password" class="form-control" id="cnfrm_password"
+                                           name="cnfrm_password" placeholder="Password" required autocomplete="off">
+                                    <label for="cnfrm_password">Confirm Password <span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-floating theme-form-floating">
+                                    <input type="text" class="form-control" name="contact"
+                                           id="contact" placeholder="Contact Number" required autocomplete="off">
+                                    <label for="contact">Contact Number <span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-floating theme-form-floating">
+                                    <input type="text" class="form-control" name="address"
+                                           id="address" placeholder="Address" required autocomplete="off">
+                                    <label for="address">Address <span class="text-danger">*</span></label>
                                 </div>
                             </div>
 
@@ -93,7 +140,7 @@ $extension = '';
                                 <div class="forgot-box">
                                     <div class="form-check ps-0 m-0 remember-box">
                                         <input class="checkbox_animated check-box" type="checkbox"
-                                               id="flexCheckDefault">
+                                               id="flexCheckDefault" required>
                                         <label class="form-check-label" for="flexCheckDefault">I agree with
                                             <span>Terms</span> and <span>Privacy</span></label>
                                     </div>
@@ -101,7 +148,7 @@ $extension = '';
                             </div>
 
                             <div class="col-12">
-                                <button class="btn btn-animation w-100" type="submit">Sign Up</button>
+                                <button class="btn btn-animation w-100" name="signup" type="submit">Sign Up</button>
                             </div>
                         </form>
                     </div>

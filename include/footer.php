@@ -101,11 +101,11 @@
                             <ul class="address">
                                 <li>
                                     <i data-feather="home"></i>
-                                    <a href="javascript:void(0)">Hong Kong</a>
+                                    <a href="javascript:void(0)"><?php echo $address; ?></a>
                                 </li>
                                 <li>
                                     <i data-feather="mail"></i>
-                                    <a href="javascript:void(0)">ngttechio@gmail.com</a>
+                                    <a href="javascript:void(0)"><?php echo $email; ?></a>
                                 </li>
                             </ul>
                         </div>
@@ -207,7 +207,7 @@
                                     <i data-feather="phone"></i>
                                     <div class="contact-number">
                                         <h6 class="text-content">Hotline 24/7 :</h6>
-                                        <h5>+852 620 23824</h5>
+                                        <h5><?php echo $phone; ?></h5>
                                     </div>
                                 </div>
                             </li>
@@ -217,7 +217,7 @@
                                     <i data-feather="mail"></i>
                                     <div class="contact-number">
                                         <h6 class="text-content">Email Address :</h6>
-                                        <h5>ngttechio@gmail.com</h5>
+                                        <h5><?php echo $email; ?></h5>
                                     </div>
                                 </div>
                             </li>
@@ -229,7 +229,7 @@
 
         <div class="sub-footer section-small-space">
             <div class="reserve">
-                <h6 class="text-content">©2023 NGT Ecom All rights reserved</h6>
+                <h6 class="text-content">©2023 <?php echo $site_name; ?> All rights reserved</h6>
             </div>
 
             <div class="payment">

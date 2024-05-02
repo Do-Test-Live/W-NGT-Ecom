@@ -4,7 +4,7 @@ $query = "SELECT * FROM `settings`";
 $data = $db_handle->runQuery($query);
 $row_count = $db_handle->numRows($query);
 
-$favicon=$logo=$site_name=$authorize_key=$meta_description=$money_symbol='';
+$favicon=$logo=$site_name=$authorize_key=$meta_description=$money_symbol=$address=$phone=$email='';
 
 for ($i = 0; $i < $row_count; $i = $i + 1) {
     if($i==0){
@@ -19,6 +19,12 @@ for ($i = 0; $i < $row_count; $i = $i + 1) {
         $meta_description= $data[$i]['description'];
     } else if($i==5){
         $money_symbol= $data[$i]['description'];
+    }else if($i==6){
+        $address= $data[$i]['description'];
+    }else if($i==7){
+        $phone= $data[$i]['description'];
+    }else if($i==8){
+        $email= $data[$i]['description'];
     }
 }
 ?>
