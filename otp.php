@@ -65,7 +65,25 @@ $extension = '';
                     <div class="log-in-box">
                         <div class="log-in-title">
                             <h3 class="text-title">Please enter the one time password to verify your account</h3>
-                            <h5 class="text-content">A code has been sent to <span>*******9897</span></h5>
+                            <h5 class="text-content">A code has been sent to
+                                <span>
+                                    <?php if(isset($_GET['email'])){
+                                        $emailParts = explode('@', $_GET['email']);
+
+                                        if (count($emailParts) === 2) {
+                                            // Obfuscate the first part of the email
+                                            $username = $emailParts[0];
+                                            $obfuscatedUsername = substr($username, 0, 2) . str_repeat('*', max(strlen($username) - 2, 0));
+
+                                            // Combine the obfuscated username and the domain
+                                            $obfuscatedEmail = $obfuscatedUsername . '@' . $emailParts[1];
+
+                                            // Output the obfuscated email
+                                            echo $obfuscatedEmail;
+                                        }
+                                    }  ?>
+                                </span>
+                            </h5>
                         </div>
 
                         <div id="otp" class="inputs d-flex flex-row justify-content-center">
@@ -84,7 +102,7 @@ $extension = '';
                         </div>
 
                         <div class="send-box pt-4">
-                            <h5>Didn't get the code? <a href="javascript:void(0)" class="theme-color fw-bold">Resend
+                            <h5>Didn't get the code? <a href="insert?resend=1&mail=<?php echo $_GET['email']; ?>" class="theme-color fw-bold">Resend
                                     It</a></h5>
                         </div>
 

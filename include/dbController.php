@@ -6,6 +6,10 @@ class DBController {
     private $database = "ngt_ecom";
     private $from_email='business@regenlife.co';
     private $notification_email='cs@regenlife.com';
+    private $sender_email='ecom@frogbid.com';
+    private $email_username='ecom@frogbid.com';
+    private $email_password='1b1242o5i<$f';
+    private $email_host='mail.frogbid.com';
     private $conn;
 
     function __construct() {
@@ -51,6 +55,22 @@ class DBController {
         $result  = mysqli_query($this->conn,$query);
         $rowcount = mysqli_num_rows($result);
         return $rowcount;
+    }
+
+    function sender_email(){
+        return $this->sender_email;
+    }
+
+    function email_username(){
+        return $this->email_username;
+    }
+
+    function email_password(){
+        return $this->email_password;
+    }
+
+    function email_host(){
+        return $this->email_host;
     }
 
     function notify_email(){
