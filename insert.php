@@ -189,7 +189,7 @@ if (isset($_POST['signup'])) {
     } else {
         $user_password = md5($user_password);
 
-        $query = "INSERT INTO `user`(`name`, `email`, `pass`, `gender`, `birthday`, `contact_number`, `address`,  `verification_code`, `otp_id`, `status`, `inserted_at`, `updated_at`) VALUES ('$fullname','$email','$password','$gender','$birthday','$contact','$address','$verification_code','$otp_id','0','$inserted_at','$updated_at')";
+        $query = "INSERT INTO `user`(`name`, `email`, `pass`, `gender`, `birthday`, `contact_number`, `address`,  `verification_code`, `otp_id`, `status`, `inserted_at`, `updated_at`) VALUES ('$fullname','$email','$user_password','$gender','$birthday','$contact','$address','$verification_code','$otp_id','0','$inserted_at','$updated_at')";
         $insert = $db_handle->insertQuery($query);
 
         if ($insert && $mail->send()) {

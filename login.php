@@ -8,10 +8,10 @@ require_once('include/cart-calculation.php');
 $extension = '';
 
 if(isset($_POST['login'])){
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = $db_handle->checkValue($_POST['email']);
+    $password = md5($db_handle->checkValue($_POST['password']));
 
-    $query="SELECT * FROM `user` WHERE email='$email' and pass='$password'";
+    $query="SELECT * FROM `user` WHERE email='$email' and pass='$password' and status=1";
     $data=$db_handle->runQuery($query);
     $row=$db_handle->numRows($query);
 
@@ -24,6 +24,11 @@ if(isset($_POST['login'])){
         echo '<script>
                 alert("Login Successfully");
                 window.location.href="profile";
+              </script>';
+    }else{
+        echo '<script>
+                alert("Password Not Match");
+                window.location.href="login";
               </script>';
     }
 }

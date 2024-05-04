@@ -15,7 +15,8 @@
                         <div class="notification-slider">
                             <div>
                                 <div class="timer-notification">
-                                    <h6><strong class="me-1">Welcome To <?php echo $site_name; ?>!</strong>Wrap new offers/gift
+                                    <h6><strong class="me-1">Welcome To <?php echo $site_name; ?>!</strong>Wrap new
+                                        offers/gift
                                         every signle day on Weekends.<strong class="ms-1">New Coupon Code: Fast024
                                         </strong>
 
@@ -88,14 +89,16 @@
                                 </span>
                         </button>
                         <a href="<?php echo $extension; ?>home" class="web-logo nav-logo">
-                            <img src="<?php echo $extension; ?>assets/images/logo/1.png" class="img-fluid blur-up lazyload" alt="">
+                            <img src="<?php echo $extension; ?>assets/images/logo/1.png"
+                                 class="img-fluid blur-up lazyload" alt="">
                         </a>
 
                         <div class="middle-box">
                             <form action="<?php echo $extension; ?>search" method="post">
                                 <div class="search-box">
                                     <div class="input-group">
-                                        <input type="search" class="form-control" name="query" placeholder="I'm searching for..."
+                                        <input type="search" class="form-control" name="query"
+                                               placeholder="I'm searching for..."
                                                aria-label="Recipient's username" aria-describedby="button-addon2">
                                         <button class="btn" type="submit" id="button-addon2">
                                             <i data-feather="search"></i>
@@ -139,7 +142,8 @@
                                     </a>
                                 </li>
                                 <li class="right-side">
-                                    <a href="<?php echo $extension; ?>wishlist" class="btn p-0 position-relative header-wishlist">
+                                    <a href="<?php echo $extension; ?>wishlist"
+                                       class="btn p-0 position-relative header-wishlist">
                                         <i data-feather="heart"></i>
                                     </a>
                                 </li>
@@ -161,7 +165,8 @@
                                                         ?>
                                                         <li class="product-box-contain">
                                                             <div class="drop-cart">
-                                                                <a href="<?php echo $extension; ?>product" class="drop-image">
+                                                                <a href="<?php echo $extension; ?>product"
+                                                                   class="drop-image">
                                                                     <img src="<?php echo $extension; ?><?php echo $item["image"]; ?>"
                                                                          class="blur-up lazyload" alt="">
                                                                 </a>
@@ -171,9 +176,10 @@
                                                                         <h5><?php echo $item["name"]; ?></h5>
                                                                     </a>
                                                                     <h6><span><?php echo $item["quantity"]; ?> x</span>
-                                                                        <?php echo $money_symbol.$item["price"]; ?></h6>
+                                                                        <?php echo $money_symbol . $item["price"]; ?>
+                                                                    </h6>
                                                                     <button onclick="location.href = '?action=remove&product_id=<?php echo $item["product_id"]; ?>'"
-                                                                       class="close-button close_button">
+                                                                            class="close-button close_button">
                                                                         <i class="fa-solid fa-xmark"></i>
                                                                     </button>
                                                                 </div>
@@ -191,7 +197,8 @@
                                             </div>
 
                                             <div class="button-group">
-                                                <a href="<?php echo $extension; ?>cart" class="btn btn-sm cart-button">View Cart</a>
+                                                <a href="<?php echo $extension; ?>cart" class="btn btn-sm cart-button">View
+                                                    Cart</a>
                                                 <a href="<?php echo $extension; ?>checkout" class="btn btn-sm cart-button theme-bg-color
                                                     text-white">Checkout</a>
                                             </div>
@@ -205,24 +212,46 @@
                                         </div>
                                         <div class="delivery-detail">
                                             <h6>Hello,</h6>
-                                            <h5>Guest</h5>
+                                            <?php if (isset($_SESSION['userid'])) {
+                                                ?>
+                                                <h5><?php echo $_SESSION['name']; ?></h5>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <h5>Guest</h5>
+                                                <?php
+                                            } ?>
+
                                         </div>
                                     </div>
 
                                     <div class="onhover-div onhover-div-login">
                                         <ul class="user-box-name">
-                                            <li class="product-box-contain">
-                                                <i></i>
-                                                <a href="<?php echo $extension; ?>login">Log In</a>
-                                            </li>
+                                            <?php if (isset($_SESSION['userid'])) {
+                                            ?>
+                                                <li class="product-box-contain">
+                                                    <a href="<?php echo $extension; ?>profile">Profile</a>
+                                                </li>
 
-                                            <li class="product-box-contain">
-                                                <a href="<?php echo $extension; ?>signup">Register</a>
-                                            </li>
+                                                <li class="product-box-contain">
+                                                    <a href="<?php echo $extension; ?>logout">Log Out</a>
+                                                </li>
+                                                <?php
+                                            } else {
+                                            ?>
+                                                <li class="product-box-contain">
+                                                    <a href="<?php echo $extension; ?>login">Log In</a>
+                                                </li>
 
-                                            <li class="product-box-contain">
-                                                <a href="<?php echo $extension; ?>forgot-password">Forgot Password</a>
-                                            </li>
+                                                <li class="product-box-contain">
+                                                    <a href="<?php echo $extension; ?>signup">Register</a>
+                                                </li>
+
+                                                <li class="product-box-contain">
+                                                    <a href="<?php echo $extension; ?>forgot-password">Forgot Password</a>
+                                                </li>
+                                                <?php
+                                            } ?>
                                         </ul>
                                     </div>
                                 </li>
@@ -264,7 +293,8 @@
                                     $category_id = $category[$i]['id'];
                                     ?>
                                     <li class="onhover-category-list">
-                                        <a href="<?php echo $extension; ?>shop/<?php echo str_replace(' ', '-', $category[$i]['c_name']); ?>" class="category-name text-start">
+                                        <a href="<?php echo $extension; ?>shop/<?php echo str_replace(' ', '-', $category[$i]['c_name']); ?>"
+                                           class="category-name text-start">
                                             <?php echo $category[$i]['c_icon']; ?>
                                             <h6><?php echo $category[$i]['c_name']; ?></h6>
                                             <i class="fa-solid fa-angle-right"></i>
@@ -351,8 +381,6 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
