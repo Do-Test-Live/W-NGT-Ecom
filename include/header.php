@@ -232,21 +232,18 @@
                                                 <li class="product-box-contain">
                                                     <a href="<?php echo $extension; ?>profile">Profile</a>
                                                 </li>
-
                                                 <li class="product-box-contain">
-                                                    <a href="<?php echo $extension; ?>logout">Log Out</a>
+                                                    <a href="<?php echo $extension; ?>logout">Logout</a>
                                                 </li>
                                                 <?php
                                             } else {
                                             ?>
                                                 <li class="product-box-contain">
-                                                    <a href="<?php echo $extension; ?>login">Log In</a>
+                                                    <a href="<?php echo $extension; ?>login">Login</a>
                                                 </li>
-
                                                 <li class="product-box-contain">
                                                     <a href="<?php echo $extension; ?>signup">Register</a>
                                                 </li>
-
                                                 <li class="product-box-contain">
                                                     <a href="<?php echo $extension; ?>forgot-password">Forgot Password</a>
                                                 </li>
