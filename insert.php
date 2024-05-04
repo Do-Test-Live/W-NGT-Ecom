@@ -179,12 +179,12 @@ if (isset($_POST['signup'])) {
     if ($user_password != $cnfrm_password) {
         echo '<script>
                 alert("Password Not Match");
-                window.location.href="signup"
+                window.location.href="signup";
               </script>';
     } else if ($row > 0) {
         echo '<script>
                 alert("Email already registered");
-                window.location.href="signup"
+                window.location.href="signup";
               </script>';
     } else {
         $user_password = md5($user_password);
@@ -195,7 +195,7 @@ if (isset($_POST['signup'])) {
         if ($insert && $mail->send()) {
             echo '<script>
                 alert("Register Succesfully");
-                window.location.href="otp?mail=' . $email . '"
+                window.location.href="otp?mail=' . $email . '";
               </script>';
         }
     }
@@ -343,6 +343,29 @@ if(isset($_GET['resend'])){
         echo '<script>
                 alert("Resend Succesfully");
                 window.location.href="otp?mail=' . $email . '"
+              </script>';
+    }
+}
+
+if(isset($_POST['validate'])){
+    $email = $_POST['email'];
+
+    $firstValue = $_POST['first'];
+    $secondValue = $_POST['second'];
+    $thirdValue = $_POST['third'];
+    $fourthValue = $_POST['fourth'];
+    $fifthValue = $_POST['fifth'];
+    $sixthValue = $_POST['sixth'];
+
+    $otp = $firstValue . $secondValue . $thirdValue . $fourthValue . $fifthValue . $sixthValue;
+
+    $query = "UPDATE `user` SET `otp_id`='',`status`='1',`updated_at`='$updated_at' WHERE `email`='$email' and `verification_code`='$otp'";
+    $update = $db_handle->insertQuery($query);
+
+    if($update){
+        echo '<script>
+                alert("Verified Successfully");
+                window.location.href="login";
               </script>';
     }
 }

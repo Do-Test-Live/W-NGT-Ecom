@@ -86,29 +86,50 @@ $extension = '';
                             </h5>
                         </div>
 
-                        <div id="otp" class="inputs d-flex flex-row justify-content-center">
-                            <input class="text-center form-control rounded" type="text" id="first" maxlength="1"
-                                   placeholder="0">
-                            <input class="text-center form-control rounded" type="text" id="second" maxlength="1"
-                                   placeholder="0">
-                            <input class="text-center form-control rounded" type="text" id="third" maxlength="1"
-                                   placeholder="0">
-                            <input class="text-center form-control rounded" type="text" id="fourth" maxlength="1"
-                                   placeholder="0">
-                            <input class="text-center form-control rounded" type="text" id="fifth" maxlength="1"
-                                   placeholder="0">
-                            <input class="text-center form-control rounded" type="text" id="sixth" maxlength="1"
-                                   placeholder="0">
-                        </div>
+                        <?php
 
-                        <div class="send-box pt-4">
-                            <h5>Didn't get the code? <a href="insert?resend=1&mail=<?php echo $_GET['email']; ?>" class="theme-color fw-bold">Resend
-                                    It</a></h5>
-                        </div>
+                        if(isset($_GET['id'])){
+                            $otp_id = $db_handle->checkValue($_GET['id']);
+                            $updated_at = date('Y-m-d h:i:s');
+                            $query = "UPDATE `user` SET `otp_id`='',`status`='1',`updated_at`='$updated_at' WHERE `otp_id`='$otp_id'";
+                            $update = $db_handle->insertQuery($query);
 
-                        <button onclick="location.href = 'index.html';" class="btn btn-animation w-100 mt-3"
-                                type="submit">Validate
-                        </button>
+                            if($update){
+                                echo '<script>
+                                        alert("Verified Successfully");
+                                        window.location.href="login";
+                                      </script>';
+                            }
+                        }
+                        ?>
+
+                        <form action="insert" method="post">
+                            <div id="otp" class="inputs d-flex flex-row justify-content-center">
+                                <input class="text-center form-control rounded" type="text" id="first" name="first"
+                                       maxlength="1" placeholder="0">
+                                <input class="text-center form-control rounded" type="text" id="second" name="second"
+                                       maxlength="1" placeholder="0">
+                                <input class="text-center form-control rounded" type="text" id="third" name="third"
+                                       maxlength="1" placeholder="0">
+                                <input class="text-center form-control rounded" type="text" id="fourth" name="fourth"
+                                       maxlength="1" placeholder="0">
+                                <input class="text-center form-control rounded" type="text" id="fifth" name="fifth"
+                                       maxlength="1" placeholder="0">
+                                <input class="text-center form-control rounded" type="text" id="sixth" name="sixth"
+                                       maxlength="1" placeholder="0">
+                            </div>
+
+                            <input type="hidden" name="email" id="email" value="<?php echo $_GET['mail']; ?>" required>
+
+                            <div class="send-box pt-4">
+                                <h5>Didn't get the code? <a href="insert?resend=1&mail=<?php echo $_GET['mail']; ?>" class="theme-color fw-bold">Resend
+                                        It</a></h5>
+                            </div>
+
+                            <button name="validate" class="btn btn-animation w-100 mt-3"
+                                    type="submit">Validate
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

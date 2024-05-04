@@ -6,6 +6,27 @@ require_once('include/settings.php');
 date_default_timezone_set("Asia/Hong_Kong");
 require_once('include/cart-calculation.php');
 $extension = '';
+
+if(isset($_POST['login'])){
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $query="SELECT * FROM `user` WHERE email='$email' and pass='$password'";
+    $data=$db_handle->runQuery($query);
+    $row=$db_handle->numRows($query);
+
+    if($row>0){
+        $_SESSION['userid']=$data[0]['id'];
+        $_SESSION['email']=$data[0]['email'];
+        $_SESSION['name']=$data[0]['name'];
+        $_SESSION['address']=$data[0]['address'];
+
+        echo '<script>
+                alert("Login Successfully");
+                window.location.href="profile";
+              </script>';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +57,7 @@ $extension = '';
                         <nav>
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
-                                    <a href="index.html">
+                                    <a href="home">
                                         <i class="fa-solid fa-house"></i>
                                     </a>
                                 </li>
@@ -68,18 +89,19 @@ $extension = '';
                         </div>
 
                         <div class="input-box">
-                            <form class="row g-4">
+                            <form class="row g-4" method="post" action="">
                                 <div class="col-12">
                                     <div class="form-floating theme-form-floating log-in-form">
-                                        <input type="email" class="form-control" id="email" placeholder="Email Address">
+                                        <input type="email" class="form-control" id="email" name="email"
+                                               placeholder="Email Address" required>
                                         <label for="email">Email Address</label>
                                     </div>
                                 </div>
 
                                 <div class="col-12">
                                     <div class="form-floating theme-form-floating log-in-form">
-                                        <input type="password" class="form-control" id="password"
-                                            placeholder="Password">
+                                        <input type="password" class="form-control" name="password" id="password"
+                                            placeholder="Password" required>
                                         <label for="password">Password</label>
                                     </div>
                                 </div>
@@ -96,8 +118,8 @@ $extension = '';
                                 </div>
 
                                 <div class="col-12">
-                                    <button class="btn btn-animation w-100 justify-content-center" type="submit">Log
-                                        In</button>
+                                    <button class="btn btn-animation w-100 justify-content-center" name="login"
+                                            type="submit">Log In</button>
                                 </div>
                             </form>
                         </div>
