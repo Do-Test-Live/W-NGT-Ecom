@@ -20,6 +20,8 @@ RewriteRule ^contact contact.php [NE,L]
 
 RewriteRule ^login login.php [NE,L]
 
+RewriteRule ^logout logout.php [NE,L]
+
 RewriteRule ^signup signup.php [NE,L]
 
 RewriteRule ^forgot-password forgot-password.php [NE,L]
