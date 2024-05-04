@@ -36,7 +36,7 @@ $extension = '';
                         <nav>
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
-                                    <a href="home">
+                                    <a href="<?php echo $extension; ?>home">
                                         <i class="fa-solid fa-house"></i>
                                     </a>
                                 </li>
