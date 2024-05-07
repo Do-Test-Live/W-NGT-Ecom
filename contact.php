@@ -80,7 +80,7 @@ $extension = '';
                                                 </div>
 
                                                 <div class="contact-detail-contain">
-                                                    <p>(+1) 618 190 496</p>
+                                                    <p><?php echo $phone; ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -95,37 +95,22 @@ $extension = '';
                                                 </div>
 
                                                 <div class="contact-detail-contain">
-                                                    <p>geweto9420@chokxus.com</p>
+                                                    <p><?php echo $email; ?></p>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-xxl-6 col-lg-12 col-sm-6">
+                                        <div class="col-xxl-12 col-lg-12 col-sm-6">
                                             <div class="contact-detail-box">
                                                 <div class="contact-icon">
                                                     <i class="fa-solid fa-location-dot"></i>
                                                 </div>
                                                 <div class="contact-detail-title">
-                                                    <h4>London Office</h4>
+                                                    <h4>Address</h4>
                                                 </div>
 
                                                 <div class="contact-detail-contain">
-                                                    <p>Cruce Casa de Postas 29</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xxl-6 col-lg-12 col-sm-6">
-                                            <div class="contact-detail-box">
-                                                <div class="contact-icon">
-                                                    <i class="fa-solid fa-building"></i>
-                                                </div>
-                                                <div class="contact-detail-title">
-                                                    <h4>Bournemouth Office</h4>
-                                                </div>
-
-                                                <div class="contact-detail-contain">
-                                                    <p>Visitación de la Encina 22</p>
+                                                    <p><?php echo $address; ?></p>
                                                 </div>
                                             </div>
                                         </div>
