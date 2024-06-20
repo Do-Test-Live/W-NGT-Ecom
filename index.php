@@ -794,13 +794,13 @@ $extension = '';
                                 $product_id = $data[$i]['id'];
                                 ?>
                                 <div class="top-selling-contain wow fadeInUp">
-                                    <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
+                                    <a href="<?php echo $extension; ?>product/<?php echo str_replace(' ', '-', $data[$i]['p_name']); ?>" class="top-selling-image">
                                         <img src="<?php echo $data[$i]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                              alt="">
                                     </a>
 
                                     <div class="top-selling-detail">
-                                        <a onclick="showProduct(<?php echo $product_id; ?>);">
+                                        <a href="<?php echo $extension; ?>product/<?php echo str_replace(' ', '-', $data[$i]['p_name']); ?>">
                                             <h5><?php echo $data[$i]['p_name']; ?></h5>
                                         </a>
                                         <h6><?php echo $money_symbol; ?> <?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></h6>
@@ -811,13 +811,13 @@ $extension = '';
                                     $product_id = $data[$i + 1]['id'];
                                     ?>
                                     <div class="top-selling-contain wow fadeInUp" data-wow-delay="0.2s">
-                                        <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
+                                        <a href="<?php echo $extension; ?>product/<?php echo str_replace(' ', '-', $data[$i+1]['p_name']); ?>" class="top-selling-image">
                                             <img src="<?php echo $data[$i+1]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                                  alt="">
                                         </a>
 
                                         <div class="top-selling-detail">
-                                            <a onclick="showProduct(<?php echo $product_id; ?>);">
+                                            <a href="<?php echo $extension; ?>product/<?php echo str_replace(' ', '-', $data[$i+1]['p_name']); ?>">
                                                 <h5><?php echo $data[$i+1]['p_name']; ?></h5>
                                             </a>
                                             <h6><?php echo $money_symbol; ?> <?php echo $data[$i+1]['p_price'] - $data[$i+1]['discount']; ?></h6>
@@ -831,16 +831,16 @@ $extension = '';
                                     $product_id = $data[$i + 2]['id'];
                                     ?>
                                     <div class="top-selling-contain wow fadeInUp" data-wow-delay="0.4s">
-                                        <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
+                                        <a href="<?php echo $extension; ?>product/<?php echo str_replace(' ', '-', $data[$i+2]['p_name']); ?>" class="top-selling-image">
                                             <img src="<?php echo $data[$i+2]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                                  alt="">
                                         </a>
 
                                         <div class="top-selling-detail">
-                                            <a onclick="showProduct(<?php echo $product_id; ?>);">
+                                            <a href="<?php echo $extension; ?>product/<?php echo str_replace(' ', '-', $data[$i+2]['p_name']); ?>">
                                                 <h5><?php echo $data[$i+2]['p_name']; ?></h5>
                                             </a>
-                                            <h6><?php echo $money_symbol; ?> <?php echo $data[$i+2]['p_price'] - $data[$i+1]['discount']; ?></h6>
+                                            <h6><?php echo $money_symbol; ?> <?php echo $data[$i+2]['p_price'] - $data[$i+2]['discount']; ?></h6>
                                         </div>
                                     </div>
                                     <?php
@@ -872,13 +872,13 @@ $extension = '';
                                 $product_id = $data[$i]['id'];
                                 ?>
                                 <div class="top-selling-contain wow fadeInUp">
-                                    <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
+                                    <a href="<?php echo $extension; ?>product/<?php echo str_replace(' ', '-', $data[$i]['p_name']); ?>" class="top-selling-image">
                                         <img src="<?php echo $data[$i]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                              alt="">
                                     </a>
 
                                     <div class="top-selling-detail">
-                                        <a onclick="showProduct(<?php echo $product_id; ?>);">
+                                        <a href="<?php echo $extension; ?>product/<?php echo str_replace(' ', '-', $data[$i]['p_name']); ?>">
                                             <h5><?php echo $data[$i]['p_name']; ?></h5>
                                         </a>
                                         <h6>$ <?php echo $data[$i]['p_price'] - $data[$i]['discount']; ?></h6>
@@ -889,13 +889,13 @@ $extension = '';
                                     $product_id = $data[$i + 1]['id'];
                                     ?>
                                     <div class="top-selling-contain wow fadeInUp" data-wow-delay="0.2s">
-                                        <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
+                                        <a href="<?php echo $extension; ?>product/<?php echo str_replace(' ', '-', $data[$i+1]['p_name']); ?>" class="top-selling-image">
                                             <img src="<?php echo $data[$i+1]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                                  alt="">
                                         </a>
 
                                         <div class="top-selling-detail">
-                                            <a onclick="showProduct(<?php echo $product_id; ?>);">
+                                            <a href="<?php echo $extension; ?>product/<?php echo str_replace(' ', '-', $data[$i+1]['p_name']); ?>">
                                                 <h5><?php echo $data[$i+1]['p_name']; ?></h5>
                                             </a>
                                             <h6><?php echo $money_symbol; ?> <?php echo $data[$i+1]['p_price'] - $data[$i+1]['discount']; ?></h6>
@@ -909,16 +909,16 @@ $extension = '';
                                     $product_id = $data[$i + 2]['id'];
                                     ?>
                                     <div class="top-selling-contain wow fadeInUp" data-wow-delay="0.4s">
-                                        <a onclick="showProduct(<?php echo $product_id; ?>);" class="top-selling-image">
+                                        <a href="<?php echo $extension; ?>product/<?php echo str_replace(' ', '-', $data[$i+2]['p_name']); ?>" class="top-selling-image">
                                             <img src="<?php echo $data[$i+2]['main_image']; ?>" class="img-fluid blur-up lazyload"
                                                  alt="">
                                         </a>
 
                                         <div class="top-selling-detail">
-                                            <a onclick="showProduct(<?php echo $product_id; ?>);">
+                                            <a href="<?php echo $extension; ?>product/<?php echo str_replace(' ', '-', $data[$i+2]['p_name']); ?>">
                                                 <h5><?php echo $data[$i+2]['p_name']; ?></h5>
                                             </a>
-                                            <h6><?php echo $money_symbol; ?> <?php echo $data[$i+2]['p_price'] - $data[$i+1]['discount']; ?></h6>
+                                            <h6><?php echo $money_symbol; ?> <?php echo $data[$i+2]['p_price'] - $data[$i+2]['discount']; ?></h6>
                                         </div>
                                     </div>
                                     <?php
