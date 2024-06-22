@@ -358,7 +358,7 @@ if(isset($_POST['validate'])){
 
     $otp = $firstValue . $secondValue . $thirdValue . $fourthValue . $fifthValue . $sixthValue;
 
-    $query = "UPDATE `user` SET `otp_id`='',`status`='1',`updated_at`='$updated_at' WHERE `email`='$email' and `verification_code`='$otp'";
+    $query = "UPDATE `user` SET `otp_id`='',`status`=1,`updated_at`='$updated_at' WHERE `email`='$email' and `verification_code`='$otp'";
     $update = $db_handle->insertQuery($query);
 
     if($update){
@@ -371,6 +371,17 @@ if(isset($_POST['validate'])){
 
 if(isset($_POST['checkout'])){
     $user_id=$_SESSION['userid'];
+    $cname=$cemail=$caddress='';
+
+    $query="select * from user where id='$user_id'";
+    $data=$db_handle->runQuery($query);
+    $row=$db_handle->numRows($query);
+
+    $cname=$data[0]['name'];
+    $cemail=$data[0]['email'];
+    $caddress=$data[0]['address'];
+
+
     $promo_id=0;
     $order_status=0;
 
@@ -391,14 +402,14 @@ if(isset($_POST['checkout'])){
             $item_price = $item["quantity"] * $item["price"];
             $quantity = $item["quantity"];
             $unit_price = $item["price"];
-            $product_id = $item['product_id'];
+            $product_id = str_replace('PP', '', $item['product_id']);
 
             $table.='<tr>
-                        <td>'.$sl.'</td>
-                        <td>'.$name.'</td>
+                        <td style="text-align: left">'.$sl.'</td>
+                        <td style="text-align: left">'.$name.'</td>
                         <td>'.$quantity.'</td>
-                        <td>'.$money_symbol.$unit_price.'</td>
-                        <td>'.$money_symbol.$item_price.'</td>
+                        <td>'.$money_symbol.number_format($unit_price,2).'</td>
+                        <td>'.$money_symbol.number_format($item_price,2).'</td>
                      </tr>';
 
             $sl=$sl+1;
@@ -406,13 +417,13 @@ if(isset($_POST['checkout'])){
             $invoice = $db_handle->insertQuery("INSERT INTO `invoice`(`user_id`, `billing_id`, `product_id`, `product_name`, `product_quantity`, `price`, `total`, `inserted_at`) VALUES ('$user_id','$billing_id','$product_id','$name','$quantity','$unit_price','$item_price', '$updated_at')");
     }
     unset($_SESSION["cart_item"]);
-
+    $subject=$site_name;
     $messege = '
             <!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta content="width=device-width, initial-scale=1.0" name="viewport">
                 <title>Invoice</title>
                 <style>
                     body {
@@ -431,9 +442,7 @@ if(isset($_POST['checkout'])){
                         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                     }
                     .header {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
+                        display: ruby-text;
                         padding: 20px 0;
                         border-bottom: 1px solid #ddd;
                     }
@@ -500,17 +509,32 @@ if(isset($_POST['checkout'])){
                         padding: 20px 0;
                         border-top: 1px solid #ddd;
                         color: #888;
-                        display: flex;
-                        justify-content: space-between;
+                        display: ruby-text;
                     }
                     .company-details, .company-signature {
                         font-size: 14px;
                         color: #333;
                     }
+                    .company-details{
+                        text-align: left;
+                    }
+                    .company-signature{
+                        text-align: right;
+                    }
                     .payment-info {
                         font-size: 14px;
                         color: #333;
                     }
+                    
+                    .company-logo{
+                        text-align: right;
+                        margin-top: 10px;
+                    }
+                    
+                    .text-right{
+                        text-align: right;
+                    }
+                    
                     @media only screen and (max-width: 600px) {
                         .container {
                             padding: 10px;
@@ -547,23 +571,26 @@ if(isset($_POST['checkout'])){
             <body>
             <div class="container">
                 <div class="header">
-                    <h1>Invoice</h1>
-                    <img src="https://via.placeholder.com/150" alt="Company Logo">
+                    <div>
+                         <h1>Invoice</h1> 
+                    </div>
+                    <div class="company-logo">
+                        <img alt="Company Logo" src="https://via.placeholder.com/250X80">
+                    </div>
                 </div>
                 <table class="invoice-details">
                     <tr>
                         <td>
                             <strong>To:</strong><br>
-                            Customer Name<br>
-                            456 Customer Address<br>
-                            City, State, ZIP Code<br>
-                            Email: customer@example.com
+                            '.$cname.'<br>
+                            '.$caddress.'<br>
+                            '.$cemail.'
                         </td>
-                        <td>
+                        <td class="text-right">
                             <strong>Invoice Number:</strong><br>
                             INV-123456<br><br>
                             <strong>Invoice Date:</strong><br>
-                            May 18, 2024
+                            ' . date('F j, Y') . '
                         </td>
                     </tr>
                 </table>
@@ -578,46 +605,46 @@ if(isset($_POST['checkout'])){
                     </tr>
                     </thead>
                     <tbody>
-                    '.$table.'
+                    ' . $table . '
                     </tbody>
                 </table>
                 <div class="summary">
                     <div class="summary-left payment-info">
                         <strong>Payment Information</strong><br>
-                        Bank: Your Bank Name<br>
-                        Account Number: 123456789<br>
-                        SWIFT: ABCD1234<br>
-                        IBAN: XY00BANK123456789
+                        Cash on Delivery
                     </div>
                     <div class="summary-right">
                         <table>
                             <tr>
                                 <td>Subtotal:</td>
-                                <td>$200.00</td>
+                                <td>' . $money_symbol . $total_price . '</td>
                             </tr>
                             <tr>
                                 <td>Discount (10%):</td>
-                                <td>-$20.00</td>
+                                <td>-' . $money_symbol . '0.00</td>
                             </tr>
                             <tr>
                                 <td>Tax (10%):</td>
-                                <td>$18.00</td>
+                                <td>' . $money_symbol . '0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Shipping:</td>
+                                <td>' . $money_symbol . number_format(100, 2) . '</td>
                             </tr>
                             <tr class="total-row">
                                 <td><strong>Total:</strong></td>
-                                <td><strong>'.$money_symbol.$total_price.'</strong></td>
+                                <td><strong>' . $money_symbol . number_format($total_price + 100, 2) . '</strong></td>
                             </tr>
                         </table>
                     </div>
                 </div>
                 <div class="footer">
                     <div class="company-details">
-                        <strong>Company Name</strong><br>
-                        123 Street Address<br>
-                        City, State, ZIP Code<br>
-                        Email: company@example.com<br>
-                        Phone: (123) 456-7890<br>
-                        Website: www.company.com
+                        <strong>'.$site_name.'</strong><br>
+                        '.$address.'<br>
+                        Email: '.$email.'<br>
+                        Phone: '.$phone.'<br>
+                        Website: www.'.$_SERVER['SERVER_NAME'].'
                     </div>
                     <div class="company-signature">
                         <strong>Company Signature:</strong><br><br><br>
@@ -635,7 +662,7 @@ if(isset($_POST['checkout'])){
     $sender_email = $db_handle->sender_email();
     $username = $db_handle->email_username();
     $password = $db_handle->email_password();
-    $receiver_email = 'monoget1@gmail.com';
+    $receiver_email = $cemail;
 
 
     $mail = new PHPMailer(true);
@@ -656,7 +683,7 @@ if(isset($_POST['checkout'])){
     $mail->msgHTML($messege);
     $mail->addAddress($receiver_email);
 
-    if($insert_billing_details && $mail->send() ){
+    if($insert_billing_details && $mail->send()){
         echo '<script>
                 alert("Order Successful");
                 window.location.href="home"

@@ -224,8 +224,12 @@ if ($title == 'shop') {
                                             </del>
                                         </h5>
                                         <div class="add-to-cart-box bg-white">
-                                            <button class="btn btn-add-cart">Add to Cart
-                                            </button>
+                                            <form action="?action=add" method="post">
+                                                <input type="hidden" name="product_id" value="<?php echo $data[$i]['id']; ?>" required>
+                                                <input type="hidden" name="quantity" value="1" required>
+                                                <button type="submit" class="btn btn-add-cart">Add to Cart
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

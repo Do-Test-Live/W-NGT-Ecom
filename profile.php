@@ -164,7 +164,13 @@ $user_info=$db_handle->runQuery($query);
                                                      alt="">
                                                 <div class="totle-detail">
                                                     <h5>Total Order</h5>
-                                                    <h3>3658</h3>
+                                                    <h3>
+                                                        <?php
+                                                        $query="select * from billing_details where user_id={$_SESSION['userid']}";
+                                                        $rows=$db_handle->numRows($query);
+                                                        echo $rows;
+                                                    ?>
+                                                    </h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -178,7 +184,11 @@ $user_info=$db_handle->runQuery($query);
                                                      alt="">
                                                 <div class="totle-detail">
                                                     <h5>Total Pending Order</h5>
-                                                    <h3>254</h3>
+                                                    <h3><?php
+                                                        $query="select * from billing_details where order_status=0 and user_id={$_SESSION['userid']}";
+                                                        $rows=$db_handle->numRows($query);
+                                                        echo $rows;
+                                                        ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -191,7 +201,12 @@ $user_info=$db_handle->runQuery($query);
                                                      class="blur-up lazyload" alt="">
                                                 <div class="totle-detail">
                                                     <h5>Total Wishlist</h5>
-                                                    <h3>32158</h3>
+                                                    <h3><?php
+                                                        $query="select * from wishlist where user_id={$_SESSION['userid']}";
+                                                        $rows=$db_handle->numRows($query);
+                                                        echo $rows;
+                                                        ?>
+                                                    </h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -230,82 +245,68 @@ $user_info=$db_handle->runQuery($query);
                                 </div>
 
                                 <div class="order-contain">
-                                    <div class="order-box dashboard-bg-box">
-                                        <div class="order-container">
-                                            <div class="order-icon">
-                                                <i data-feather="box"></i>
+                                    <?php
+
+                                    $query="select * from billing_details where user_id={$_SESSION['userid']} order by inserted_at desc";
+                                    $data=$db_handle->runQuery($query);
+                                    $rows=$db_handle->numRows($query);
+
+                                    for($i=0;$i<$rows;$i++){
+                                        ?>
+                                        <div class="order-box dashboard-bg-box">
+                                            <div class="order-container">
+                                                <div class="order-icon">
+                                                    <i data-feather="box"></i>
+                                                </div>
+
+                                                <div class="order-detail">
+                                                    <h4>Delivery <span>Pending</span></h4>
+                                                </div>
                                             </div>
 
-                                            <div class="order-detail">
-                                                <h4>Delivere <span>Panding</span></h4>
-                                                <h6 class="text-content">Gouda parmesan caerphilly mozzarella
-                                                    cottage cheese cauliflower cheese taleggio gouda.</h6>
-                                            </div>
-                                        </div>
+                                            <?php
 
-                                        <div class="product-order-detail">
-                                            <a href="product-left-thumbnail.html" class="order-image">
-                                                <img src="assets/images/vegetable/product/1.png"
-                                                     class="blur-up lazyload" alt="">
-                                            </a>
+                                            $query="select p.main_image, i.product_name, p.description, i.price, i.product_quantity from invoice as i,product as p where p.id=i.product_id and i.billing_id={$data[$i]['id']}";
+                                            $invoicedata=$db_handle->runQuery($query);
+                                            $invoicerows=$db_handle->numRows($query);
 
-                                            <div class="order-wrap">
-                                                <a href="product-left-thumbnail.html">
-                                                    <h3>Fantasy Crunchy Choco Chip Cookies</h3>
+                                            for($j=0;$j<$invoicerows;$j++){
+
+                                            ?>
+                                            <div class="product-order-detail">
+                                                <a href="product-left-thumbnail.html" class="order-image">
+                                                    <img src="<?php echo $invoicedata[$j]['main_image']; ?>"
+                                                         class="blur-up lazyload" alt="">
                                                 </a>
-                                                <p class="text-content">Cheddar dolcelatte gouda. Macaroni cheese
-                                                    cheese strings feta halloumi cottage cheese jarlsberg cheese
-                                                    triangles say cheese.</p>
-                                                <ul class="product-size">
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Price : </h6>
-                                                            <h5>$20.68</h5>
-                                                        </div>
-                                                    </li>
 
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Rate : </h6>
-                                                            <div class="product-rating ms-2">
-                                                                <ul class="rating">
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star" class="fill"></i>
-                                                                    </li>
-                                                                    <li>
-                                                                        <i data-feather="star"></i>
-                                                                    </li>
-                                                                </ul>
+                                                <div class="order-wrap">
+                                                    <a href="product-left-thumbnail.html">
+                                                        <h3><?php echo $invoicedata[$j]['product_name']; ?></h3>
+                                                    </a>
+                                                    <p class="text-content"><?php echo $invoicedata[$j]['description']; ?></p>
+                                                    <ul class="product-size">
+                                                        <li>
+                                                            <div class="size-box">
+                                                                <h6 class="text-content">Price : </h6>
+                                                                <h5><?php echo $invoicedata[$j]['price']; ?></h5>
                                                             </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Sold By : </h6>
-                                                            <h5>Fresho</h5>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="size-box">
-                                                            <h6 class="text-content">Quantity : </h6>
-                                                            <h5>250 G</h5>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                                        </li>
+                                                        <li>
+                                                            <div class="size-box">
+                                                                <h6 class="text-content">Quantity : </h6>
+                                                                <h5><?php echo $invoicedata[$j]['product_quantity']; ?></h5>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
+                                                <?php
+                                            }
+                                            ?>
                                         </div>
-                                    </div>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
